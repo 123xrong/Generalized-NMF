@@ -113,6 +113,42 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
     
     return cluster_labels, accuracy
 
+def baseline_ssc(X, true_labels, alpha):
+    # X: [number of samples, dimension]
+    n_samples = X.shape[1]
+    X = X - X.mean(axis=1, keepdims=True)
+
+    C = np.zeros((n_samples, n_samples))
+
+    # Perform Lasso regression for each sample
+    for i in range(n_samples):
+        x_i = X[:, i]
+        X_rest = np.delete(X, i, axis=1)
+
+        # Solve Lasso problem: minimize ||x_i - X_rest * c||^2 + alpha * ||c||_1
+        lasso = Lasso(alpha=alpha, fit_intercept=False)#, max_iter=1000)
+        lasso.fit(X_rest, x_i)
+        c = lasso.coef_
+        print(f"length of c: {len(c)}")
+
+        # Insert c into C matrix
+        C[np.arange(n_samples) != i, i] = c
+    # 0 truncate C
+    C[C < 0] = 0
+    # Symmetrize the affinity matrix
+    C = 0.5 * (C + C.T)
+
+    # Run spectral clustering on C
+    n_clusters = len(np.unique(true_labels))
+    spectral = cluster.SpectralClustering(n_clusters=n_clusters, affinity='precomputed', assign_labels='kmeans', random_state=42)
+    cluster_labels = spectral.fit_predict(C)
+    print("length of cluster_labels: ", len(cluster_labels))
+
+    # Return ARI
+    ari = adjusted_rand_score(true_labels, cluster_labels)
+
+    return cluster_labels, ari
+
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
     Iterative subspace clustering with NMF until convergence.
