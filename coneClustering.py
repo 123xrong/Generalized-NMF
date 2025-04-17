@@ -160,21 +160,34 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
     np.random.shuffle(cluster_labels)
 
     # run k-subspace clustering once
-    cluster_labels, accuracy = baseline_ksubspace(X, r, K, true_labels, max_iter=max_iter, tol=tol, random_state=random_state)
+    new_labels = np.zeros_like(cluster_labels)
+    for i in range(n):
+        x_i = X[:, i]
+        best_k = 0
+        best_dist = np.inf
+        for k_ in range(K):
+            U_k = subspace_bases[k_]
+            proj_i = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ x_i)
+            dist = np.linalg.norm(x_i - proj_i)
+            if dist < best_dist:
+                best_dist = dist
+                best_k = k_
+        new_labels[i] = best_k
 
+    accuracy = adjusted_rand_score(true_labels, new_labels)
     # run NMF on each partition
     sub_datasets = []
     subspace_bases = []
     X_new = np.zeros_like(X)
     for k_ in range(K):
-        idx_k = np.where(cluster_labels == k_)[0]
+        idx_k = np.where(new_labels == k_)[0]
         sub_datasets.append(X[:, idx_k])
 
         if len(sub_datasets[k_]) == 0:
             # Empty cluster
             subspace_bases.append(None)
             continue
-        U_k, _, _ = NMF(n_components=r, init='nndsvda', random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
+        U_k, _, _ = NMF(n_components=r, random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
         U_k = np.where(U_k > 0, U_k, 0)
         subspace_bases.append(U_k[:, :r])
 
