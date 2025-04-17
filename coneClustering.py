@@ -188,7 +188,7 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
             # Empty cluster
             subspace_bases.append(None)
             continue
-        U_k, _, _ = NMF(n_components=r, random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
+        U_k = NMF(n_components=r, random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
         U_k = np.where(U_k > 0, U_k, 0)
         subspace_bases.append(U_k[:, :r])
 
