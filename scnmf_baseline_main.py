@@ -26,7 +26,7 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, tol=1e-6):
 
     # Simulate your data matrix X of shape (m, n_k * K)
     X, true_labels = data_simulation(m, r, n_k, K, sigma, random_state)  # Make sure this is defined
-    reconstruction_error, accuracy = ksub_nmf_baseline(X, true_labels = true_labels)
+    reconstruction_error, accuracy = ksub_nmf_baseline(X, r, K, true_labels = true_labels)
 
     print("Reconstruction error:", reconstruction_error)
     print("Accuracy:", accuracy)
