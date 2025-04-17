@@ -154,7 +154,33 @@ def baseline_ssc(X, true_labels, alpha):
     return cluster_labels, ari
 
 def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_state=None):
-    pass
+    np.random.seed(random_state)
+    n = X.shape[1]
+    # 1) Initialize cluster labels randomly
+    cluster_labels = np.tile(np.arange(K), n//K)
+    np.random.shuffle(cluster_labels)
+
+    # run k-subspace clustering once
+    cluster_labels, accuracy = baseline_ksubspace(X, r, K, true_labels, max_iter=max_iter, tol=tol, random_state=random_state)
+
+    # run NMF on each partition
+    sub_datasets = []
+    subspace_bases = []
+    X_new = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(cluster_labels == k_)[0]
+        sub_datasets.append(X[:, idx_k])
+
+        U_k, _, _ = NMF(n_components=r, init='nndsvda', random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
+        U_k = np.where(U_k > 0, U_k, 0)
+        subspace_bases.append(U_k[:, :r])
+
+        X_k = sub_datasets[k_]
+        X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
+    # calculate reconstruction error
+    reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
+    return reconstruction_error, accuracy
+
 
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
