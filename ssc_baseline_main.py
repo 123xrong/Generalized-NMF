@@ -3,6 +3,7 @@ import argparse
 from sklearn.metrics import adjusted_rand_score
 from coneClustering import *
 import wandb
+from sklearn.linear_model import Lasso
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")

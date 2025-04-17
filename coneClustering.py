@@ -2,6 +2,7 @@ import numpy as np
 from sklearn.metrics import adjusted_rand_score
 from sklearn.decomposition import NMF
 from nmf import *
+from sklearn.linear_model import Lasso
 
 # def random_orthonormal(m, r):
 #     """
@@ -148,6 +149,9 @@ def baseline_ssc(X, true_labels, alpha):
     ari = adjusted_rand_score(true_labels, cluster_labels)
 
     return cluster_labels, ari
+
+def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_state=None):
+    pass
 
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
