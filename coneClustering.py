@@ -77,7 +77,6 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
     # 1) Initialize cluster labels randomly
     cluster_labels = np.tile(np.arange(K), n//K)
     np.random.shuffle(cluster_labels)   
-    print(f"Initial cluster labels: {cluster_labels}")
     iter = 0
 
     while iter < max_iter:
@@ -88,6 +87,7 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
             sub_datasets.append(X[:, idx_k])
 
             U_k, _, _ = np.linalg.svd(sub_datasets[k_], full_matrices=False)
+            # zero truncate U_k
             U_k = np.where(U_k > 0, U_k, 0)
             subspace_bases.append(U_k[:, :r])
         
@@ -133,7 +133,6 @@ def baseline_ssc(X, true_labels, alpha):
         lasso = Lasso(alpha=alpha, fit_intercept=False)#, max_iter=1000)
         lasso.fit(X_rest, x_i)
         c = lasso.coef_
-        print(f"length of c: {len(c)}")
 
         # Insert c into C matrix
         C[np.arange(n_samples) != i, i] = c
@@ -171,6 +170,10 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
         idx_k = np.where(cluster_labels == k_)[0]
         sub_datasets.append(X[:, idx_k])
 
+        if len(sub_datasets[k_]) == 0:
+            # Empty cluster
+            subspace_bases.append(None)
+            continue
         U_k, _, _ = NMF(n_components=r, init='nndsvda', random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
         U_k = np.where(U_k > 0, U_k, 0)
         subspace_bases.append(U_k[:, :r])
@@ -179,6 +182,7 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
         X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
     # calculate reconstruction error
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
+
     return reconstruction_error, accuracy
 
 
