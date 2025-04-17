@@ -166,7 +166,8 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
         best_k = 0
         best_dist = np.inf
         for k_ in range(K):
-            U_k = subspace_bases[k_]
+            U_k = np.linalg.svd(X[:, cluster_labels == k_], full_matrices=False)[0]
+            U_k = np.where(U_k > 0, U_k, 0)
             proj_i = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ x_i)
             dist = np.linalg.norm(x_i - proj_i)
             if dist < best_dist:
