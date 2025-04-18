@@ -202,6 +202,8 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
 
 def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
     np.random.seed(random_state)
+    perm = np.random.permutation(X.shape[1])
+    X = X[:, perm]
     # run sparse subspace clustering once
     pred_labels, accuracy = baseline_ssc(X, true_labels, alpha=alpha)
     # run NMF on each partition
