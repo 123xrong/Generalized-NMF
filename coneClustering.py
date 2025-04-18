@@ -200,7 +200,7 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
     return reconstruction_error, accuracy
 
 
-def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state=None, nmf_method='anls', nmf_solver='cd'):
+def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
     Iterative subspace clustering with NMF until convergence.
     
@@ -258,7 +258,6 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
         nmf_bases = []
         nmf_components = []
         reconstructed_subs = []
-        errors = []
 
         for k_ in range(K):
             x_k = sub_datasets[k_]
@@ -267,7 +266,6 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
                 nmf_bases.append(None)
                 nmf_components.append(None)
                 reconstructed_subs.append(None)
-                errors.append(0.0)
                 continue
             if nmf_method == 'anls':
                 U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
@@ -279,7 +277,6 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
             x_k_new = U_k @ V_k
 
             err_k = np.linalg.norm(x_k_new - x_k)
-            errors.append(err_k)
 
             nmf_bases.append(U_k)      # shape (m, r)
             nmf_components.append(V_k) # shape (r, #cols in partition)
@@ -303,7 +300,7 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
                     continue
                 U_k = nmf_bases[k_] # shape (m, r)
                 U_k = np.where(U_k > 0, U_k, 0)
-                proj_j = U_k @ np.linalg.inv(U_k.T @ U_k) @ (U_k.T @ x_j)
+                proj_j = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ x_j)
                 dist = np.linalg.norm(x_j - proj_j)
                 # print(f"Dist to cluster {k_}: {dist}")
                 if dist < best_dist:
@@ -326,6 +323,99 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
     accuracy = adjusted_rand_score(true_labels, cluster_labels)
     negatives = np.sum(X_new < 0)
     proportion_negatives = negatives / X_new.size
-    loss = np.linalg.norm(X_new - X) / np.linalg.norm(X)  # Final loss of reconstruction
+    reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)  # Final loss of reconstruction
 
-    return X_new, cluster_labels, errors, accuracy, proportion_negatives, n_iter, loss
+    return accuracy, reconstruction_error, proportion_negatives
+
+def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None, nmf_method='anls', nmf_solver='cd', alpha=0.01, ord=2):
+    np.random.seed(random_state)
+    n = X.shape[1] 
+    
+    # 1) Initialize cluster labels randomly
+    cluster_labels = np.tile(np.arange(K), n//K)
+    np.random.shuffle(cluster_labels)   
+
+    n_iter = 0
+    X_new = None
+
+    for iteration in range(max_iter):
+        # 2) Partition X by cluster labels
+        sub_datasets = []
+        for k_ in range(K):
+            idx_k = np.where(cluster_labels == k_)[0]
+            sub_datasets.append(X[:, idx_k])
+
+        # 3) NMF on each partition
+        nmf_bases = []
+        nmf_components = []
+        reconstructed_subs = []
+
+        for k_ in range(K):
+            x_k = sub_datasets[k_]
+            if x_k.shape[1] == 0:
+                # Empty cluster
+                nmf_bases.append(None)
+                nmf_components.append(None)
+                reconstructed_subs.append(None)
+                continue
+            if nmf_method == 'anls':
+                U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
+            elif nmf_method == 'NMF':
+                model = NMF(n_components=r, init='nndsvda', random_state=random_state, max_iter=1000, solver=nmf_solver)
+                x_k = np.maximum(x_k, 0)  # Ensure non-negativity]
+                U_k = model.fit_transform(x_k)
+                V_k = model.components_
+            x_k_new = U_k @ V_k
+
+            err_k = np.linalg.norm(x_k_new - x_k)
+
+            nmf_bases.append(U_k)      # shape (m, r)
+            nmf_components.append(V_k) # shape (r, #cols in partition)
+            reconstructed_subs.append(x_k_new)
+
+        # 4) Rebuild a full reconstructed matrix X_new
+        X_new = np.zeros_like(X)
+        for k_ in range(K):
+            idx_k = np.where(cluster_labels == k_)[0]
+            if reconstructed_subs[k_] is not None:
+                X_new[:, idx_k] = reconstructed_subs[k_]
+
+        # 5) Reassign cluster labels
+        new_labels = np.zeros_like(cluster_labels)
+        for j in range(n):
+            x_j = X_new[:, j]
+            best_k = 0
+            best_dist = np.inf
+            for k_ in range(K):
+                if nmf_bases[k_] is None:
+                    continue
+                U_k = nmf_bases[k_] # shape (m, r)
+                proj_j = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ x_j)
+                proj_coeff = np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ x_j)
+                # add ReLU(-proj_coeff) to the distance
+                proj_coeff = np.where(proj_coeff > 0, proj_coeff, 0)
+                dist = np.linalg.norm(x_j - proj_j) + alpha * np.linalg.norm(proj_coeff, ord=ord)
+                # print(f"Dist to cluster {k_}: {dist}")
+                if dist < best_dist:
+                    best_dist = dist
+                    best_k = k_
+                # print(f'Point {j} distance to cluster {k_}: {dist:.4f}')
+            new_labels[j] = best_k
+
+        # 6) Check convergence
+        num_changed = np.sum(new_labels != cluster_labels)
+        if num_changed == 0:
+            break
+    
+        # Otherwise, update and continue
+        cluster_labels = new_labels.copy()
+
+        n_iter += 1
+
+    # Final metrics
+    accuracy = adjusted_rand_score(true_labels, cluster_labels)
+    negatives = np.sum(X_new < 0)
+    proportion_negatives = negatives / X_new.size
+    reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)  # Final loss of reconstruction
+
+    return accuracy, reconstruction_error, proportion_negatives
