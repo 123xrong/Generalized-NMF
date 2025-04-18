@@ -414,11 +414,8 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
             for k_ in range(K):
                 U_k = nmf_bases[k_]
-                UtU_inv = UtU_inv_list[k_]
-
-                if U_k is None or UtU_inv is None:
+                if U_k is None:
                     continue
-
                 # Project x_j onto subspace
                 proj_coeff, *_ = np.linalg.lstsq(U_k, x_j, rcond=None)
                 proj_coeff_relu = np.where(proj_coeff > 0, proj_coeff, 0)
