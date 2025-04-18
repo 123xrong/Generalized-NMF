@@ -22,7 +22,7 @@ def arg_parser():
     return parser.parse_args()
 
 
-def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, alpha=0.01, ord=2):
+def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
 
     wandb.init(
         project="coneClustering",
