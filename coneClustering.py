@@ -188,9 +188,10 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
             # Empty cluster
             subspace_bases.append(None)
             continue
-        U_k = NMF(n_components=r, random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
-        U_k = np.where(U_k > 0, U_k, 0)
-        subspace_bases.append(U_k[:, :r])
+        else:
+            U_k = NMF(n_components=r, random_state=random_state, max_iter=1000).fit_transform(sub_datasets[k_])
+            U_k = np.where(U_k > 0, U_k, 0)
+            subspace_bases.append(U_k[:, :r])
 
         X_k = sub_datasets[k_]
         X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
@@ -199,6 +200,32 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
 
     return reconstruction_error, accuracy
 
+def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
+    np.random.seed(random_state)
+    # run sparse subspace clustering once
+    pred_labels, accuracy = baseline_ssc(X, true_labels, alpha=alpha)
+    # run NMF on each partition
+    sub_datasets = []
+    subspace_bases = []
+    X_new = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(pred_labels == k_)[0]
+        sub_datasets.append(X[:, idx_k])
+
+        if len(sub_datasets[k_]) == 0:
+            # Empty cluster
+            subspace_bases.append(None)
+            continue
+        else:
+            U_k = NMF(n_components=r, random_state=random_state, max_iter=max_iter).fit_transform(sub_datasets[k_])
+            U_k = np.where(U_k > 0, U_k, 0)
+            subspace_bases.append(U_k[:, :r])
+
+        X_k = sub_datasets[k_]
+        X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
+    reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
+
+    return reconstruction_error, accuracy
 
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
