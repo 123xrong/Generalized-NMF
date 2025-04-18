@@ -302,6 +302,7 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, tol=1e-6, random_state
                 if nmf_bases[k_] is None:
                     continue
                 U_k = nmf_bases[k_] # shape (m, r)
+                U_k = np.where(U_k > 0, U_k, 0)
                 proj_j = U_k @ np.linalg.inv(U_k.T @ U_k) @ (U_k.T @ x_j)
                 dist = np.linalg.norm(x_j - proj_j)
                 # print(f"Dist to cluster {k_}: {dist}")

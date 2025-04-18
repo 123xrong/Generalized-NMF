@@ -23,6 +23,10 @@ def arg_parser():
 
 def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, tol=1e-6):
 
+    wandb.init(
+        project="coneClustering",
+        name = "iterativeConeClus-Baseline"
+    )
     # 1. Generate distinct subspace data
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
     print("Ground truth labels:", true_labels)
@@ -30,25 +34,19 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, tol=1e-6):
     print("Generated data shape:", X.shape)
     print("Labels shape:", true_labels.shape)
 
-    # 2. Baseline of NMF (no clustering)
-    U, V = baseline_nmf(X, r, max_iter=max_iter, tol=tol, random_state=random_state)
-    baseline_reconstruction_error = np.linalg.norm(X - np.dot(U, V)) / np.linalg.norm(X)
-
-    # 3. Baseline k-subspace clustering
-    cluster_labels, baseline_accuracy = baseline_ksubspace(X, r, K, true_labels, max_iter=max_iter, tol=tol, random_state=random_state)
     # 2. Run iterative subspace clustering
     X_new, cluster_labels, errors, accuracy, neg_prop, iterations, loss = coneClus_iterative(
         X, K, r, true_labels, max_iter=max_iter, tol=tol, random_state=random_state
     )
 
+    # 3. Log results
+    wandb.log({
+        "accuracy": accuracy,
+        "reconstruction_loss": loss
+    })
+
     print("\n--- Results ---")
-    print("Baseline NMF Reconstruction Error:", baseline_reconstruction_error)
-    print("Baseline K-subspace Clustering accuracy:", baseline_accuracy)
-    print("Final cluster distribution:",
-          dict(zip(*np.unique(cluster_labels, return_counts=True))))
     print(f"Clustering Accuracy (ARI): {accuracy:.4f}")
-    print(f"Proportion of Negative Entries in Reconstructed X: {neg_prop:.4f}")
-    print(f"Number of Iterations: {iterations}")
     print(f"Final Reconstruction Loss: {loss:.4f}")
 
 if __name__ == "__main__":
