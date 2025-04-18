@@ -400,9 +400,9 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
             nmf_components.append(V_k)
 
             # Precompute pseudoinverse term
-            UtU = U_k.T @ U_k
-            UtU_inv = np.linalg.pinv(UtU)
-            UtU_inv_list.append(UtU_inv)
+            # UtU = U_k.T @ U_k
+            # UtU_inv = np.linalg.pinv(UtU)
+            # UtU_inv_list.append(UtU_inv)
 
         # 4) Reassign cluster labels (without reconstructing full X_new)
         new_labels = np.zeros_like(cluster_labels)
@@ -420,7 +420,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
                     continue
 
                 # Project x_j onto subspace
-                proj_coeff = UtU_inv @ (U_k.T @ x_j)
+                proj_coeff, *_ = np.linalg.lstsq(U_k, x_j, rcond=None)
                 proj_coeff_relu = np.where(proj_coeff > 0, proj_coeff, 0)
                 proj_j = U_k @ proj_coeff_relu
 
