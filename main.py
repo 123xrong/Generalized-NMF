@@ -42,7 +42,7 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, tol=1e-6):
     # 3. Log results
     wandb.log({
         "accuracy": accuracy,
-        "reconstruction_loss": loss
+        "reconstruction_error": loss
     })
 
     print("\n--- Results ---")
