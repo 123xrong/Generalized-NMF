@@ -30,10 +30,6 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, alpha=0.01, or
     )
     # 1. Generate distinct subspace data
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
-    print("Ground truth labels:", true_labels)
-    print("Number of clusters:", K)
-    print("Generated data shape:", X.shape)
-    print("Labels shape:", true_labels.shape)
 
     # 2. Run iterative subspace clustering
     accuracy, reconstruction_error, neg_prop = iter_reg_coneclus(
