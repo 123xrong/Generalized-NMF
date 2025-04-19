@@ -415,28 +415,43 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
         # 4) Reassign cluster labels (without reconstructing full X_new)
         new_labels = np.zeros_like(cluster_labels)
 
-        for j in range(n):
-            x_j = X[:, j]
-            best_k = 0
-            best_dist = np.inf
+        # for j in range(n):
+        #     x_j = X[:, j]
+        #     best_k = 0
+        #     best_dist = np.inf
 
-            for k_ in range(K):
-                U_k = nmf_bases[k_]
-                if U_k is None:
-                    continue
-                # Project x_j onto subspace
-                proj_coeff, *_ = np.linalg.lstsq(U_k, x_j, rcond=None)
-                proj_coeff_relu = np.where(proj_coeff > 0, proj_coeff, 0)
-                proj_j = U_k @ proj_coeff
+        #     for k_ in range(K):
+        #         U_k = nmf_bases[k_]
+        #         if U_k is None:
+        #             continue
+        #         # Project x_j onto subspace
+        #         proj_coeff, *_ = np.linalg.lstsq(U_k, x_j, rcond=None)
+        #         proj_coeff_relu = np.where(proj_coeff > 0, proj_coeff, 0)
+        #         proj_j = U_k @ proj_coeff
 
-                # Distance + regularization
-                dist = np.linalg.norm(x_j - proj_j) + alpha * np.linalg.norm(proj_coeff_relu, ord=ord)
+        #         # Distance + regularization
+        #         dist = np.linalg.norm(x_j - proj_j) + alpha * np.linalg.norm(proj_coeff_relu, ord=ord)
+        all_dists = np.zeros((K, n))
+        for k_ in range(K):
+            U_k = nmf_bases[k_]
+            C_k = np.linalg.lstsq(U_k, X, rcond=None)[0]  # (r, n)
 
-                if dist < best_dist:
-                    best_dist = dist
-                    best_k = k_
+            # ReLU and projection
+            C_k_relu = np.where(C_k > 0, C_k, 0)
+            X_proj_k = U_k @ C_k  # shape (m, n)
 
-            new_labels[j] = best_k
+            # Compute distances
+            distances_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
+
+            all_dists[k_] = distances_k
+
+                # if dist < best_dist:
+                #     best_dist = dist
+                #     best_k = k_
+        #     new_labels[j] = best_k
+            new_labels = np.argmin(all_dists, axis=0)
+
+            # new_labels[j] = best_k
 
         # 5) Check convergence
         num_changed = np.sum(new_labels != cluster_labels)
