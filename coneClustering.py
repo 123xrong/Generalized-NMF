@@ -434,6 +434,9 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
         all_dists = np.zeros((K, n))
         for k_ in range(K):
             U_k = nmf_bases[k_]
+            if U_k is None or U_k.shape[1] == 0:
+                all_dists[k_] = np.inf  # Assign large distance for all points
+                continue
             C_k = np.linalg.lstsq(U_k, X, rcond=None)[0]  # (r, n)
 
             # ReLU and projection
