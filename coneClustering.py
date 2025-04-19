@@ -49,9 +49,14 @@ def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
 
     # Generate K distinct orthonormal bases
     for k in range(K):
+        if sigma == 0.0:
         # Orthonormal basis for the k-th subspace
-        U_k = np.abs(np.random.rand(m, r))
-        V_k = np.abs(np.random.rand(r, n_k))
+            U_k = np.abs(np.random.rand(m, r))
+            V_k = np.abs(np.random.rand(r, n_k))
+        else:
+            # Orthonormal basis for the k-th subspace with noise
+            U_k = np.abs(np.random.rand(m, r)) + sigma * np.random.randn(m, r)
+            V_k = np.abs(np.random.rand(r, n_k))
         X_k = np.dot(U_k, V_k)
         X_list.append(X_k)
         labels_list.append(np.full(n_k, k, dtype=int))
