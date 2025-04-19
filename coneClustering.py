@@ -427,7 +427,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
                 # Project x_j onto subspace
                 proj_coeff, *_ = np.linalg.lstsq(U_k, x_j, rcond=None)
                 proj_coeff_relu = np.where(proj_coeff > 0, proj_coeff, 0)
-                proj_j = U_k @ proj_coeff_relu
+                proj_j = U_k @ proj_coeff
 
                 # Distance + regularization
                 dist = np.linalg.norm(x_j - proj_j) + alpha * np.linalg.norm(proj_coeff_relu, ord=ord)
