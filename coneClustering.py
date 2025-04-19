@@ -451,7 +451,20 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
     for k_ in range(K):
         idx_k = np.where(cluster_labels == k_)[0]
         if nmf_bases[k_] is not None and nmf_components[k_] is not None:
-            X_reconstructed[:, idx_k] = nmf_bases[k_] @ nmf_components[k_][:, :len(idx_k)]
+            x_k = X[:, idx_k]
+            if x_k.shape[1] > 0:
+                if nmf_method == 'anls':
+                    U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
+                elif nmf_method == 'NMF':
+                    model = NMF(n_components=r, init='nndsvda', random_state=random_state,
+                                max_iter=1000, solver=nmf_solver)
+                    x_k = np.maximum(x_k, 0)
+                    U_k = model.fit_transform(x_k)
+                    V_k = model.components_
+                else:
+                    raise ValueError(f"Unknown NMF method: {nmf_method}")
+                
+                X_reconstructed[:, idx_k] = U_k @ V_k
 
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
