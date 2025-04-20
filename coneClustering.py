@@ -440,16 +440,16 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
         if nmf_bases[k_] is not None and nmf_components[k_] is not None:
             x_k = X[:, idx_k]
             if x_k.shape[1] > 0:
-                if nmf_method == 'anls':
+                if NMF_method == 'anls':
                     U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
-                elif nmf_method == 'NMF':
+                elif NMF_method == 'NMF':
                     model = NMF(n_components=r, init='nndsvda', random_state=random_state,
-                                max_iter=1000, solver=nmf_solver)
+                                max_iter=1000, solver=NMF_solver)
                     x_k = np.maximum(x_k, 0)
                     U_k = model.fit_transform(x_k)
                     V_k = model.components_
                 else:
-                    raise ValueError(f"Unknown NMF method: {nmf_method}")
+                    raise ValueError(f"Unknown NMF method: {NMF_method}")
                 
                 X_reconstructed[:, idx_k] = U_k @ V_k
 
