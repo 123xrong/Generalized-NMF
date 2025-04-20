@@ -364,7 +364,7 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf
 
 
 def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
-                      nmf_method='anls', nmf_solver='cd', alpha=0.01, ord=2):
+                      NMF_method='anls', NMF_solver='cd', alpha=0.01, ord=2):
     np.random.seed(random_state)
     n = X.shape[1]
     m = X.shape[0]
@@ -391,16 +391,16 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
                 nmf_components.append(None)
                 continue
 
-            if nmf_method == 'anls':
+            if NMF_method == 'anls':
                 U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
-            elif nmf_method == 'NMF':
+            elif NMF_method == 'NMF':
                 model = NMF(n_components=r, init='nndsvda', random_state=random_state,
-                            max_iter=1000, solver=nmf_solver)
+                            max_iter=1000, solver=NMF_solver)
                 x_k = np.maximum(x_k, 0)
                 U_k = model.fit_transform(x_k)
                 V_k = model.components_
             else:
-                raise ValueError(f"Unknown NMF method: {nmf_method}")
+                raise ValueError(f"Unknown NMF method: {NMF_method}")
 
             nmf_bases.append(U_k)
             nmf_components.append(V_k)

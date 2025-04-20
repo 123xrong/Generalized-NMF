@@ -22,7 +22,7 @@ def arg_parser():
     return parser.parse_args()
 
 
-def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
+def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
 
     wandb.init(
         project="coneClustering",
@@ -33,7 +33,7 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord
 
     # 2. Run iterative subspace clustering
     accuracy, reconstruction_error, neg_prop = iter_reg_coneclus(
-        X, K, r, true_labels, max_iter=max_iter, random_state=random_state, alpha=alpha, ord=ord
+        X, K, r, true_labels, NMF_method=NMF_method, max_iter=max_iter, random_state=random_state, alpha=alpha, ord=ord
     )
 
     # 3. Log results
@@ -52,9 +52,10 @@ if __name__ == "__main__":
     r = args.r
     n_k = args.n
     K = args.K
+    NMF_method = args.NMF_method
     sigma = args.sigma
     random_state = args.random_state
     max_iter = args.max_iter
     alpha = args.alpha
     ord = args.ord
-    main(m, r, n_k, K, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
+    main(m, r, n_k, K, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
