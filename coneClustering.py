@@ -380,9 +380,8 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
         sub_datasets = [X[:, cluster_labels == k_] for k_ in range(K)]
 
         # 3) NMF on each partition
-        nmf_bases = []
-        nmf_components = []
-        UtU_inv_list = []
+        nmf_bases = [] # bases
+        nmf_components = [] # coefficients
 
         for k_ in range(K):
             x_k = sub_datasets[k_]
@@ -390,7 +389,6 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
             if x_k.shape[1] == 0:
                 nmf_bases.append(None)
                 nmf_components.append(None)
-                UtU_inv_list.append(None)
                 continue
 
             if nmf_method == 'anls':
@@ -406,11 +404,6 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
             nmf_bases.append(U_k)
             nmf_components.append(V_k)
-
-            # Precompute pseudoinverse term
-            # UtU = U_k.T @ U_k
-            # UtU_inv = np.linalg.pinv(UtU)
-            # UtU_inv_list.append(UtU_inv)
 
         # 4) Reassign cluster labels (without reconstructing full X_new)
         new_labels = np.zeros_like(cluster_labels)
@@ -431,14 +424,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
             distances_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
 
             all_dists[k_] = distances_k
-
-                # if dist < best_dist:
-                #     best_dist = dist
-                #     best_k = k_
-        #     new_labels[j] = best_k
             new_labels = np.argmin(all_dists, axis=0)
-
-            # new_labels[j] = best_k
 
         # 5) Check convergence
         num_changed = np.sum(new_labels != cluster_labels)
@@ -448,32 +434,24 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
         cluster_labels = new_labels.copy()
         n_iter += 1
 
-    # X_reconstructed = np.zeros_like(X)
-    # for k_ in range(K):
-    #     idx_k = np.where(cluster_labels == k_)[0]
-    #     if nmf_bases[k_] is not None and nmf_components[k_] is not None:
-    #         x_k = X[:, idx_k]
-    #         if x_k.shape[1] > 0:
-    #             if nmf_method == 'anls':
-    #                 U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
-    #             elif nmf_method == 'NMF':
-    #                 model = NMF(n_components=r, init='nndsvda', random_state=random_state,
-    #                             max_iter=1000, solver=nmf_solver)
-    #                 x_k = np.maximum(x_k, 0)
-    #                 U_k = model.fit_transform(x_k)
-    #                 V_k = model.components_
-    #             else:
-    #                 raise ValueError(f"Unknown NMF method: {nmf_method}")
-                
-    #             X_reconstructed[:, idx_k] = U_k @ V_k
-
     X_reconstructed = np.zeros_like(X)
     for k_ in range(K):
         idx_k = np.where(cluster_labels == k_)[0]
-        U_k = nmf_bases[k_]
-        V_k = nmf_components[k_]
-        if U_k is not None and V_k is not None:
-            X_reconstructed[:, idx_k] = U_k @ V_k[:, :len(idx_k)]
+        if nmf_bases[k_] is not None and nmf_components[k_] is not None:
+            x_k = X[:, idx_k]
+            if x_k.shape[1] > 0:
+                if nmf_method == 'anls':
+                    U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
+                elif nmf_method == 'NMF':
+                    model = NMF(n_components=r, init='nndsvda', random_state=random_state,
+                                max_iter=1000, solver=nmf_solver)
+                    x_k = np.maximum(x_k, 0)
+                    U_k = model.fit_transform(x_k)
+                    V_k = model.components_
+                else:
+                    raise ValueError(f"Unknown NMF method: {nmf_method}")
+                
+                X_reconstructed[:, idx_k] = U_k @ V_k
 
 
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
