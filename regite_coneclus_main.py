@@ -26,7 +26,7 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
 
     wandb.init(
         project="coneClustering",
-        name = "iterativeConeClus-Baseline"
+        name = "RICC"
     )
     # 1. Generate distinct subspace data
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
