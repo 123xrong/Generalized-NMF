@@ -418,7 +418,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
             # ReLU and projection
             C_k_relu = np.where(C_k > 0, C_k, 0)
-            X_proj_k = U_k @ C_k  # shape (m, n)
+            X_proj_k = U_k @ C_k_relu  # shape (m, n)
 
             # Compute distances
             distances_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
