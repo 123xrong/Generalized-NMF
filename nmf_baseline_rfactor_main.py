@@ -25,7 +25,7 @@ def main(m, r, n_k, K, sigma=0.0, random_state=None, max_iter=50, tol=1e-6):
 
     wandb.init(
         project="coneClustering",
-        name = "NMF-Baseline"
+        name = "NMF-Baseline-r"
     )
 
     # Simulate your data matrix X of shape (m, n_k * K)
