@@ -52,7 +52,6 @@ def main(X_subset, r, K, NMF_method='anls', sigma=0.0, random_state=None, max_it
     max_iter=max_iter,
     NMF_method=NMF_method,
     random_state=42,
-    sigma=sigma,
     alpha=alpha,
     ord=2
     )
