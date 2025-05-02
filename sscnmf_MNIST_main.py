@@ -39,7 +39,7 @@ def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
 
     wandb.init(
         project="coneClustering",
-        name = "sscnmf-Baseline"
+        name = "sscnmf-MNIST"
     )
     reconstruction_error, accuracy = coneClustering.ssc_nmf_baseline(X_subset, r, K, true_labels = true_labels, alpha=alpha, max_iter=max_iter)
 
