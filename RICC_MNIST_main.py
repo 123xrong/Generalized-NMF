@@ -15,8 +15,9 @@ labels = []
 
 for digit in range(5):
     idx = np.where(y_full == digit)[0]
+    selected_idx = np.random.choice(idx, 1000, replace=False)
     X_list.append(X_full[idx])
-    labels.append(np.full(len(idx), digit))
+    labels.append(np.full(len(selected_idx), digit))
 
 X_subset = np.vstack(X_list)
 true_labels = np.concatenate(labels) 
