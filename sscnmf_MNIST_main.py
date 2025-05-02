@@ -52,13 +52,11 @@ def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
 
 if __name__ == "__main__":
     args = arg_parser()
-    m = args.m
     r = args.r
-    n_k = args.n
     K = args.K
     sigma = args.sigma
     max_iter = args.max_iter
     random_state = args.random_state
     alpha = args.alpha
 
-    main(m, r, n_k, K, sigma, alpha, random_state, max_iter)
+    main(r, K, sigma, alpha, random_state, max_iter)
