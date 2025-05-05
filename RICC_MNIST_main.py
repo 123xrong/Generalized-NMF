@@ -15,13 +15,16 @@ labels = []
 
 for digit in range(4):
     idx = np.where(y_full == digit)[0]
-    selected_idx = np.random.choice(idx, 50, replace=False)
-    X_list.append(X_full[idx])
+    selected_idx = np.random.choice(idx, 100, replace=False)
+    X_list.append(X_full[selected_idx])
     labels.append(np.full(len(selected_idx), digit))
 
 X_subset = np.vstack(X_list)
 true_labels = np.concatenate(labels) 
-X_subset = X_subset.T 
+X_subset = X_subset.T
+
+print(X_subset.shape)
+print(true_labels.shape)
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
