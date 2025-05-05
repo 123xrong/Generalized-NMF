@@ -210,9 +210,7 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
     # perm = np.random.permutation(X.shape[1])
     # X = X[:, perm]
     # true_labels = true_labels[perm]
-    print(f'start running ssc')
     pred_labels, accuracy = baseline_ssc(X, true_labels, alpha=alpha)
-    print(f'finish running ssc with accuracy {accuracy:.4f}')
     # run NMF on each partition
     sub_datasets = []
     subspace_bases = []
@@ -226,16 +224,12 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
             subspace_bases.append(None)
             continue
         else:
-            print(f"Running NMF on cluster {k_} with {len(sub_datasets[k_])} samples")
             U_k = NMF(n_components=r, random_state=random_state, max_iter=max_iter).fit_transform(sub_datasets[k_])
-            print(f'finish running NMF on cluster {k_}')
             U_k = np.where(U_k > 0, U_k, 0)
             subspace_bases.append(U_k[:, :r])
 
         X_k = sub_datasets[k_]
-        print(f"start reconstruction for cluster {k_} with {len(X_k)} samples")
         X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
-        print(f"finish reconstruction for cluster {k_} with {len(X_k)} samples")
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
 
     return reconstruction_error, accuracy

@@ -27,7 +27,7 @@ print(X_subset.shape)
 print(true_labels.shape)
 
 def arg_parser():
-    parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
+    parser = argparse.ArgumentParser(description="Itern bative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     # parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
