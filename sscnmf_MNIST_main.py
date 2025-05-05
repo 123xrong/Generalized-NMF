@@ -21,7 +21,10 @@ for digit in range(4):
 
 X_subset = np.vstack(X_list)
 true_labels = np.concatenate(labels) 
-X_subset = X_subset.T 
+X_subset = X_subset.T
+
+print(X_subset.shape)
+print(true_labels.shape)
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
