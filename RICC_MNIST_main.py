@@ -13,9 +13,9 @@ y_full = mnist.target.to_numpy().astype(int)
 X_list = []
 labels = []
 
-for digit in range(5):
+for digit in range(4):
     idx = np.where(y_full == digit)[0]
-    selected_idx = np.random.choice(idx, 1000, replace=False)
+    selected_idx = np.random.choice(idx, 500, replace=False)
     X_list.append(X_full[idx])
     labels.append(np.full(len(selected_idx), digit))
 
@@ -28,7 +28,7 @@ def arg_parser():
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     # parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
-    parser.add_argument('--K', type=int, default=5, help='Number of subspaces (default: 3)')
+    parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
