@@ -15,7 +15,7 @@ labels = []
 
 for digit in range(4):
     idx = np.where(y_full == digit)[0]
-    selected_idx = np.random.choice(idx, 50, replace=False)
+    selected_idx = np.random.choice(idx, 100, replace=False)
     X_list.append(X_full[selected_idx])
     labels.append(np.full(len(selected_idx), digit))
 
