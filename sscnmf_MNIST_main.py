@@ -25,7 +25,6 @@ X_subset = X_subset.T
 
 negative_indices = np.where(X_subset < 0)
 print("Negative values in X_subset:", len(negative_indices[0]) > 0)
-
 print(X_subset.shape)
 print(true_labels.shape)
 
