@@ -30,34 +30,36 @@ def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alp
     X_list = []
     labels = []
 
-    for digit in range(4):
+    for digit in range(5):
         idx = np.where(y_full == digit)[0]
-        selected_idx = np.random.choice(idx, 100, replace=False)
+        selected_idx = np.random.choice(idx, 50, replace=False)
         X_list.append(X_full[selected_idx])
         labels.append(np.full(len(selected_idx), digit))
 
     X_subset = np.vstack(X_list)
     true_labels = np.concatenate(labels) 
     X_subset = X_subset.T
-    # scale the data to [0, 1]
-    # X_subset = X_subset / 255.0  
+    X_preprocessed = X_subset / 255.0  # normalize to [0, 1]
+    means = X_preprocessed.mean(axis=1, keepdims=True)
+    X_preprocessed = X_preprocessed - means
+    X_preprocessed = np.maximum(X_preprocessed, 0)  # truncate negatives 
 
-    print(X_subset.shape)
+    print(X_preprocessed.shape)
     print(true_labels.shape)
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
-        noise = np.random.normal(0, sigma, X_subset.shape)
+        noise = np.random.normal(0, sigma, X_preprocessed.shape)
         X_subset += noise
         # 0 truncate negative values
-        X_subset = np.maximum(X_subset, 0)
+        X_subset = np.maximum(X_preprocessed, 0)
 
     wandb.init(
         project="coneClustering",
         name = "RICC_MNIST"
     )
 
-    accuracy, reconstruction_error, neg_prop = coneClustering.iter_reg_coneclus(
-    X_subset,
+    accuracy, reconstruction_error, _ = coneClustering.iter_reg_coneclus(
+    X_preprocessed,
     K, 
     r,
     true_labels=true_labels,
