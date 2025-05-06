@@ -5,28 +5,6 @@ from sklearn.decomposition import PCA
 import argparse
 import wandb
 
-mnist = fetch_openml('mnist_784', version=1)
-X_full = mnist.data.to_numpy() 
-y_full = mnist.target.to_numpy().astype(int) 
-
-# 2. Subset digits 0-5
-X_list = []
-labels = []
-
-for digit in range(4):
-    idx = np.where(y_full == digit)[0]
-    selected_idx = np.random.choice(idx, 100, replace=False)
-    X_list.append(X_full[selected_idx])
-    labels.append(np.full(len(selected_idx), digit))
-
-X_subset = np.vstack(X_list)
-true_labels = np.concatenate(labels) 
-X_subset = X_subset.T
-
-negative_indices = np.where(X_subset < 0)
-print("Negative values in X_subset:", len(negative_indices[0]) > 0)
-print(X_subset.shape)
-print(true_labels.shape)
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Itern bative subspace clustering with NMF")
@@ -41,6 +19,26 @@ def arg_parser():
     return parser.parse_args()
 
 def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
+    mnist = fetch_openml('mnist_784', version=1)
+    X_full = mnist.data.to_numpy() 
+    y_full = mnist.target.to_numpy().astype(int) 
+
+    # 2. Subset digits 0-5
+    X_list = []
+    labels = []
+
+    for digit in range(4):
+        idx = np.where(y_full == digit)[0]
+        selected_idx = np.random.choice(idx, 100, replace=False)
+        X_list.append(X_full[selected_idx])
+        labels.append(np.full(len(selected_idx), digit))
+
+    X_subset = np.vstack(X_list)
+    true_labels = np.concatenate(labels) 
+    X_subset = X_subset.T
+
+    print(X_subset.shape)
+    print(true_labels.shape)
 
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
