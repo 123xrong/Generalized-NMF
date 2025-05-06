@@ -5,27 +5,6 @@ from sklearn.decomposition import PCA
 import argparse
 import wandb
 
-mnist = fetch_openml('mnist_784', version=1)
-X_full = mnist.data.to_numpy() 
-y_full = mnist.target.to_numpy().astype(int) 
-
-# 2. Subset digits 0-5
-X_list = []
-labels = []
-
-for digit in range(4):
-    idx = np.where(y_full == digit)[0]
-    selected_idx = np.random.choice(idx, 100, replace=False)
-    X_list.append(X_full[selected_idx])
-    labels.append(np.full(len(selected_idx), digit))
-
-X_subset = np.vstack(X_list)
-true_labels = np.concatenate(labels) 
-X_subset = X_subset.T
-
-print(X_subset.shape)
-print(true_labels.shape)
-
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
@@ -42,7 +21,36 @@ def arg_parser():
     return parser.parse_args()
 
 def main(X_subset, r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
-    # load MNIST dataset
+
+    mnist = fetch_openml('mnist_784', version=1)
+    X_full = mnist.data.to_numpy() 
+    y_full = mnist.target.to_numpy().astype(int) 
+
+    # 2. Subset digits 0-5
+    X_list = []
+    labels = []
+
+    for digit in range(4):
+        idx = np.where(y_full == digit)[0]
+        selected_idx = np.random.choice(idx, 100, replace=False)
+        X_list.append(X_full[selected_idx])
+        labels.append(np.full(len(selected_idx), digit))
+
+    X_subset = np.vstack(X_list)
+    true_labels = np.concatenate(labels) 
+    X_subset = X_subset.T
+    # scale the data to [0, 1]
+    X_subset = X_subset / 255.0  
+
+    print(X_subset.shape)
+    print(true_labels.shape)
+    if sigma > 0:
+        # Add non-negative Gaussian noise to the data
+        noise = np.random.normal(0, sigma, X_subset.shape)
+        X_subset += noise
+        # 0 truncate negative values
+        X_subset = np.maximum(X_subset, 0)
+
     wandb.init(
         project="coneClustering",
         name = "RICC_MNIST"
