@@ -23,6 +23,8 @@ X_subset = np.vstack(X_list)
 true_labels = np.concatenate(labels) 
 X_subset = X_subset.T
 
+print(X_subset<0)
+
 print(X_subset.shape)
 print(true_labels.shape)
 
@@ -39,6 +41,13 @@ def arg_parser():
     return parser.parse_args()
 
 def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
+
+    if sigma > 0:
+        # Add non-negative Gaussian noise to the data
+        noise = np.random.normal(0, sigma, X_subset.shape)
+        X_subset += noise
+        # 0 truncate negative values
+        X_subset = np.maximum(X_subset, 0)
 
     wandb.init(
         project="coneClustering",
