@@ -36,6 +36,7 @@ def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
     X_subset = np.vstack(X_list)
     true_labels = np.concatenate(labels) 
     X_subset = X_subset.T
+    X_subset = X_subset / 255.0  # Still non-negative
 
     print(X_subset.shape)
     print(true_labels.shape)
