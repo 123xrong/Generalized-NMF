@@ -20,7 +20,7 @@ def arg_parser():
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
     return parser.parse_args()
 
-def main(X_subset, r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
+def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
 
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
@@ -40,7 +40,7 @@ def main(X_subset, r, K, NMF_method='anls', sigma=0.0, random_state=None, max_it
     true_labels = np.concatenate(labels) 
     X_subset = X_subset.T
     # scale the data to [0, 1]
-    X_subset = X_subset / 255.0  
+    # X_subset = X_subset / 255.0  
 
     print(X_subset.shape)
     print(true_labels.shape)
@@ -79,7 +79,6 @@ def main(X_subset, r, K, NMF_method='anls', sigma=0.0, random_state=None, max_it
 
 if __name__ == "__main__":
     args = arg_parser()
-    X_subset = X_subset
     r = args.r
     K = args.K
     NMF_method = args.NMF_method
@@ -89,4 +88,4 @@ if __name__ == "__main__":
     alpha = args.alpha
     ord = args.ord
 
-    main(X_subset, r, K, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
+    main(r, K, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
