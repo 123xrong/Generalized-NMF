@@ -54,9 +54,7 @@ def main(r, n, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=50, tol=1
         name = "ssc-Baseline"
     )
 
-    # Simulate your data matrix X of shape (m, n_k * K)
-    X, true_labels = data_simulation(m, r, n_k, K, sigma, random_state)  # Make sure this is defined
-    pre_labels, accuracy = baseline_ssc(X, true_labels = true_labels, alpha=alpha)
+    pre_labels, accuracy = baseline_ssc(X_subset, true_labels = true_labels, alpha=alpha)
 
     wandb.log({
         "accuracy": accuracy,
