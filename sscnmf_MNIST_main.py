@@ -13,7 +13,7 @@ def arg_parser():
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
-    parser.add_argument('--alpha', type=float, default=0.01, help='Regularization parameter for ssc')
+    parser.add_argument('--alpha', type=float, default=1.7, help='Regularization parameter for ssc')
     parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     return parser.parse_args()
