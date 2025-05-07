@@ -16,11 +16,11 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--NMF_method', choices=['anls', 'NMF'], default='anls', help='NMF method to use')
     parser.add_argument('--NMF_solver', choices=['cd', 'mu'], default='cd', help='Solver for NMF')
-    parser.add_argument('--alpha', type=float, default=2.3, help='Regularization parameter for ReLU regularization')
+    parser.add_argument('--alpha', type=float, default=0.5, help='Regularization parameter for ReLU regularization')
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
     return parser.parse_args()
 
-def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alpha=2.3, ord=2):
+def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, alpha=0.5, ord=2):
 
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
@@ -32,7 +32,7 @@ def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alp
 
     for digit in range(4):
         idx = np.where(y_full == digit)[0]
-        selected_idx = np.random.choice(idx, 50, replace=False)
+        selected_idx = np.random.choice(idx, 100, replace=False)
         X_list.append(X_full[selected_idx])
         labels.append(np.full(len(selected_idx), digit))
 
