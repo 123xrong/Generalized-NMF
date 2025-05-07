@@ -10,7 +10,7 @@ def arg_parser():
     parser = argparse.ArgumentParser(description="Itern bative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
-    # parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
+    parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--alpha', type=float, default=0.01, help='Regularization parameter for ssc')
@@ -18,7 +18,7 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     return parser.parse_args()
 
-def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
+def main(r, K, n, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
     y_full = mnist.target.to_numpy().astype(int) 
@@ -27,9 +27,9 @@ def main(r, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000):
     X_list = []
     labels = []
 
-    for digit in range(4):
+    for digit in range(K):
         idx = np.where(y_full == digit)[0]
-        selected_idx = np.random.choice(idx, 100, replace=False)
+        selected_idx = np.random.choice(idx, n, replace=False)
         X_list.append(X_full[selected_idx])
         labels.append(np.full(len(selected_idx), digit))
 
@@ -65,9 +65,10 @@ if __name__ == "__main__":
     args = arg_parser()
     r = args.r
     K = args.K
+    n = args.n
     sigma = args.sigma
     max_iter = args.max_iter
     random_state = args.random_state
     alpha = args.alpha
 
-    main(r, K, sigma, alpha, random_state, max_iter)
+    main(r, K, n, sigma, alpha, random_state, max_iter)
