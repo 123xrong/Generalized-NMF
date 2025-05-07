@@ -9,7 +9,7 @@ def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
-    # parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
+    parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
@@ -20,7 +20,7 @@ def arg_parser():
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
     return parser.parse_args()
 
-def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, alpha=0.5, ord=2):
+def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, alpha=0.5, ord=2):
 
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
@@ -30,9 +30,9 @@ def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, al
     X_list = []
     labels = []
 
-    for digit in range(4):
+    for digit in range(K):
         idx = np.where(y_full == digit)[0]
-        selected_idx = np.random.choice(idx, 100, replace=False)
+        selected_idx = np.random.choice(idx, n, replace=False)
         X_list.append(X_full[selected_idx])
         labels.append(np.full(len(selected_idx), digit))
 
@@ -83,6 +83,7 @@ if __name__ == "__main__":
     args = arg_parser()
     r = args.r
     K = args.K
+    n = args.n
     NMF_method = args.NMF_method
     sigma = args.sigma
     random_state = args.random_state
@@ -90,4 +91,4 @@ if __name__ == "__main__":
     alpha = args.alpha
     ord = args.ord
 
-    main(r, K, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
+    main(r, K, n, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
