@@ -66,7 +66,6 @@ def main(r, n, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=50, tol=1
 
 if __name__ == "__main__":
     args = arg_parser()
-    m = args.m
     r = args.r
     n_k = args.n
     K = args.K
