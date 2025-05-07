@@ -10,7 +10,7 @@ def arg_parser():
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     # parser.add_argument('--n', type=int, default=100, help='Number of points per subspace (default: 100)')
-    parser.add_argument('--K', type=int, default=5, help='Number of subspaces (default: 3)')
+    parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
@@ -26,11 +26,11 @@ def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alp
     X_full = mnist.data.to_numpy() 
     y_full = mnist.target.to_numpy().astype(int) 
 
-    # 2. Subset digits 0-5
+    # 2. Subset digits 0-4
     X_list = []
     labels = []
 
-    for digit in range(5):
+    for digit in range(4):
         idx = np.where(y_full == digit)[0]
         selected_idx = np.random.choice(idx, 50, replace=False)
         X_list.append(X_full[selected_idx])
@@ -49,9 +49,9 @@ def main(r, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter=50, alp
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X_preprocessed.shape)
-        X_subset += noise
+        X_preprocessed += noise
         # 0 truncate negative values
-        X_subset = np.maximum(X_preprocessed, 0)
+        X_preprocessed = np.maximum(X_preprocessed, 0)
 
     wandb.init(
         project="coneClustering",
