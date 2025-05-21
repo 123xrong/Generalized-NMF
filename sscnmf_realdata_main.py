@@ -15,7 +15,7 @@ def arg_parser():
     parser.add_argument('--alpha', type=float, default=0.01, help='Regularization parameter for ssc')
     parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--dataset', choices=['mnist', 'orl', 'YaleB', 'ORL'], default='mnist', help='Dataset to use (default: mnist)')
+    parser.add_argument('--dataset', choices=['mnist', 'YaleB', 'ORL'], default='mnist', help='Dataset to use (default: mnist)')
     return parser.parse_args()
 
 def load_dataset(name):
@@ -30,7 +30,7 @@ def load_dataset(name):
         X = X_full[mask].T  # shape (784, n)
         y = y_full[mask]
 
-    elif name == 'orl':
+    elif name == 'ORL':
         print("Loading ORL (Olivetti Faces)...")
         faces = fetch_olivetti_faces(shuffle=True, random_state=42)
         X_full = faces.data.T  # shape (4096, n)

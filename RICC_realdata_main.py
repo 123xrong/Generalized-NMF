@@ -17,7 +17,7 @@ def arg_parser():
     parser.add_argument('--NMF_solver', choices=['cd', 'mu'], default='cd', help='Solver for NMF')
     parser.add_argument('--alpha', type=float, default=0.5, help='Regularization parameter for ReLU regularization')
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
-    parser.add_argument('--dataset', choices=['mnist', 'orl', 'YaleB', 'ORL'], default='mnist', help='Dataset to use (default: mnist)')
+    parser.add_argument('--dataset', choices=['mnist', 'YaleB', 'ORL'], default='mnist', help='Dataset to use (default: mnist)')
     return parser.parse_args()
 
 def load_dataset(name):
@@ -32,7 +32,7 @@ def load_dataset(name):
         X = X_full[mask].T  # shape (784, n)
         y = y_full[mask]
 
-    elif name == 'orl':
+    elif name == 'ORL':
         print("Loading ORL (Olivetti Faces)...")
         faces = fetch_olivetti_faces(shuffle=True, random_state=42)
         X_full = faces.data.T  # shape (4096, n)
