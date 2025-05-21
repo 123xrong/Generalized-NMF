@@ -1,19 +1,10 @@
 import numpy as np
-from sklearn.metrics import adjusted_rand_score
+from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 from sklearn.decomposition import NMF
 from nmf import *
 from sklearn.linear_model import Lasso
 from sklearn import cluster
 import wandb
-
-
-# def random_orthonormal(m, r):
-#     """
-#     Generate an m x r*K random matrix with orthonormal columns via QR decomposition.
-#     """
-#     A = np.random.rand(m, r)
-#     Q, _ = np.linalg.qr(A)
-#     return np.abs(Q)
 
 def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
     """
@@ -75,7 +66,6 @@ def baseline_nmf(X, r, max_iter=1000, tol=1e-6, random_state=None):
     print(f"Baseline NMF reconstruction error: {reconstruction_error}")
     return U, V, reconstruction_error
 
-
 def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_state=None):
     np.random.seed(random_state)
     n = X.shape[1]
@@ -116,11 +106,11 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
         cluster_labels = new_labels.copy()
         iter += 1
     
-    accuracy = adjusted_rand_score(cluster_labels, true_labels)
-    print(f"Baseline K-Subspace clustering distribution: {dict(zip(*np.unique(cluster_labels, return_counts=True)))}")
-    print(f"Baseline K-Subspace clustering accuracy (ARI): {accuracy:.4f}")
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
     
-    return cluster_labels, accuracy
+    return cluster_labels, acc, ARI, NMI
 
 def baseline_ssc(X, true_labels, alpha):
     # X: [number of samples, dimension]
@@ -153,9 +143,11 @@ def baseline_ssc(X, true_labels, alpha):
     print("length of cluster_labels: ", len(cluster_labels))
 
     # Return ARI
-    ari = adjusted_rand_score(true_labels, cluster_labels)
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
-    return cluster_labels, ari
+    return cluster_labels, acc, ARI, NMI
 
 def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_state=None):
     np.random.seed(random_state)
@@ -180,8 +172,10 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
                 best_k = k_
         new_labels[i] = best_k
 
-    accuracy = adjusted_rand_score(true_labels, new_labels)
-    # run NMF on each partition
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
+
     sub_datasets = []
     subspace_bases = []
     X_new = np.zeros_like(X)
@@ -190,7 +184,6 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
         sub_datasets.append(X[:, idx_k])
 
         if len(sub_datasets[k_]) == 0:
-            # Empty cluster
             subspace_bases.append(None)
             continue
         else:
@@ -203,15 +196,11 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
     # calculate reconstruction error
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
 
-    return reconstruction_error, accuracy
+    return reconstruction_error, acc, ARI, NMI
 
 def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
     np.random.seed(random_state)
-    # perm = np.random.permutation(X.shape[1])
-    # X = X[:, perm]
-    # true_labels = true_labels[perm]
-    pred_labels, accuracy = baseline_ssc(X, true_labels, alpha=alpha)
-    # run NMF on each partition
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=alpha)
     sub_datasets = []
     subspace_bases = []
     X_new = np.zeros_like(X)
@@ -220,7 +209,6 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
         sub_datasets.append(X[:, idx_k])
 
         if len(sub_datasets[k_]) == 0:
-            # Empty cluster
             subspace_bases.append(None)
             continue
         else:
@@ -232,7 +220,7 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
         X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
 
-    return reconstruction_error, accuracy
+    return acc, ARI, NMI, reconstruction_error
 
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
@@ -354,12 +342,14 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf
         n_iter += 1
 
     # Final metrics
-    accuracy = adjusted_rand_score(true_labels, cluster_labels)
     negatives = np.sum(X_new < 0)
     proportion_negatives = negatives / X_new.size
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)  # Final loss of reconstruction
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
-    return accuracy, reconstruction_error, proportion_negatives
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
 
 def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
@@ -455,6 +445,8 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    accuracy = adjusted_rand_score(true_labels, cluster_labels)
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
-    return accuracy, reconstruction_error, proportion_negatives
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives

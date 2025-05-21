@@ -1,7 +1,6 @@
 import coneClustering
 import numpy as np
 from sklearn.datasets import fetch_olivetti_faces, fetch_openml  # Similar, or use your ORL data
-from sklearn.decomposition import PCA
 import argparse
 import wandb
 
@@ -18,26 +17,41 @@ def arg_parser():
     parser.add_argument('--NMF_solver', choices=['cd', 'mu'], default='cd', help='Solver for NMF')
     parser.add_argument('--alpha', type=float, default=0.5, help='Regularization parameter for ReLU regularization')
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
+    parser.add_argument('--dataset', choices=['mnist', 'orl', 'YaleB', 'ORL'], default='mnist', help='Dataset to use (default: mnist)')
     return parser.parse_args()
 
-def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, alpha=0.5, ord=2):
+def load_dataset(name):
+    if name == 'mnist':
+        print("Loading MNIST...")
+        mnist = fetch_openml('mnist_784', version=1, as_frame=False)
+        X_full = mnist.data / 255.0  # normalize to [0,1]
+        y_full = mnist.target.astype(int)
 
-    mnist = fetch_openml('mnist_784', version=1)
-    X_full = mnist.data.to_numpy() 
-    y_full = mnist.target.to_numpy().astype(int) 
+        # Subset: select digits 0–5 for faster experiments
+        mask = y_full < 6
+        X = X_full[mask].T  # shape (784, n)
+        y = y_full[mask]
 
-    # 2. Subset digits 0-4
-    X_list = []
-    labels = []
+    elif name == 'orl':
+        print("Loading ORL (Olivetti Faces)...")
+        faces = fetch_olivetti_faces(shuffle=True, random_state=42)
+        X_full = faces.data.T  # shape (4096, n)
+        y_full = faces.target
 
-    for digit in range(K):
-        idx = np.where(y_full == digit)[0]
-        selected_idx = np.random.choice(idx, n, replace=False)
-        X_list.append(X_full[selected_idx])
-        labels.append(np.full(len(selected_idx), digit))
+        # Subset: select only classes 0–5 (6 people × 10 = 60 samples)
+        mask = y_full < 6
+        X = faces.data[mask].T  # shape (4096, 60)
+        y = y_full[mask]
 
-    X_subset = np.vstack(X_list)
-    true_labels = np.concatenate(labels) 
+    else:
+        raise ValueError(f"Unsupported dataset: {name}")
+
+    print(f"Loaded {name.upper()} | X shape: {X.shape}, y shape: {y.shape}")
+    return X, y
+
+def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200, alpha=0.5, ord=2, dataset='mnist'):
+    X_subset, true_labels = load_dataset(dataset)
+
     X_subset = X_subset.T
     X_preprocessed = X_subset / 255.0  # normalize to [0, 1]
     means = X_preprocessed.mean(axis=1, keepdims=True)
@@ -52,13 +66,15 @@ def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200,
         X_preprocessed += noise
         # 0 truncate negative values
         X_preprocessed = np.maximum(X_preprocessed, 0)
+    
+    log_name = f'RICC-{dataset}'
 
     wandb.init(
         project="coneClustering",
-        name = "RICC_MNIST"
+        name = log_name,
     )
 
-    accuracy, reconstruction_error, _ = coneClustering.iter_reg_coneclus(
+    accuracy, ARI, NMI, reconstruction_error, _ = coneClustering.iter_reg_coneclus(
     X_preprocessed,
     K, 
     r,
@@ -72,11 +88,17 @@ def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200,
 
     wandb.log({
         "accuracy": accuracy,
+        "ARI": ARI,
+        "NMI": NMI,
         "reconstruction_error": reconstruction_error
     })
 
+    wandb.finish()
+
     print("\n--- Results ---")
     print(f"Clustering Accuracy (ARI): {accuracy:.4f}")
+    print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
+    print(f"Normalized Mutual Information (NMI): {NMI:.4f}")
     print(f"Final Reconstruction Loss: {reconstruction_error:.4f}")
 
 if __name__ == "__main__":
@@ -90,5 +112,6 @@ if __name__ == "__main__":
     max_iter = args.max_iter
     alpha = args.alpha
     ord = args.ord
+    dataset = args.dataset
 
-    main(r, K, n, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
+    main(r, K, n, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord, dataset=dataset)
