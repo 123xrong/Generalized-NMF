@@ -26,24 +26,28 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
 
     wandb.init(
         project="coneClustering",
-        name = "RICC"
+        name = "RICC-synthetic"
     )
     # 1. Generate distinct subspace data
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     # 2. Run iterative subspace clustering
-    accuracy, reconstruction_error, neg_prop = iter_reg_coneclus(
+    accuracy, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus(
         X, K, r, true_labels, NMF_method=NMF_method, max_iter=max_iter, random_state=random_state, alpha=alpha, ord=ord
     )
 
     # 3. Log results
     wandb.log({
         "accuracy": accuracy,
+        "ARI": ARI,
+        "NMI": NMI,
         "reconstruction_error": reconstruction_error
     })
 
     print("\n--- Results ---")
     print(f"Clustering Accuracy (ARI): {accuracy:.4f}")
+    print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
+    print(f"Normalized Mutual Information (NMI): {NMI:.4f}")
     print(f"Final Reconstruction Loss: {reconstruction_error:.4f}")
 
 if __name__ == "__main__":

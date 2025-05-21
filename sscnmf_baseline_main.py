@@ -21,16 +21,18 @@ def main(m, r, n_k, K, sigma=0.0, alpha = 0.01, random_state=None, max_iter=1000
 
     wandb.init(
         project="coneClustering",
-        name = "sscnmf-Baseline"
+        name = "sscnmf-synthetic"
     )
 
     # Simulate your data matrix X of shape (m, n_k * K)
     X, true_labels = data_simulation(m, r, n_k, K, sigma, random_state)  # Make sure this is defined
-    reconstruction_error, accuracy = ssc_nmf_baseline(X, r, K, true_labels = true_labels, alpha=alpha, max_iter=max_iter)
+    accuracy, ARI, NMI, reconstruction_error = ssc_nmf_baseline(X, r, K, true_labels = true_labels, alpha=alpha, max_iter=max_iter)
 
     wandb.log({
         "reconstruction_error": reconstruction_error,
         "accuracy": accuracy,
+        "ARI": ARI,
+        "NMI": NMI
     })
 
     wandb.finish()
