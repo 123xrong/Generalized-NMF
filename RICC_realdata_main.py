@@ -34,8 +34,8 @@ def load_dataset(name, n, K):
             selected_idx = np.random.choice(idx, n, replace=False)
             X_list.append(X_full[selected_idx])
             labels.append(np.full(len(selected_idx), digit))
-        X_full = np.vstack(X_list)
-        y_full = np.concatenate(labels)
+        X = np.vstack(X_list)
+        y = np.concatenate(labels)
 
     elif name == 'ORL':
         print("Loading ORL (Olivetti Faces)...")
