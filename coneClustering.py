@@ -6,6 +6,7 @@ from sklearn.linear_model import Lasso
 from sklearn import cluster
 import wandb
 from libnmf.gnmf import GNMF
+from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
@@ -459,8 +460,8 @@ def GNMF(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """
-
-    model = GNMF(X, rank=K)
+    base = NMFBase(X, K)
+    model = GNMF(base)
     model.compute_factors(max_iter=max_iter, lmd=lmd, weight_type=weight_type, param=param)
 
     W = model.W
