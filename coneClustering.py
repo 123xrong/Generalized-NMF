@@ -460,8 +460,8 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """
-    base = NMFBase(X, K)
-    model = GNMF(base)
+    # base = NMFBase(X, K)
+    model = GNMF(X, K)
     model.compute_factors(max_iter=max_iter, lmd=lmd, weight_type=weight_type, param=param)
 
     W = model.W
