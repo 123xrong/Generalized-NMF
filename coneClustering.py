@@ -456,7 +456,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
-def GNMF(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
+def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """

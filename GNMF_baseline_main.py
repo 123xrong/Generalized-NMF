@@ -28,7 +28,7 @@ def main(m, r, n_k, K, n_neighbors, sigma=0.0, random_state=None, max_iter=50):
     # 1. Generate distinct subspace data
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
-    acc, ARI, NMI, reconstruction_error = GNMF(
+    acc, ARI, NMI, reconstruction_error = GNMF_clus(
         X, K, true_labels=true_labels)
 
     wandb.log({
