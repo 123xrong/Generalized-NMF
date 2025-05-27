@@ -467,7 +467,8 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight
     W = model.W
     H = model.H
 
-    predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H.T)
+    H_array = np.asarray(H)
+    predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H_array.T)
 
     acc = accuracy_score(true_labels, predicted_labels)
     ari = adjusted_rand_score(true_labels, predicted_labels)
