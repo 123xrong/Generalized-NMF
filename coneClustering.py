@@ -5,7 +5,7 @@ from nmf import *
 from sklearn.linear_model import Lasso
 from sklearn import cluster
 import wandb
-from libnmf import GNMF
+from libnmf.gnmf import GNMF
 from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
@@ -455,13 +455,13 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
-def GNMF(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
+def GNMF(X, K, n_neighbors, true_labels, max_iter=1000, random_state=None, alpha=0.01):
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """
 
     # Construct the k-nearest neighbors graph
-    A = kneighbors_graph(X.T, n_neighbors=10, mode='connectivity', include_self=True)
+    A = kneighbors_graph(X.T, n_neighbors=n_neighbors, mode='connectivity', include_self=True)
     L = csgraph.laplacian(A, normed=False)
 
     # Initialize GNMF model
