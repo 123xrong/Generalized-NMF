@@ -57,5 +57,5 @@ if __name__ == "__main__":
     random_state = args.random_state
     alpha = args.alpha
 
-    main(m, r, n_k, K, n_neighbors, sigma, random_state, max_iter, ord=2)
+    main(m, r, n_k, K, n_neighbors, sigma, random_state, max_iter)
 
