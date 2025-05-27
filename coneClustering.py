@@ -5,6 +5,10 @@ from nmf import *
 from sklearn.linear_model import Lasso
 from sklearn import cluster
 import wandb
+from libnmf import GNMF
+from sklearn.cluster import KMeans
+from sklearn.neighbors import kneighbors_graph
+from scipy.sparse import csgraph
 
 def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
     """
@@ -450,3 +454,25 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
+
+def GNMF(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
+    """
+    Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
+    """
+
+    # Construct the k-nearest neighbors graph
+    A = kneighbors_graph(X.T, n_neighbors=10, mode='connectivity', include_self=True)
+    L = csgraph.laplacian(A, normed=False)
+
+    # Initialize GNMF model
+    model = GNMF(X, L.toarray(),n_components=K, max_iter=max_iter)
+    W, H = model.fit_transform()
+
+    predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H.T)
+
+    acc = accuracy_score(true_labels, predicted_labels)
+    ari = adjusted_rand_score(true_labels, predicted_labels)
+    nmi = normalized_mutual_info_score(true_labels, predicted_labels)
+    reconstruction_error = np.linalg.norm(X - W @ H, ord='fro')**2
+
+    return acc, ari, nmi, reconstruction_error
