@@ -455,18 +455,16 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
-def GNMF(X, K, n_neighbors, true_labels, max_iter=1000, random_state=None, alpha=0.01):
+def GNMF(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """
 
-    # Construct the k-nearest neighbors graph
-    A = kneighbors_graph(X.T, n_neighbors=n_neighbors, mode='connectivity', include_self=True)
-    L = csgraph.laplacian(A, normed=False)
+    model = GNMF(X, rank=K)
+    model.compute_factors(max_iter=max_iter, lmd=lmd, weight_type=weight_type, param=param)
 
-    # Initialize GNMF model
-    model = GNMF(X, L.toarray(),n_components=K, max_iter=max_iter)
-    W, H = model.fit_transform()
+    W = model.W
+    H = model.H
 
     predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H.T)
 

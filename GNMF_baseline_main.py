@@ -29,8 +29,7 @@ def main(m, r, n_k, K, n_neighbors, sigma=0.0, random_state=None, max_iter=50):
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     acc, ARI, NMI, reconstruction_error = GNMF(
-        X, K, n_neighbors=n_neighbors, true_labels=true_labels, max_iter=max_iter, random_state=random_state
-    )
+        X, K)
 
     wandb.log({
     "accuracy": acc,
