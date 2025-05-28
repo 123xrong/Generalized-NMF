@@ -473,6 +473,6 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight
     acc = accuracy_score(true_labels, predicted_labels)
     ari = adjusted_rand_score(true_labels, predicted_labels)
     nmi = normalized_mutual_info_score(true_labels, predicted_labels)
-    reconstruction_error = np.linalg.norm(X - W @ H, ord='fro')**2
+    reconstruction_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
 
     return acc, ari, nmi, reconstruction_error

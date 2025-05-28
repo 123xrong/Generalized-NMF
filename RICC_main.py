@@ -45,7 +45,7 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
     })
 
     print("\n--- Results ---")
-    print(f"Clustering Accuracy (ARI): {accuracy:.4f}")
+    print(f"Clustering Accuracy (Accuracy): {accuracy:.4f}")
     print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
     print(f"Normalized Mutual Information (NMI): {NMI:.4f}")
     print(f"Final Reconstruction Loss: {reconstruction_error:.4f}")
