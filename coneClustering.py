@@ -456,6 +456,98 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
+def iter_reg_coneclus_optimized(X, K, r, true_labels, max_iter=50, random_state=None,
+                                NMF_method='anls', NMF_solver='cd', alpha=0.01, ord=2):
+    np.random.seed(random_state)
+    n = X.shape[1]
+    m = X.shape[0]
+
+    # Initialize cluster labels
+    cluster_labels = np.tile(np.arange(K), n // K + 1)[:n]
+    np.random.shuffle(cluster_labels)
+
+    # Pre-allocate structures
+    nmf_bases = [None] * K
+    nmf_components = [None] * K
+    n_iter = 0
+
+    for iteration in range(max_iter):
+        # Partition data by clusters
+        sub_datasets = [X[:, cluster_labels == k_] for k_ in range(K)]
+
+        # NMF on each partition
+        for k_ in range(K):
+            x_k = sub_datasets[k_]
+            if x_k.shape[1] == 0:
+                nmf_bases[k_] = None
+                nmf_components[k_] = None
+                continue
+
+            if NMF_method == 'anls':
+                # Placeholder for ANLS implementation
+                U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
+            elif NMF_method == 'NMF':
+                model = NMF(n_components=r, init='nndsvda', random_state=random_state,
+                            max_iter=300, solver=NMF_solver)
+                x_k = np.maximum(x_k, 0)
+                U_k = model.fit_transform(x_k)
+                V_k = model.components_
+            else:
+                raise ValueError(f"Unknown NMF method: {NMF_method}")
+
+            nmf_bases[k_] = U_k
+            nmf_components[k_] = V_k
+
+        # Label reassignment using projection distances
+        all_dists = np.full((K, n), np.inf)
+
+        for k_ in range(K):
+            U_k = nmf_bases[k_]
+            if U_k is None or U_k.shape[1] == 0:
+                continue
+            C_k, _, _, _ = np.linalg.lstsq(U_k, X, rcond=None)
+            C_k_relu = np.where(C_k > 0, C_k, 0)
+            X_proj_k = U_k @ C_k
+            distances_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
+            all_dists[k_] = distances_k
+
+        new_labels = np.argmin(all_dists, axis=0)
+        num_changed = np.sum(new_labels != cluster_labels)
+
+        if num_changed == 0:
+            break
+
+        cluster_labels = new_labels.copy()
+        n_iter += 1
+
+    # Final reconstruction
+    X_reconstructed = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(cluster_labels == k_)[0]
+        if len(idx_k) == 0:
+            continue
+        x_k = X[:, idx_k]
+        if NMF_method == 'anls':
+            U_k, V_k = anls(x_k, r, max_iter=1000, tol=1e-10)
+        elif NMF_method == 'NMF':
+            model = NMF(n_components=r, init='nndsvda', random_state=random_state,
+                        max_iter=300, solver=NMF_solver)
+            x_k = np.maximum(x_k, 0)
+            U_k = model.fit_transform(x_k)
+            V_k = model.components_
+        else:
+            raise ValueError(f"Unknown NMF method: {NMF_method}")
+        X_reconstructed[:, idx_k] = U_k @ V_k
+
+    # Metrics
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+    proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
+
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives
+
 def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
