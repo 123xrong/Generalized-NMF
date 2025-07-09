@@ -32,7 +32,7 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     # 2. Run iterative subspace clustering
-    accuracy, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus(
+    accuracy, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_optimized(
         X, K, r, true_labels, NMF_method=NMF_method, max_iter=max_iter, random_state=random_state, alpha=alpha, ord=ord
     )
 

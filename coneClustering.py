@@ -5,8 +5,8 @@ from nmf import *
 from sklearn.linear_model import Lasso
 from sklearn import cluster
 import wandb
-from libnmf.gnmf import GNMF
-from libnmf.nmfbase import NMFBase
+# from libnmf.gnmf import GNMF
+# from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
