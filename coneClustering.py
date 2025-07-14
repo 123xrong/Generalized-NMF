@@ -568,3 +568,110 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight
     reconstruction_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
 
     return acc, ari, nmi, reconstruction_error
+
+def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=50, random_state=None,
+                                alpha=0.01, ord=2):
+    np.random.seed(random_state)
+    n = X.shape[1]
+    m = X.shape[0]
+
+    # 1. Random init of cluster labels
+    cluster_labels = np.tile(np.arange(K), n // K + 1)[:n]
+    np.random.shuffle(cluster_labels)
+
+    # 2. Warm start: track old cluster assignment
+    prev_labels = np.full(n, -1)
+    
+    # 3. Store W, H for each cluster
+    nmf_bases = [None] * K
+    nmf_components = [None] * K
+
+    model_template = lambda: NMF(n_components=r, init='nndsvda', random_state=random_state,
+                                 max_iter=300, solver='cd')
+
+    for iteration in range(max_iter):
+        # Flag to check if cluster content changed
+        cluster_changed = [False] * K
+
+        # 4. Partition data by clusters
+        sub_datasets = [X[:, cluster_labels == k_] for k_ in range(K)]
+
+        # 5. NMF on each cluster with warm start
+        for k_ in range(K):
+            x_k = sub_datasets[k_]
+            if x_k.shape[1] == 0:
+                nmf_bases[k_] = None
+                nmf_components[k_] = None
+                continue
+
+            # Check if cluster content changed
+            idx = (cluster_labels == k_)
+            cluster_changed[k_] = not np.array_equal(prev_labels[idx], cluster_labels[idx])
+
+            if not cluster_changed[k_] and nmf_bases[k_] is not None:
+                # Skip recomputing if cluster didn't change
+                continue
+
+            model = model_template()
+            x_k = np.maximum(x_k, 0)
+
+            if nmf_bases[k_] is not None and nmf_components[k_] is not None:
+                # Warm start
+                try:
+                    U_k = model.fit_transform(x_k, W=nmf_bases[k_], H=nmf_components[k_])
+                except:
+                    U_k = model.fit_transform(x_k)  # fallback
+            else:
+                U_k = model.fit_transform(x_k)
+
+            V_k = model.components_
+            nmf_bases[k_] = U_k
+            nmf_components[k_] = V_k
+
+        # 6. Reassign labels using projection distances
+        all_dists = np.full((K, n), np.inf)
+
+        for k_ in range(K):
+            U_k = nmf_bases[k_]
+            if U_k is None or U_k.shape[1] == 0:
+                continue
+            try:
+                # Precompute (UᵀU)^(-1) UᵀX for efficiency
+                C_k, _, _, _ = np.linalg.lstsq(U_k, X, rcond=None)
+                C_k_relu = np.where(C_k > 0, C_k, 0)
+                X_proj_k = U_k @ C_k_relu
+                dist_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
+                all_dists[k_] = dist_k
+            except np.linalg.LinAlgError:
+                continue
+
+        new_labels = np.argmin(all_dists, axis=0)
+        num_changed = np.sum(new_labels != cluster_labels)
+
+        if num_changed == 0:
+            break
+
+        prev_labels = cluster_labels.copy()
+        cluster_labels = new_labels.copy()
+
+    # 7. Final reconstruction (optional: reuse warm-start W, H)
+    X_reconstructed = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(cluster_labels == k_)[0]
+        if len(idx_k) == 0:
+            continue
+        x_k = X[:, idx_k]
+        x_k = np.maximum(x_k, 0)
+        model = model_template()
+        U_k = model.fit_transform(x_k)
+        V_k = model.components_
+        X_reconstructed[:, idx_k] = U_k @ V_k
+
+    # 8. Evaluation
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+    proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
+
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives
