@@ -63,8 +63,6 @@ def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200,
     X_preprocessed = X_preprocessed - means
     X_preprocessed = np.maximum(X_preprocessed, 0)  # truncate negatives 
 
-    print(X_preprocessed.shape)
-    print(true_labels.shape)
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X_preprocessed.shape)
@@ -79,7 +77,7 @@ def main(r, K, n, NMF_method='anls', sigma=0.0, random_state=None, max_iter=200,
         name = log_name,
     )
 
-    accuracy, ARI, NMI, reconstruction_error, _ = coneClustering.iter_reg_coneclus(
+    accuracy, ARI, NMI, reconstruction_error, _ = coneClustering.iter_reg_coneclus_warmstart(
     X_preprocessed,
     K, 
     r,

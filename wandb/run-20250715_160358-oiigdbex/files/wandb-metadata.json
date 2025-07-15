@@ -1,0 +1,55 @@
+{
+    "os": "macOS-13.6.4-arm64-arm-64bit",
+    "python": "CPython 3.10.16",
+    "heartbeatAt": "2025-07-15T23:03:59.071418",
+    "startedAt": "2025-07-15T23:03:58.666689",
+    "docker": null,
+    "args": [
+        "service",
+        "--debug",
+        "--port-filename",
+        "/var/folders/3_/5y27tpc54hzgz78s9tjymjfc0000gr/T/tmpek6h6434/port-57250.txt",
+        "--pid",
+        "57250"
+    ],
+    "state": "running",
+    "program": "/Users/xrong8/Documents/CXRProject/ConeClustering/RICC_main.py",
+    "codePathLocal": "RICC_main.py",
+    "codePath": "RICC_main.py",
+    "git": {
+        "remote": "https://github.com/123xrong/ConeClustering.git",
+        "commit": "adddfc6cb6e6ceceb18b1a8c4a648037ee8ebe06"
+    },
+    "email": "xrong8@wisc.edu",
+    "root": "/Users/xrong8/Documents/CXRProject/ConeClustering",
+    "host": "DOP2708.local",
+    "username": null,
+    "executable": "/Users/xrong8/anaconda3/envs/opt/bin/python",
+    "cpu_count": 12,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 3504,
+        "min": 702,
+        "max": 3504
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3504,
+            "min": 702,
+            "max": 3504
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 7998551654400,
+            "used": 9338425344
+        },
+        "/System/Volumes/Data": {
+            "total": 7998551654400,
+            "used": 326907736064
+        }
+    },
+    "memory": {
+        "total": 103079215104
+    }
+}
