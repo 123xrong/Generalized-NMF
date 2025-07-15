@@ -17,7 +17,7 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--NMF_method', choices=['anls', 'NMF'], default='anls', help='NMF method to use')
     parser.add_argument('--NMF_solver', choices=['cd', 'mu'], default='cd', help='Solver for NMF')
-    parser.add_argument('--alpha', type=float, default=2.3, help='Regularization parameter for ReLU regularization')
+    parser.add_argument('--alpha', type=float, default=1, help='Regularization parameter for ReLU regularization')
     parser.add_argument('--ord', type=int, default=2, help='Order of the regularization (default: 2)')
     return parser.parse_args()
 
