@@ -1,0 +1,16 @@
+{"time":"2025-07-15T13:37:06.89347-07:00","level":"INFO","msg":"using version","core version":"0.19.1"}
+{"time":"2025-07-15T13:37:06.893516-07:00","level":"INFO","msg":"created symlink","path":"/Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_133706-yca6wxti/logs/debug-core.log"}
+{"time":"2025-07-15T13:37:07.001702-07:00","level":"INFO","msg":"created new stream","id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.001748-07:00","level":"INFO","msg":"stream: started","id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.001768-07:00","level":"INFO","msg":"handler: started","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.001768-07:00","level":"INFO","msg":"sender: started","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.001863-07:00","level":"INFO","msg":"writer: Do: started","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.292236-07:00","level":"INFO","msg":"Starting system monitor"}
+{"time":"2025-07-15T13:37:07.630041-07:00","level":"INFO","msg":"stream: closing","id":"yca6wxti"}
+{"time":"2025-07-15T13:37:07.630097-07:00","level":"INFO","msg":"Stopping system monitor"}
+{"time":"2025-07-15T13:37:07.630794-07:00","level":"INFO","msg":"Stopped system monitor"}
+{"time":"2025-07-15T13:37:08.177073-07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-07-15T13:37:08.363032-07:00","level":"INFO","msg":"handler: closed","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:08.363075-07:00","level":"INFO","msg":"sender: closed","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:08.363056-07:00","level":"INFO","msg":"writer: Close: closed","stream_id":"yca6wxti"}
+{"time":"2025-07-15T13:37:08.363534-07:00","level":"INFO","msg":"stream: closed","id":"yca6wxti"}

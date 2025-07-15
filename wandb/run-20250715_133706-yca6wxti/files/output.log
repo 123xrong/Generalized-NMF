@@ -1,0 +1,43 @@
+/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1710: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py:1710: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/xrong8/Documents/CXRProject/ConeClustering/coneClustering.py", line 621, in iter_reg_coneclus_warmstart
+    U_k = model.fit_transform(x_k, W=nmf_bases[k_], H=nmf_components[k_])
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 157, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/base.py", line 1152, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1606, in fit_transform
+    W, H, n_iter = self._fit_transform(X, W=W, H=H)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1670, in _fit_transform
+    W, H = self._check_w_h(X, W, H, update_H)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1214, in _check_w_h
+    W, H = _initialize_nmf(
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 288, in _initialize_nmf
+    raise ValueError(
+ValueError: init = 'nndsvda' can only be used when n_components <= min(n_samples, n_features)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "RICC_main.py", line 65, in <module>
+    main(m, r, n_k, K, NMF_method=NMF_method, sigma=sigma, random_state=random_state, max_iter=max_iter, alpha=alpha, ord=ord)
+  File "RICC_main.py", line 35, in main
+    accuracy, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
+  File "/Users/xrong8/Documents/CXRProject/ConeClustering/coneClustering.py", line 623, in iter_reg_coneclus_warmstart
+    U_k = model.fit_transform(x_k)  # fallback
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 157, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/base.py", line 1152, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1606, in fit_transform
+    W, H, n_iter = self._fit_transform(X, W=W, H=H)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1670, in _fit_transform
+    W, H = self._check_w_h(X, W, H, update_H)
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 1214, in _check_w_h
+    W, H = _initialize_nmf(
+  File "/Users/xrong8/anaconda3/envs/pytorch/lib/python3.8/site-packages/sklearn/decomposition/_nmf.py", line 288, in _initialize_nmf
+    raise ValueError(
+ValueError: init = 'nndsvda' can only be used when n_components <= min(n_samples, n_features)
