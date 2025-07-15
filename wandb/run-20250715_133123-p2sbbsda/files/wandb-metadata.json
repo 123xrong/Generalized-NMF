@@ -1,0 +1,43 @@
+{
+  "os": "macOS-13.6.4-arm64-arm-64bit",
+  "python": "CPython 3.8.18",
+  "startedAt": "2025-07-15T20:31:23.284037Z",
+  "program": "RICC_main.py",
+  "codePath": "RICC_main.py",
+  "git": {
+    "remote": "https://github.com/123xrong/ConeClustering.git",
+    "commit": "0331a31bd1ab2b9a7d7c920fadbcca41165efac7"
+  },
+  "email": "xrong8@wisc.edu",
+  "root": "/Users/xrong8/Documents/CXRProject/ConeClustering",
+  "host": "DOP2708.local",
+  "executable": "/Users/xrong8/anaconda3/envs/pytorch/bin/python3",
+  "codePathLocal": "RICC_main.py",
+  "cpu_count": 12,
+  "cpu_count_logical": 12,
+  "disk": {
+    "/": {
+      "total": "7998551654400",
+      "used": "340810072064"
+    },
+    "/System/Volumes/Data": {
+      "total": "7998551654400",
+      "used": "340810072064"
+    }
+  },
+  "memory": {
+    "total": "103079215104"
+  },
+  "cpu": {
+    "count": 12,
+    "countLogical": 12
+  },
+  "apple": {
+    "name": "Apple M2 Max",
+    "ecpuCores": 4,
+    "pcpuCores": 8,
+    "gpuCores": 38,
+    "memoryGb": 96,
+    "ramTotalBytes": "103079215104"
+  }
+}

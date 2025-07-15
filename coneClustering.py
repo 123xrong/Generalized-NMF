@@ -587,7 +587,7 @@ def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=50, random_state=
     nmf_components = [None] * K
 
     model_template = lambda: NMF(n_components=r, init='nndsvda', random_state=random_state,
-                                 max_iter=300, solver='cd')
+                                 max_iter=1000, solver='cd')
 
     for iteration in range(max_iter):
         # Flag to check if cluster content changed
