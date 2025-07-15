@@ -1,0 +1,20 @@
+{
+  "os": "macOS-13.6.4-arm64-arm-64bit",
+  "python": "CPython 3.8.18",
+  "startedAt": "2025-07-15T20:40:20.570698Z",
+  "args": [
+    "--sigma",
+    "0.2"
+  ],
+  "program": "GNMF_baseline_main.py",
+  "codePath": "GNMF_baseline_main.py",
+  "git": {
+    "remote": "https://github.com/123xrong/ConeClustering.git",
+    "commit": "a6c802a896b27c27af16c3bba571b3d65a73337e"
+  },
+  "email": "xrong8@wisc.edu",
+  "root": "/Users/xrong8/Documents/CXRProject/ConeClustering",
+  "host": "DOP2708.local",
+  "executable": "/Users/xrong8/anaconda3/envs/pytorch/bin/python3",
+  "codePathLocal": "GNMF_baseline_main.py"
+}

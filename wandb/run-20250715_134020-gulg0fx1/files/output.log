@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "GNMF_baseline_main.py", line 59, in <module>
+    main(m, r, n_k, K, n_neighbors, sigma, random_state, max_iter)
+  File "GNMF_baseline_main.py", line 31, in main
+    acc, ARI, NMI, reconstruction_error = GNMF_clus(
+  File "/Users/xrong8/Documents/CXRProject/ConeClustering/coneClustering.py", line 556, in GNMF_clus
+    model = GNMF(X, K)
+NameError: name 'GNMF' is not defined
