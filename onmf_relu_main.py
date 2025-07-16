@@ -2,7 +2,7 @@ import numpy as np
 import argparse
 import wandb
 from sklearn.datasets import make_blobs
-from onmf_relu import onmf_with_relu, evaluate_clustering
+from onmf_relu import onmf_with_relu
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Orthogonal NMF with ReLU regularization")
@@ -15,8 +15,6 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 200)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed (default: 42)')
     parser.add_argument('--alpha', type=float, default=0.1, help='ReLU regularization weight λ (default: 0.1)')
-    parser.add_argument('--method', type=str, default='kmeans', choices=['kmeans', 'argmax'],
-                        help='Clustering method on H (default: kmeans)')
 
     return parser.parse_args()
 
@@ -28,7 +26,7 @@ def generate_synthetic_data(m, r, n_k, K, sigma=0.0, random_state=0):
     X = np.abs(X)  # Ensure nonnegativity
     return X.T, labels_true  # shape (m, n), matching ONMF
 
-def main(m, r, n_k, K, sigma, random_state, max_iter, alpha, method):
+def main(m, r, n_k, K, sigma, random_state, max_iter, alpha):
     wandb.init(
         project="coneClustering",
         name="ONMF-ReLU",
@@ -44,25 +42,30 @@ def main(m, r, n_k, K, sigma, random_state, max_iter, alpha, method):
         }
     )
 
-    # 1. Simulate data
+    # 1. Generate synthetic data
     X, labels_true = generate_synthetic_data(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
-    # 2. Run ONMF-ReLU
-    W, H = onmf_with_relu(X, r=K, lambda_reg=alpha, max_iter=max_iter, verbose=True)
+    # 2. Run ONMF-ReLU algorithm
+    result = onmf_with_relu(X, K=K, r=r, true_labels=labels_true,
+                            lambda_reg=alpha, max_iter=max_iter, verbose=True)
 
-    # 3. Evaluate clustering
-    acc, ari, nmi = evaluate_clustering(H, labels_true, method=method)
-
+    # 3. Log results
     wandb.log({
-        "accuracy": acc,
-        "ARI": ari,
-        "NMI": nmi,
+        "accuracy": result["accuracy"],
+        "ARI": result["ARI"],
+        "NMI": result["NMI"],
+        "normalized_loss": result["normalized_loss"],
+        "reconstruction_error": result["reconstruction_error"],
+        "proportion_negatives": result["proportion_negatives"],
     })
 
     print("\n--- Clustering Results ---")
-    print(f"Accuracy: {acc:.4f}")
-    print(f"ARI:      {ari:.4f}")
-    print(f"NMI:      {nmi:.4f}")
+    print(f"Accuracy:             {result['accuracy']:.4f}")
+    print(f"Adjusted Rand Index:  {result['ARI']:.4f}")
+    print(f"NMI:                  {result['NMI']:.4f}")
+    print(f"Normalized Loss:      {result['normalized_loss']:.6f}")
+    print(f"Reconstruction Error: {result['reconstruction_error']:.4f}")
+    print(f"Negative Proportion:  {result['proportion_negatives']:.6f}")
 
 if __name__ == "__main__":
     args = arg_parser()
@@ -74,6 +77,5 @@ if __name__ == "__main__":
         sigma=args.sigma,
         random_state=args.random_state,
         max_iter=args.max_iter,
-        alpha=args.alpha,
-        method=args.method
+        alpha=args.alpha
     )
