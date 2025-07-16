@@ -1,0 +1,29 @@
+2025-07-15 17:12:19,128 INFO    StreamThr :62434 [internal.py:wandb_internal():83] W&B internal server running at pid: 62434, started at: 2025-07-15 17:12:19.127068
+2025-07-15 17:12:19,129 INFO    WriterThread:62434 [datastore.py:open_for_write():87] open: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/run-f0pslnyk.wandb
+2025-07-15 17:12:19,428 INFO    SenderThread:62434 [dir_watcher.py:__init__():211] watching files in: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files
+2025-07-15 17:12:19,428 INFO    SenderThread:62434 [sender.py:_start_run_threads():1134] run started: f0pslnyk with start time 1752624739.126222
+2025-07-15 17:12:19,433 INFO    HandlerThread:62434 [system_monitor.py:start():187] Starting system monitor
+2025-07-15 17:12:19,433 INFO    SystemMonitor:62434 [system_monitor.py:_start():151] Starting system asset monitoring threads
+2025-07-15 17:12:19,433 INFO    HandlerThread:62434 [system_monitor.py:probe():207] Collecting system info
+2025-07-15 17:12:19,434 INFO    SystemMonitor:62434 [interfaces.py:start():186] Started cpu monitoring
+2025-07-15 17:12:19,437 INFO    SystemMonitor:62434 [interfaces.py:start():186] Started disk monitoring
+2025-07-15 17:12:19,438 INFO    SystemMonitor:62434 [interfaces.py:start():186] Started memory monitoring
+2025-07-15 17:12:19,441 INFO    SystemMonitor:62434 [interfaces.py:start():186] Started network monitoring
+2025-07-15 17:12:19,497 INFO    HandlerThread:62434 [system_monitor.py:probe():217] Finished collecting system info
+2025-07-15 17:12:19,497 INFO    HandlerThread:62434 [system_monitor.py:probe():220] Publishing system info
+2025-07-15 17:12:20,396 INFO    HandlerThread:62434 [system_monitor.py:probe():222] Finished publishing system info
+2025-07-15 17:12:20,398 INFO    SenderThread:62434 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2025-07-15 17:12:20,433 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/requirements.txt
+2025-07-15 17:12:20,433 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/conda-environment.yaml
+2025-07-15 17:12:20,433 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/wandb-metadata.json
+2025-07-15 17:12:20,900 INFO    wandb-upload_0:62434 [upload_job.py:push():130] Uploaded file /var/folders/3_/5y27tpc54hzgz78s9tjymjfc0000gr/T/tmpr3sgsh73wandb/x94bp27t-wandb-metadata.json
+2025-07-15 17:12:21,438 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:23,449 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:25,462 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:27,478 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:29,502 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:31,514 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:33,521 INFO    Thread-12 :62434 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_171219-f0pslnyk/files/output.log
+2025-07-15 17:12:34,440 INFO    memory    :62434 [interfaces.py:monitor():136] Process proc.memory.rssMB has exited.
+2025-07-15 17:12:34,440 INFO    cpu       :62434 [interfaces.py:monitor():136] Process cpu has exited.
+2025-07-15 17:12:34,446 INFO    MainThread:62434 [internal.py:handle_exit():73] Internal process exited

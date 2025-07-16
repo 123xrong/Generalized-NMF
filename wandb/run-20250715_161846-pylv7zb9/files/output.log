@@ -1,0 +1,1242 @@
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(
+/Users/xrong8/anaconda3/envs/opt/lib/python3.10/site-packages/sklearn/decomposition/_nmf.py:1243: RuntimeWarning: When init!='custom', provided W or H are ignored. Set  init='custom' to use them as initialization.
+  warnings.warn(

@@ -10,7 +10,7 @@ def arg_parser():
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=5, help='Number of subspaces (default: 3)')
-    parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
+    parser.add_argument('--sigma', type=float, default=1.8, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--NMF_method', choices=['anls', 'NMF'], default='anls', help='NMF method to use')

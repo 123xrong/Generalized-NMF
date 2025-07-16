@@ -1,0 +1,30 @@
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_setup.py:_flush():70] Current SDK version is 0.19.11
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_setup.py:_flush():70] Configure stats pid to 60220
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_setup.py:_flush():70] Loading settings from /Users/xrong8/.config/wandb/settings
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_setup.py:_flush():70] Loading settings from /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/settings
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_setup.py:_flush():70] Loading settings from environment variables
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_init.py:setup_run_log_directory():724] Logging user logs to /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_164249-05x4wjyg/logs/debug.log
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_init.py:setup_run_log_directory():725] Logging internal logs to /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250715_164249-05x4wjyg/logs/debug-internal.log
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_init.py:init():852] calling init triggers
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_init.py:init():857] wandb.init called with sweep_config: {'alpha': 2.6931343334500255}
+config: {'_wandb': {}}
+2025-07-15 16:42:49,198 INFO    MainThread:60220 [wandb_init.py:init():893] starting backend
+2025-07-15 16:42:49,199 INFO    MainThread:60220 [wandb_init.py:init():897] sending inform_init request
+2025-07-15 16:42:49,236 INFO    MainThread:60220 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=spawn,fork,forkserver, using: spawn
+2025-07-15 16:42:49,237 INFO    MainThread:60220 [wandb_init.py:init():907] backend started and connected
+2025-07-15 16:42:49,238 INFO    MainThread:60220 [wandb_run.py:_config_callback():1436] config_cb None None {'alpha': 2.6931343334500255}
+2025-07-15 16:42:49,240 INFO    MainThread:60220 [wandb_init.py:init():1005] updated telemetry
+2025-07-15 16:42:49,261 INFO    MainThread:60220 [wandb_init.py:init():1029] communicating run to backend with 90.0 second timeout
+2025-07-15 16:42:49,570 INFO    MainThread:60220 [wandb_init.py:init():1104] starting run threads in backend
+2025-07-15 16:42:50,479 INFO    MainThread:60220 [wandb_run.py:_console_start():2573] atexit reg
+2025-07-15 16:42:50,479 INFO    MainThread:60220 [wandb_run.py:_redirect():2421] redirect: wrap_raw
+2025-07-15 16:42:50,479 INFO    MainThread:60220 [wandb_run.py:_redirect():2490] Wrapping output streams.
+2025-07-15 16:42:50,479 INFO    MainThread:60220 [wandb_run.py:_redirect():2513] Redirects installed.
+2025-07-15 16:42:50,481 INFO    MainThread:60220 [wandb_init.py:init():1150] run started, returning control to user process
+2025-07-15 16:43:05,292 INFO    MainThread:60220 [wandb_run.py:_finish():2321] finishing run xrong8-university-of-wisconsin-madison/coneClustering/05x4wjyg
+2025-07-15 16:43:05,292 INFO    MainThread:60220 [wandb_run.py:_atexit_cleanup():2538] got exitcode: 0
+2025-07-15 16:43:05,292 INFO    MainThread:60220 [wandb_run.py:_restore():2520] restore
+2025-07-15 16:43:05,295 INFO    MainThread:60220 [wandb_run.py:_restore():2526] restore done
+2025-07-15 16:43:08,643 INFO    MainThread:60220 [wandb_run.py:_footer_history_summary_info():4188] rendering history
+2025-07-15 16:43:08,644 INFO    MainThread:60220 [wandb_run.py:_footer_history_summary_info():4220] rendering summary
+2025-07-15 16:43:08,644 INFO    MainThread:60220 [wandb_run.py:_footer_sync_info():4149] logging synced files

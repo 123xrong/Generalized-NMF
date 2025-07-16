@@ -1,0 +1,5 @@
+--- Results ---
+Clustering Accuracy (ARI): 0.1250
+Adjusted Rand Index (ARI): 0.9971
+Normalized Mutual Information (NMI): 0.9966
+Final Reconstruction Loss: 0.1134
