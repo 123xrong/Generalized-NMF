@@ -1,0 +1,22 @@
+Iter 000: norm. loss = 0.118923
+Iter 001: norm. loss = 0.094716
+Iter 002: norm. loss = 0.087271
+Iter 003: norm. loss = 0.083209
+Iter 004: norm. loss = 0.078211
+Iter 005: norm. loss = 0.074656
+Iter 006: norm. loss = 0.073377
+Iter 007: norm. loss = 0.073638
+Iter 008: norm. loss = 0.073874
+Iter 009: norm. loss = 0.074096
+Iter 010: norm. loss = 0.074422
+Iter 011: norm. loss = 0.074536
+Iter 012: norm. loss = 0.074433
+Iter 013: norm. loss = 0.074373
+
+--- Clustering Results ---
+Accuracy:             0.5694
+Adjusted Rand Index:  0.5694
+NMI:                  0.8190
+Normalized Loss:      0.074373
+Reconstruction Error: 0.2670
+Negative Proportion:  0.000000

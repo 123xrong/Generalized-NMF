@@ -1,0 +1,43 @@
+{
+  "os": "macOS-13.6.4-arm64-arm-64bit",
+  "python": "CPython 3.10.16",
+  "startedAt": "2025-07-16T03:58:16.859413Z",
+  "program": "/Users/xrong8/Documents/CXRProject/ConeClustering/onmf_relu_main.py",
+  "codePath": "onmf_relu_main.py",
+  "git": {
+    "remote": "https://github.com/123xrong/ConeClustering.git",
+    "commit": "f61375216ba8b0048577b79d9f80c92998c72051"
+  },
+  "email": "xrong8@wisc.edu",
+  "root": "/Users/xrong8/Documents/CXRProject/ConeClustering",
+  "host": "DOP2708.local",
+  "executable": "/Users/xrong8/anaconda3/envs/opt/bin/python3",
+  "codePathLocal": "onmf_relu_main.py",
+  "cpu_count": 12,
+  "cpu_count_logical": 12,
+  "disk": {
+    "/": {
+      "total": "7998551654400",
+      "used": "343230398464"
+    },
+    "/System/Volumes/Data": {
+      "total": "7998551654400",
+      "used": "343230398464"
+    }
+  },
+  "memory": {
+    "total": "103079215104"
+  },
+  "cpu": {
+    "count": 12,
+    "countLogical": 12
+  },
+  "apple": {
+    "name": "Apple M2 Max",
+    "ecpuCores": 4,
+    "pcpuCores": 8,
+    "gpuCores": 38,
+    "memoryGb": 96,
+    "ramTotalBytes": "103079215104"
+  }
+}

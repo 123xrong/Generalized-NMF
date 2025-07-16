@@ -1,7 +1,7 @@
 import numpy as np
 from sklearn.preprocessing import normalize
 from scipy.optimize import nnls, minimize
-from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
+from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score, accuracy_score
 from scipy.optimize import linear_sum_assignment
 from sklearn.cluster import KMeans
 
@@ -47,9 +47,6 @@ def onmf_with_relu(X, K, true_labels=None, r=None, max_iter=100, lambda_reg=0.1,
         l1_penalty = lambda_reg * np.sum(H)
         total_loss = (rec_loss + l1_penalty) / norm_X
 
-        if verbose:
-            print(f"Iter {iteration:03d}: norm. loss = {total_loss:.6f}")
-
         if iteration > 0 and abs(prev_loss - total_loss) < tol:
             break
         prev_loss = total_loss
@@ -58,7 +55,7 @@ def onmf_with_relu(X, K, true_labels=None, r=None, max_iter=100, lambda_reg=0.1,
     labels_pred = H.argmax(axis=0)
 
     # --- Final metrics ---
-    acc = adjusted_rand_score(true_labels, labels_pred) if true_labels is not None else None
+    acc = accuracy_score(true_labels, labels_pred) if true_labels is not None else None
     ari = adjusted_rand_score(true_labels, labels_pred) if true_labels is not None else None
     nmi = normalized_mutual_info_score(true_labels, labels_pred) if true_labels is not None else None
     recon_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
