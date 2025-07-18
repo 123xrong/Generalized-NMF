@@ -40,7 +40,7 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     # 2. Run iterative subspace clustering
-    accuracy, ARI, NMI, reconstruction_error, _ = gpca_nmf(
+    accuracy, ARI, NMI, reconstruction_error = gpca_nmf(
         X, K, r, true_labels, use_sparse=False, l1_reg=0.1)
 
     # 3. Log results
