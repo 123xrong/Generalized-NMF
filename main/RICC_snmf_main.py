@@ -42,7 +42,7 @@ def main(m, r, n_k, K, NMF_method='anls', sigma=0.0, random_state=None, max_iter
     # 2. Run iterative subspace clustering
     accuracy, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_sparse_nmf(
         X, K, r, true_labels, max_iter=50, random_state=None,
-                                 alpha=2.3, ord=2, l1_reg=0.01)
+                                 alpha=1.0, ord=2, l1_reg=0.01)
 
     # 3. Log results
     wandb.log({
