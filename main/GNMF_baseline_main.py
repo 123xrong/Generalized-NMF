@@ -1,3 +1,11 @@
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) 
+
 import numpy as np
 import argparse
 from sklearn.decomposition import NMF
@@ -39,7 +47,7 @@ def main(m, r, n_k, K, n_neighbors, sigma=0.0, random_state=None, max_iter=50):
     })
 
     print("\n--- Results ---")
-    print(f"Clustering Accuracy (ARI): {acc:.4f}")
+    print(f"Clustering Accuracy: {acc:.4f}")
     print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
     print(f"Normalized Mutual Information (NMI): {NMI:.4f}")
     print(f"Final Reconstruction Loss: {reconstruction_error:.4f}")

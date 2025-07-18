@@ -1,3 +1,11 @@
+import os
+import sys
+import inspect
+
+currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+parentdir = os.path.dirname(currentdir)
+sys.path.insert(0, parentdir) 
+
 import coneClustering
 import numpy as np
 from sklearn.datasets import fetch_olivetti_faces, fetch_openml  # Similar, or use your ORL data
