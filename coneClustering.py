@@ -897,3 +897,43 @@ def iter_reg_coneclus_sparse_nmf(X, K, r, true_labels, max_iter=50, random_state
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
+
+def gpca_nmf(X, K, r, true_labels, use_sparse=True, l1_reg=0.1):
+    """
+    GPCA + NMF pipeline using sklearn-friendly tools.
+    """
+    n = X.shape[1]
+    X_reconstructed = np.zeros_like(X)
+
+    # Step 1: GPCA clustering
+    pred_labels = approximate_gpca(X, K)
+
+    # Step 2: Cluster-wise NMF
+    for k in range(K):
+        idx_k = np.where(pred_labels == k)[0]
+        X_k = X[:, idx_k]
+        if X_k.shape[1] == 0:
+            continue
+        X_k = np.maximum(X_k, 0)
+
+        if use_sparse:
+            W = np.random.rand(X_k.shape[0], r)
+            H = np.random.rand(r, X_k.shape[1])
+            for _ in range(200):
+                WH = W @ H
+                H *= (W.T @ X_k) / (W.T @ WH + l1_reg + 1e-10)
+                W *= (X_k @ H.T) / (W @ (H @ H.T) + 1e-10)
+        else:
+            model = SklearnNMF(n_components=r, init='random', max_iter=1000, random_state=0)
+            W = model.fit_transform(X_k)
+            H = model.components_
+
+        X_reconstructed[:, idx_k] = W @ H
+
+    # Step 3: Evaluation
+    acc = accuracy_score(true_labels, pred_labels)
+    ARI = adjusted_rand_score(true_labels, pred_labels)
+    NMI = normalized_mutual_info_score(true_labels, pred_labels)
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+
+    return acc, ARI, NMI, reconstruction_error
