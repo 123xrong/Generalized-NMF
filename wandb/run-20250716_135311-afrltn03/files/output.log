@@ -1,0 +1,7 @@
+--- Clustering Results ---
+Accuracy:             0.2500
+Adjusted Rand Index:  0.7127
+NMI:                  0.8571
+Normalized Loss:      0.083289
+Reconstruction Error: 0.2059
+Negative Proportion:  0.000000

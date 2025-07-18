@@ -1,0 +1,43 @@
+{
+    "os": "macOS-13.6.4-arm64-arm-64bit",
+    "python": "CPython 3.10.16",
+    "heartbeatAt": "2025-07-16T21:30:59.541976",
+    "startedAt": "2025-07-16T21:30:59.179513",
+    "docker": null,
+    "args": [
+        "service",
+        "--debug",
+        "--port-filename",
+        "/var/folders/3_/5y27tpc54hzgz78s9tjymjfc0000gr/T/tmpm29xtor9/port-41773.txt",
+        "--pid",
+        "41773"
+    ],
+    "state": "running",
+    "program": "/Users/xrong8/Documents/CXRProject/ConeClustering/onmf_relu_main.py",
+    "codePathLocal": "onmf_relu_main.py",
+    "codePath": "onmf_relu_main.py",
+    "git": {
+        "remote": "https://github.com/123xrong/ConeClustering.git",
+        "commit": "9914c42f48a5c5fade60bb4c7567541a9883948f"
+    },
+    "email": "xrong8@wisc.edu",
+    "root": "/Users/xrong8/Documents/CXRProject/ConeClustering",
+    "host": "DOP2708.local",
+    "username": null,
+    "executable": "/Users/xrong8/anaconda3/envs/opt/bin/python",
+    "cpu_count": 12,
+    "cpu_count_logical": 12,
+    "disk": {
+        "/": {
+            "total": 7998551654400,
+            "used": 344129343488
+        },
+        "/System/Volumes/Data": {
+            "total": 7998551654400,
+            "used": 344129343488
+        }
+    },
+    "memory": {
+        "total": 103079215104
+    }
+}

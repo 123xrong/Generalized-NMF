@@ -1,0 +1,23 @@
+2025-07-16 16:19:04,007 INFO    StreamThr :58407 [internal.py:wandb_internal():83] W&B internal server running at pid: 58407, started at: 2025-07-16 16:19:04.006738
+2025-07-16 16:19:04,009 INFO    WriterThread:58407 [datastore.py:open_for_write():87] open: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/run-tezpfyzd.wandb
+2025-07-16 16:19:04,305 INFO    SenderThread:58407 [dir_watcher.py:__init__():211] watching files in: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/files
+2025-07-16 16:19:04,306 INFO    SenderThread:58407 [sender.py:_start_run_threads():1134] run started: tezpfyzd with start time 1752707944.005703
+2025-07-16 16:19:04,307 INFO    HandlerThread:58407 [system_monitor.py:start():187] Starting system monitor
+2025-07-16 16:19:04,308 INFO    SystemMonitor:58407 [system_monitor.py:_start():151] Starting system asset monitoring threads
+2025-07-16 16:19:04,308 INFO    HandlerThread:58407 [system_monitor.py:probe():207] Collecting system info
+2025-07-16 16:19:04,309 INFO    SystemMonitor:58407 [interfaces.py:start():186] Started cpu monitoring
+2025-07-16 16:19:04,309 INFO    SystemMonitor:58407 [interfaces.py:start():186] Started disk monitoring
+2025-07-16 16:19:04,312 INFO    SystemMonitor:58407 [interfaces.py:start():186] Started memory monitoring
+2025-07-16 16:19:04,317 INFO    SystemMonitor:58407 [interfaces.py:start():186] Started network monitoring
+2025-07-16 16:19:04,359 INFO    HandlerThread:58407 [system_monitor.py:probe():217] Finished collecting system info
+2025-07-16 16:19:04,359 INFO    HandlerThread:58407 [system_monitor.py:probe():220] Publishing system info
+2025-07-16 16:19:05,309 INFO    Thread-12 :58407 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/files/conda-environment.yaml
+2025-07-16 16:19:05,365 INFO    HandlerThread:58407 [system_monitor.py:probe():222] Finished publishing system info
+2025-07-16 16:19:05,367 INFO    SenderThread:58407 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2025-07-16 16:19:06,023 INFO    wandb-upload_0:58407 [upload_job.py:push():130] Uploaded file /var/folders/3_/5y27tpc54hzgz78s9tjymjfc0000gr/T/tmpy5cdxt6hwandb/45lsqarq-wandb-metadata.json
+2025-07-16 16:19:06,314 INFO    Thread-12 :58407 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/files/conda-environment.yaml
+2025-07-16 16:19:06,314 INFO    Thread-12 :58407 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/files/requirements.txt
+2025-07-16 16:19:06,314 INFO    Thread-12 :58407 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_161903-tezpfyzd/files/wandb-metadata.json
+2025-07-16 16:19:29,177 WARNING StreamThr :58407 [internal.py:is_dead():399] Internal process exiting, parent pid 58401 disappeared
+2025-07-16 16:19:29,178 ERROR   StreamThr :58407 [internal.py:wandb_internal():145] Internal process shutdown.
+2025-07-16 16:19:29,333 INFO    MainThread:58407 [internal.py:handle_exit():73] Internal process exited

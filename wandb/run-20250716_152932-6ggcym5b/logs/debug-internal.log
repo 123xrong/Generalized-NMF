@@ -1,0 +1,104 @@
+2025-07-16 15:29:32,571 INFO    StreamThr :54850 [internal.py:wandb_internal():83] W&B internal server running at pid: 54850, started at: 2025-07-16 15:29:32.570360
+2025-07-16 15:29:32,572 INFO    WriterThread:54850 [datastore.py:open_for_write():87] open: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/run-6ggcym5b.wandb
+2025-07-16 15:29:32,825 INFO    SenderThread:54850 [dir_watcher.py:__init__():211] watching files in: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files
+2025-07-16 15:29:32,827 INFO    SenderThread:54850 [sender.py:_start_run_threads():1134] run started: 6ggcym5b with start time 1752704972.569747
+2025-07-16 15:29:32,829 INFO    HandlerThread:54850 [system_monitor.py:start():187] Starting system monitor
+2025-07-16 15:29:32,830 INFO    SystemMonitor:54850 [system_monitor.py:_start():151] Starting system asset monitoring threads
+2025-07-16 15:29:32,830 INFO    HandlerThread:54850 [system_monitor.py:probe():207] Collecting system info
+2025-07-16 15:29:32,830 INFO    SystemMonitor:54850 [interfaces.py:start():186] Started cpu monitoring
+2025-07-16 15:29:32,831 INFO    SystemMonitor:54850 [interfaces.py:start():186] Started disk monitoring
+2025-07-16 15:29:32,834 INFO    SystemMonitor:54850 [interfaces.py:start():186] Started memory monitoring
+2025-07-16 15:29:32,842 INFO    SystemMonitor:54850 [interfaces.py:start():186] Started network monitoring
+2025-07-16 15:29:32,890 INFO    HandlerThread:54850 [system_monitor.py:probe():217] Finished collecting system info
+2025-07-16 15:29:32,890 INFO    HandlerThread:54850 [system_monitor.py:probe():220] Publishing system info
+2025-07-16 15:29:33,827 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/conda-environment.yaml
+2025-07-16 15:29:33,881 INFO    HandlerThread:54850 [system_monitor.py:probe():222] Finished publishing system info
+2025-07-16 15:29:33,882 INFO    SenderThread:54850 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2025-07-16 15:29:34,414 INFO    wandb-upload_0:54850 [upload_job.py:push():130] Uploaded file /var/folders/3_/5y27tpc54hzgz78s9tjymjfc0000gr/T/tmp8_u1p02xwandb/ibilmkno-wandb-metadata.json
+2025-07-16 15:29:34,831 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-metadata.json
+2025-07-16 15:29:34,832 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/requirements.txt
+2025-07-16 15:29:52,978 INFO    SenderThread:54850 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-07-16 15:29:53,010 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/output.log
+2025-07-16 15:29:53,010 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_created():272] file/dir created: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-summary.json
+2025-07-16 15:29:53,393 INFO    SenderThread:54850 [sender.py:send_exit():554] handling exit code: 0
+2025-07-16 15:29:53,393 INFO    SenderThread:54850 [sender.py:send_exit():556] handling runtime: 20
+2025-07-16 15:29:53,394 INFO    SenderThread:54850 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-07-16 15:29:53,394 INFO    SenderThread:54850 [sender.py:send_exit():562] send defer
+2025-07-16 15:29:53,394 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 0
+2025-07-16 15:29:53,395 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 0
+2025-07-16 15:29:53,395 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 1
+2025-07-16 15:29:53,395 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 1
+2025-07-16 15:29:53,395 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 1
+2025-07-16 15:29:53,395 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 2
+2025-07-16 15:29:53,395 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 2
+2025-07-16 15:29:53,395 INFO    HandlerThread:54850 [system_monitor.py:finish():196] Stopping system monitor
+2025-07-16 15:29:53,395 INFO    HandlerThread:54850 [interfaces.py:finish():198] Joined cpu monitor
+2025-07-16 15:29:53,396 INFO    HandlerThread:54850 [interfaces.py:finish():198] Joined disk monitor
+2025-07-16 15:29:53,396 INFO    HandlerThread:54850 [interfaces.py:finish():198] Joined memory monitor
+2025-07-16 15:29:53,396 INFO    HandlerThread:54850 [interfaces.py:finish():198] Joined network monitor
+2025-07-16 15:29:53,397 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 2
+2025-07-16 15:29:53,397 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 3
+2025-07-16 15:29:53,397 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 3
+2025-07-16 15:29:53,397 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 3
+2025-07-16 15:29:53,397 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 4
+2025-07-16 15:29:53,397 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 4
+2025-07-16 15:29:53,398 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 4
+2025-07-16 15:29:53,398 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 5
+2025-07-16 15:29:53,398 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 5
+2025-07-16 15:29:53,398 INFO    SenderThread:54850 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2025-07-16 15:29:53,399 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 5
+2025-07-16 15:29:53,399 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 6
+2025-07-16 15:29:53,399 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 6
+2025-07-16 15:29:53,399 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 6
+2025-07-16 15:29:53,572 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 7
+2025-07-16 15:29:53,572 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 7
+2025-07-16 15:29:53,573 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 7
+2025-07-16 15:29:54,013 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/config.yaml
+2025-07-16 15:29:54,014 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-summary.json
+2025-07-16 15:29:54,993 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 8
+2025-07-16 15:29:54,995 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 8
+2025-07-16 15:29:54,997 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 8
+2025-07-16 15:29:54,997 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 9
+2025-07-16 15:29:54,997 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 9
+2025-07-16 15:29:54,998 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 9
+2025-07-16 15:29:54,998 INFO    SenderThread:54850 [dir_watcher.py:finish():359] shutting down directory watcher
+2025-07-16 15:29:55,017 INFO    Thread-12 :54850 [dir_watcher.py:_on_file_modified():289] file/dir modified: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/output.log
+2025-07-16 15:29:55,018 INFO    SenderThread:54850 [dir_watcher.py:finish():389] scan: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files
+2025-07-16 15:29:55,019 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/requirements.txt requirements.txt
+2025-07-16 15:29:55,019 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/output.log output.log
+2025-07-16 15:29:55,023 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/config.yaml config.yaml
+2025-07-16 15:29:55,027 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-summary.json wandb-summary.json
+2025-07-16 15:29:55,031 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/conda-environment.yaml conda-environment.yaml
+2025-07-16 15:29:55,035 INFO    SenderThread:54850 [dir_watcher.py:finish():403] scan save: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-metadata.json wandb-metadata.json
+2025-07-16 15:29:55,037 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 10
+2025-07-16 15:29:55,037 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 10
+2025-07-16 15:29:55,038 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 10
+2025-07-16 15:29:55,038 INFO    SenderThread:54850 [file_pusher.py:finish():169] shutting down file pusher
+2025-07-16 15:29:55,353 INFO    wandb-upload_0:54850 [upload_job.py:push():130] Uploaded file /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/requirements.txt
+2025-07-16 15:29:55,403 INFO    wandb-upload_1:54850 [upload_job.py:push():130] Uploaded file /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/output.log
+2025-07-16 15:29:55,477 INFO    wandb-upload_4:54850 [upload_job.py:push():130] Uploaded file /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/conda-environment.yaml
+2025-07-16 15:29:55,477 INFO    wandb-upload_3:54850 [upload_job.py:push():130] Uploaded file /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/wandb-summary.json
+2025-07-16 15:29:55,485 INFO    wandb-upload_2:54850 [upload_job.py:push():130] Uploaded file /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/files/config.yaml
+2025-07-16 15:29:55,688 INFO    Thread-11 (_thread_body):54850 [sender.py:transition_state():582] send defer: 11
+2025-07-16 15:29:55,689 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 11
+2025-07-16 15:29:55,689 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 11
+2025-07-16 15:29:55,690 INFO    SenderThread:54850 [file_pusher.py:join():175] waiting for file pusher
+2025-07-16 15:29:55,690 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 12
+2025-07-16 15:29:55,691 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 12
+2025-07-16 15:29:55,691 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 12
+2025-07-16 15:29:55,691 INFO    SenderThread:54850 [file_stream.py:finish():601] file stream finish called
+2025-07-16 15:29:55,807 INFO    SenderThread:54850 [file_stream.py:finish():605] file stream finish is done
+2025-07-16 15:29:55,807 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 13
+2025-07-16 15:29:55,807 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 13
+2025-07-16 15:29:55,808 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 13
+2025-07-16 15:29:55,808 INFO    SenderThread:54850 [sender.py:transition_state():582] send defer: 14
+2025-07-16 15:29:55,809 INFO    HandlerThread:54850 [handler.py:handle_request_defer():188] handle defer: 14
+2025-07-16 15:29:55,809 INFO    SenderThread:54850 [sender.py:send_request_defer():578] handle sender defer: 14
+2025-07-16 15:29:55,814 INFO    MainThread:54850 [wandb_run.py:_footer_history_summary_info():4188] rendering history
+2025-07-16 15:29:55,815 INFO    MainThread:54850 [wandb_run.py:_footer_history_summary_info():4220] rendering summary
+2025-07-16 15:29:55,815 INFO    MainThread:54850 [wandb_run.py:_footer_sync_info():4149] logging synced files
+2025-07-16 15:29:55,816 INFO    HandlerThread:54850 [handler.py:finish():897] shutting down handler
+2025-07-16 15:29:56,814 INFO    SenderThread:54850 [sender.py:finish():1587] shutting down sender
+2025-07-16 15:29:56,814 INFO    SenderThread:54850 [file_pusher.py:finish():169] shutting down file pusher
+2025-07-16 15:29:56,814 INFO    SenderThread:54850 [file_pusher.py:join():175] waiting for file pusher
+2025-07-16 15:29:56,816 INFO    WriterThread:54850 [datastore.py:close():296] close: /Users/xrong8/Documents/CXRProject/ConeClustering/wandb/run-20250716_152932-6ggcym5b/run-6ggcym5b.wandb

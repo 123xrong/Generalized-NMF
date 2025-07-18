@@ -1,0 +1,1 @@
+{"accuracy": 0.0, "ARI": 1.0, "NMI": 1.0, "normalized_loss": 0.08691828325850304, "reconstruction_error": 0.1989915367569189, "proportion_negatives": 0.0, "_timestamp": 1752690108.1432981, "_runtime": 26.75220513343811, "_step": 0, "_wandb": {"runtime": 27}}

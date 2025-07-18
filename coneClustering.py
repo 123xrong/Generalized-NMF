@@ -1,15 +1,16 @@
 import numpy as np
+import wandb
 from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 from sklearn.decomposition import NMF
 from nmf import *
 from sklearn.linear_model import Lasso
 from sklearn import cluster
-import wandb
 from libnmf.gnmf import GNMF
 from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
+from utils import *
 
 def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
     """
@@ -675,3 +676,127 @@ def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=50, random_state=
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
+
+def iter_ssc_nmf(X, K, r, true_labels, max_iter=50, random_state=None,
+                 alpha_ssc=0.01, l1_reg=0.1, use_sparse=True):
+    np.random.seed(random_state)
+    n = X.shape[1]
+    m = X.shape[0]
+
+    cluster_labels = ssc_func(X.T, K, alpha=alpha_ssc)
+    prev_labels = np.full(n, -1)
+
+    nmf_bases = [None] * K
+    nmf_components = [None] * K
+
+    def run_nmf_block(X_block, r, W_init=None, H_init=None):
+        if use_sparse:
+            return sparse_nmf(X_block, r, l1_reg=l1_reg, W_init=W_init, H_init=H_init)
+        else:
+            model = NMF(n_components=r, init='random', random_state=random_state,
+                               max_iter=500)
+            W = model.fit_transform(X_block)
+            H = model.components_
+            return W, H
+
+    for iteration in range(max_iter):
+        cluster_changed = [False] * K
+        sub_datasets = [X[:, cluster_labels == k_] for k_ in range(K)]
+
+        for k_ in range(K):
+            x_k = sub_datasets[k_]
+            if x_k.shape[1] == 0:
+                nmf_bases[k_] = None
+                nmf_components[k_] = None
+                continue
+
+            idx = (cluster_labels == k_)
+            cluster_changed[k_] = not np.array_equal(prev_labels[idx], cluster_labels[idx])
+            if not cluster_changed[k_] and nmf_bases[k_] is not None:
+                continue
+
+            x_k = np.maximum(x_k, 0)
+            W_init = nmf_bases[k_]
+            H_init = nmf_components[k_]
+            if H_init is not None and H_init.shape[1] != x_k.shape[1]:
+                H_init = None
+
+            Wk, Hk = run_nmf_block(x_k, r, W_init=W_init, H_init=H_init)
+            nmf_bases[k_] = Wk
+            nmf_components[k_] = Hk
+
+        # Recluster using SSC on fresh NMF latent features
+        X_latent = np.zeros((r, n))
+        for k_ in range(K):
+            idx_k = np.where(cluster_labels == k_)[0]
+            if len(idx_k) == 0:
+                continue
+            x_k = X[:, idx_k]
+            x_k = np.maximum(x_k, 0)
+            _, Hk = run_nmf_block(x_k, r)
+            if Hk.shape[1] != len(idx_k):
+                continue
+            X_latent[:, idx_k] = Hk
+
+        new_labels = ssc_func(X_latent.T, K, alpha=alpha_ssc)
+        num_changed = np.sum(new_labels != cluster_labels)
+        if num_changed == 0:
+            break
+
+        prev_labels = cluster_labels.copy()
+        cluster_labels = new_labels.copy()
+
+    # Final reconstruction
+    X_reconstructed = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(cluster_labels == k_)[0]
+        if len(idx_k) == 0:
+            continue
+        x_k = X[:, idx_k]
+        x_k = np.maximum(x_k, 0)
+        W_init = nmf_bases[k_]
+        H_init = nmf_components[k_]
+        if H_init is not None and H_init.shape[1] != x_k.shape[1]:
+            H_init = None
+
+        Wk, Hk = run_nmf_block(x_k, r, W_init=W_init, H_init=H_init)
+        X_reconstructed[:, idx_k] = Wk @ Hk
+
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+    proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
+
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives
+
+def ssc_sparse_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01, l1_reg=0.1):
+    np.random.seed(random_state)
+    
+    # 1. SSC clustering
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=alpha)
+
+    sub_datasets = []
+    subspace_bases = []
+    X_reconstructed = np.zeros_like(X)
+
+    for k_ in range(K):
+        idx_k = np.where(pred_labels == k_)[0]
+        X_k = X[:, idx_k]
+        sub_datasets.append(X_k)
+
+        if X_k.shape[1] == 0:
+            subspace_bases.append(None)
+            continue
+
+        # 2. Sparse NMF on each cluster
+        W, H = sparse_nmf(X_k, r=r, l1_reg=l1_reg)
+        subspace_bases.append(W)
+
+        # 3. Reconstruct each cluster
+        X_reconstructed[:, idx_k] = W @ H
+
+    # 4. Compute reconstruction error
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+
+    return acc, ARI, NMI, reconstruction_error
