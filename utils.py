@@ -2,7 +2,7 @@ import numpy as np
 from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering
-from sklearn.metrics.pairwise import cosine_similarity, rbf_kerne
+from sklearn.metrics.pairwise import cosine_similarity, rbf_kernel
 from sklearn.decomposition import NMF as SklearnNMF
 
 def ssc_func(X, K, alpha=0.01):
