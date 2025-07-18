@@ -800,3 +800,100 @@ def ssc_sparse_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=No
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
 
     return acc, ARI, NMI, reconstruction_error
+
+def iter_reg_coneclus_sparse_nmf(X, K, r, true_labels, max_iter=50, random_state=None,
+                                 alpha=0.01, ord=2, l1_reg=0.1):
+    np.random.seed(random_state)
+    n = X.shape[1]
+    m = X.shape[0]
+
+    # 1. Random init of cluster labels
+    cluster_labels = np.tile(np.arange(K), n // K + 1)[:n]
+    np.random.shuffle(cluster_labels)
+
+    # 2. Warm start: track old cluster assignment
+    prev_labels = np.full(n, -1)
+    
+    # 3. Store W, H for each cluster
+    nmf_bases = [None] * K
+    nmf_components = [None] * K
+
+    def sparse_nmf(X_block, r, W_init=None, H_init=None, n_iter=200):
+        W = np.random.rand(X_block.shape[0], r) if W_init is None else W_init
+        H = np.random.rand(r, X_block.shape[1]) if H_init is None else H_init
+        for _ in range(n_iter):
+            WH = W @ H
+            H *= (W.T @ X_block) / (W.T @ WH + l1_reg + 1e-10)
+            W *= (X_block @ H.T) / (W @ (H @ H.T) + 1e-10)
+        return W, H
+
+    for iteration in range(max_iter):
+        cluster_changed = [False] * K
+        sub_datasets = [X[:, cluster_labels == k_] for k_ in range(K)]
+
+        for k_ in range(K):
+            x_k = sub_datasets[k_]
+            if x_k.shape[1] == 0:
+                nmf_bases[k_] = None
+                nmf_components[k_] = None
+                continue
+
+            idx = (cluster_labels == k_)
+            cluster_changed[k_] = not np.array_equal(prev_labels[idx], cluster_labels[idx])
+            if not cluster_changed[k_] and nmf_bases[k_] is not None:
+                continue
+
+            x_k = np.maximum(x_k, 0)
+            W_init = nmf_bases[k_]
+            H_init = nmf_components[k_]
+            if H_init is not None and H_init.shape[1] != x_k.shape[1]:
+                H_init = None
+
+            Wk, Hk = sparse_nmf(x_k, r=r, W_init=W_init, H_init=H_init, n_iter=200)
+            nmf_bases[k_] = Wk
+            nmf_components[k_] = Hk
+
+        # 6. Reassign labels using projection distances
+        all_dists = np.full((K, n), np.inf)
+
+        for k_ in range(K):
+            U_k = nmf_bases[k_]
+            if U_k is None or U_k.shape[1] == 0:
+                continue
+            try:
+                # Project entire X onto each U_k
+                C_k, _, _, _ = np.linalg.lstsq(U_k, X, rcond=None)
+                C_k_relu = np.maximum(C_k, 0)
+                X_proj_k = U_k @ C_k_relu
+                dist_k = np.linalg.norm(X - X_proj_k, axis=0) + alpha * np.linalg.norm(C_k_relu, ord=ord, axis=0)
+                all_dists[k_] = dist_k
+            except np.linalg.LinAlgError:
+                continue
+
+        new_labels = np.argmin(all_dists, axis=0)
+        num_changed = np.sum(new_labels != cluster_labels)
+        if num_changed == 0:
+            break
+
+        prev_labels = cluster_labels.copy()
+        cluster_labels = new_labels.copy()
+
+    # 7. Final reconstruction
+    X_reconstructed = np.zeros_like(X)
+    for k_ in range(K):
+        idx_k = np.where(cluster_labels == k_)[0]
+        if len(idx_k) == 0:
+            continue
+        x_k = X[:, idx_k]
+        x_k = np.maximum(x_k, 0)
+        Wk, Hk = sparse_nmf(x_k, r=r, n_iter=200)
+        X_reconstructed[:, idx_k] = Wk @ Hk
+
+    # 8. Evaluation
+    reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
+    proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
+    acc = accuracy_score(true_labels, cluster_labels)
+    ARI = adjusted_rand_score(true_labels, cluster_labels)
+    NMI = normalized_mutual_info_score(true_labels, cluster_labels)
+
+    return acc, ARI, NMI, reconstruction_error, proportion_negatives
