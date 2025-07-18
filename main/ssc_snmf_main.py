@@ -24,11 +24,11 @@ def arg_parser():
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--alpha', type=float, default=0.01, help='Regularization parameter for ssc')
+    parser.add_argument('--alpha', type=float, default=2.3, help='Regularization parameter for ssc')
     parser.add_argument('--lmbda', type=float, default=0.05, help='Regularization parameter for sparse NMF')
     return parser.parse_args()
 
-def main(m, r, n_k, K, sigma=0.0, alpha=0.01, lmbda=0.05, random_state=None, max_iter=100):
+def main(m, r, n_k, K, sigma=0.0, alpha=2.3, lmbda=0.05, random_state=None, max_iter=100):
 
     wandb.init(
         project="coneClustering",
