@@ -54,26 +54,22 @@ def main(m, r, n_k, K, sigma, random_state, max_iter, alpha):
     X, labels_true = generate_synthetic_data(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     # 2. Run ONMF-ReLU algorithm
-    result = onmf_with_relu(X, K=K, r=r, true_labels=labels_true,
+    acc, ARI, NMI, reconstruction_error = onmf_with_relu(X, K=K, r=r, true_labels=labels_true,
                             lambda_reg=alpha, max_iter=max_iter, verbose=True)
 
     # 3. Log results
     wandb.log({
-        "accuracy": result["accuracy"],
-        "ARI": result["ARI"],
-        "NMI": result["NMI"],
-        "normalized_loss": result["normalized_loss"],
-        "reconstruction_error": result["reconstruction_error"],
-        "proportion_negatives": result["proportion_negatives"],
+        "accuracy": acc,
+        "ARI": ARI,
+        "NMI": NMI,
+        "reconstruction_error": reconstruction_error
     })
 
     print("\n--- Clustering Results ---")
-    print(f"Accuracy:             {result['accuracy']:.4f}")
-    print(f"Adjusted Rand Index:  {result['ARI']:.4f}")
-    print(f"NMI:                  {result['NMI']:.4f}")
-    print(f"Normalized Loss:      {result['normalized_loss']:.6f}")
-    print(f"Reconstruction Error: {result['reconstruction_error']:.4f}")
-    print(f"Negative Proportion:  {result['proportion_negatives']:.6f}")
+    print(f"Accuracy:             {acc:.4f}")
+    print(f"Adjusted Rand Index:  {ARI:.4f}")
+    print(f"NMI:                  {NMI:.4f}")
+    print(f"Reconstruction Error: {reconstruction_error:.4f}")
 
 if __name__ == "__main__":
     args = arg_parser()
