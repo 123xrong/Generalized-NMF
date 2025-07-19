@@ -976,6 +976,8 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
             num = X_k @ WtX.T
             denom = WWtX @ WtX.T + 1e-10
             W_k *= num / denom
+            
+            W_k /= np.linalg.norm(W_k, axis=0, keepdims=True) + 1e-10
 
         X_reconstructed[:, idx_k] = W_k @ W_k.T @ X_k
 
