@@ -37,7 +37,7 @@ def main(m, r, n_k, K, n_neighbors, sigma=0.0, random_state=None, max_iter=50):
     X, true_labels = data_simulation(m, r, n_k, K, sigma=sigma, random_state=random_state)
 
     acc, ARI, NMI, reconstruction_error = ssc_projnmf(
-        X, true_labels=true_labels)
+        X, K, r, true_labels=true_labels)
 
     wandb.log({
     "accuracy": acc,

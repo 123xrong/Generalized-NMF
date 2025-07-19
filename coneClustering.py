@@ -938,7 +938,7 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1):
 
     return acc, ARI, NMI, reconstruction_error
 
-def ssc_projnmf(X, true_labels, r, alpha=0.01, max_iter=500):
+def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
     """
     SSC + Projective NMF pipeline for representation learning.
     
