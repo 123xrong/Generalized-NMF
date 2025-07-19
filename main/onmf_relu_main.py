@@ -10,7 +10,7 @@ import numpy as np
 import argparse
 import wandb
 from sklearn.datasets import make_blobs
-from onmf_relu import *
+from coneClustering import *
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Orthogonal NMF with ReLU regularization")

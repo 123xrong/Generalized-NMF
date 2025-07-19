@@ -11,6 +11,8 @@ from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
 from utils import *
+from scipy.optimize import nnls, minimize
+from sklearn.preprocessing import normalize
 
 def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
     """
@@ -981,3 +983,79 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
 
     return acc, ARI, NMI, reconstruction_error
 
+def onmf_with_relu(X, K, true_labels, r=None, max_iter=100, lambda_reg=0.1, tol=1e-4, verbose=False):
+    """
+    Orthogonal NMF with ReLU penalty, evaluation-focused version.
+
+    Parameters:
+        X: (d, n) data matrix
+        K: number of clusters
+        true_labels: ground-truth labels (n,)
+        r: rank of factorization
+        lambda_reg: ReLU penalty weight
+        max_iter: maximum iterations
+        tol: stopping tolerance
+        verbose: print intermediate loss
+
+    Returns:
+        acc: clustering accuracy from argmax(H)
+        ARI: adjusted Rand index
+        NMI: normalized mutual info
+        reconstruction_error: ||X - WH|| / ||X||
+    """
+    m, n = X.shape
+    if r is None:
+        r = K
+
+    norm_X = np.linalg.norm(X, 'fro')**2
+    X = np.maximum(X, 0)
+
+    # Initialize W
+    U, _, _ = np.linalg.svd(X @ X.T)
+    W = np.maximum(U[:, :r], 1e-8)
+    W = normalize(W, axis=0)
+
+    # Initialize H via NNLS
+    H = np.zeros((r, n))
+    for i in range(n):
+        H[:, i], _ = nnls(W, X[:, i])
+
+    prev_loss = None
+    for iteration in range(max_iter):
+        # Update H (L1-regularized least squares)
+        for i in range(n):
+            def obj(h):
+                return np.linalg.norm(X[:, i] - W @ h)**2 + lambda_reg * np.sum(h)
+
+            bounds = [(0, None)] * r
+            res = minimize(obj, H[:, i], bounds=bounds, method='L-BFGS-B')
+            H[:, i] = res.x
+
+        # Update W via SVD (orthogonal Procrustes)
+        A = X @ H.T
+        U, _, Vt = np.linalg.svd(A, full_matrices=False)
+        W = U @ Vt
+        W = np.maximum(W, 1e-8)
+        W = normalize(W, axis=0)
+
+        # Normalized loss
+        reconstruction = W @ H
+        rec_loss = np.linalg.norm(X - reconstruction, 'fro')**2
+        l1_penalty = lambda_reg * np.sum(H)
+        total_loss = (rec_loss + l1_penalty) / norm_X
+
+        if verbose and iteration % 10 == 0:
+            print(f"[Iter {iteration}] Normalized Loss: {total_loss:.4f}")
+
+        if prev_loss is not None and abs(prev_loss - total_loss) < tol:
+            break
+        prev_loss = total_loss
+
+    # Evaluate clustering
+    labels_pred = H.argmax(axis=0)
+    acc = accuracy_score(true_labels, labels_pred)
+    ARI = adjusted_rand_score(true_labels, labels_pred)
+    NMI = normalized_mutual_info_score(true_labels, labels_pred)
+    recon_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
+
+    return acc, ARI, NMI, recon_error
