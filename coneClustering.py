@@ -898,7 +898,7 @@ def iter_reg_coneclus_sparse_nmf(X, K, r, true_labels, max_iter=50, random_state
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
-def gpca_nmf(X, K, r, true_labels, use_sparse=True, l1_reg=0.1):
+def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1):
     """
     GPCA + NMF pipeline using sklearn-friendly tools.
     """
@@ -937,3 +937,50 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=True, l1_reg=0.1):
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
 
     return acc, ARI, NMI, reconstruction_error
+
+def ssc_projnmf(X, true_labels, r, alpha=0.01, max_iter=500):
+    """
+    SSC + Projective NMF pipeline for representation learning.
+    
+    Parameters:
+        X: (d, n) data matrix
+        K: number of clusters
+        r: NMF rank
+        true_labels: ground-truth labels (n,)
+        max_iter: iterations for projective NMF
+    
+    Returns:
+        acc: clustering accuracy from SSC
+        ARI: adjusted Rand index from SSC
+        NMI: normalized mutual info from SSC
+        reconstruction_error: ||X - \hat{X}|| / ||X||
+    """
+    n = X.shape[1]
+    X_reconstructed = np.zeros_like(X)
+
+    # Step 1: SSC clustering
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=0.01)
+
+    # Step 2: Cluster-wise Projective NMF
+    for k in range(K):
+        idx_k = np.where(pred_labels == k)[0]
+        X_k = X[:, idx_k]
+        if X_k.shape[1] == 0:
+            continue
+
+        W_k = np.abs(np.random.randn(X_k.shape[0], r))
+
+        for it in range(max_iter):
+            WtX = W_k.T @ X_k
+            WWtX = W_k @ WtX
+            num = X_k @ WtX.T
+            denom = WWtX @ WtX.T + 1e-10
+            W_k *= num / denom
+
+        X_reconstructed[:, idx_k] = W_k @ W_k.T @ X_k
+
+    # Step 3: Evaluate
+    reconstruction_error = np.linalg.norm(X - X_reconstructed) / np.linalg.norm(X)
+
+    return acc, ARI, NMI, reconstruction_error
+
