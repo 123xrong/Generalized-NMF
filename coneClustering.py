@@ -959,7 +959,7 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
     X_reconstructed = np.zeros_like(X)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=0.01)
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=alpha)
 
     # Step 2: Cluster-wise Projective NMF
     for k in range(K):
@@ -968,17 +968,7 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
         if X_k.shape[1] == 0:
             continue
 
-        W_k = np.abs(np.random.randn(X_k.shape[0], r))
-
-        for it in range(max_iter):
-            WtX = W_k.T @ X_k
-            WWtX = W_k @ WtX
-            num = X_k @ WtX.T
-            denom = WWtX @ WtX.T + 1e-10
-            W_k *= num / denom
-            
-            W_k /= np.linalg.norm(W_k, axis=0, keepdims=True) + 1e-10
-
+        W_k, loss_k = projective_nmf_orthogonal(X_k, r=r, max_iter=max_iter)
         X_reconstructed[:, idx_k] = W_k @ W_k.T @ X_k
 
     # Step 3: Evaluate

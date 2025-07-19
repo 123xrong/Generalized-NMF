@@ -4,6 +4,7 @@ from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering
 from sklearn.metrics.pairwise import cosine_similarity, rbf_kernel
 from sklearn.decomposition import NMF as SklearnNMF
+from numpy.linalg import qr
 
 def ssc_func(X, K, alpha=0.01):
     """Basic SSC implementation with spectral clustering."""
@@ -43,3 +44,66 @@ def approximate_gpca(X, K, affinity='cosine', gamma=20):
     np.fill_diagonal(S, 0)
     clustering = SpectralClustering(n_clusters=K, affinity='precomputed', random_state=0)
     return clustering.fit_predict(S)
+
+def projective_nmf(X, r, max_iter=200, tol=1e-4):
+    """
+    Projective NMF: X ≈ W Wᵗ X, with W ≥ 0 and Wᵗ W = I (softly)
+    """
+    d, n = X.shape
+    W = np.abs(np.random.randn(d, r))
+
+    for it in range(max_iter):
+        WtX = W.T @ X
+        WWtX = W @ WtX
+        num = X @ WtX.T
+        denom = WWtX @ WtX.T + 1e-10
+        W *= num / denom
+
+        loss = np.linalg.norm(X - W @ W.T @ X, 'fro')**2
+        if it % 50 == 0:
+            print(f"[ProjNMF] Iter {it}: Loss = {loss:.4f}")
+    return W, loss
+
+
+def projective_nmf_orthogonal(X, r, max_iter=200, tol=1e-4, verbose=False):
+    """
+    Projective NMF with hard orthogonality constraint: WᵗW = I, W ≥ 0.
+
+    Args:
+        X: (d, n) input matrix
+        r: rank of factorization
+        max_iter: number of iterations
+        tol: tolerance for convergence
+        verbose: print loss if True
+
+    Returns:
+        W: (d, r) nonnegative orthonormal basis matrix
+        loss: final reconstruction loss
+    """
+    d, n = X.shape
+    W = np.abs(np.random.randn(d, r))  # non-negative init
+
+    for it in range(max_iter):
+        # Compute gradient direction
+        WtX = W.T @ X
+        grad = -2 * X @ WtX.T + 2 * W @ WtX @ WtX.T
+
+        # Gradient step
+        W -= 0.01 * grad
+        W = np.maximum(W, 1e-10)  # nonnegativity
+
+        # Enforce orthogonality: QR + rectification
+        Q, _ = np.linalg.qr(W)  # orthonormal columns
+        W = np.maximum(Q, 0)    # project back to nonnegativity
+
+        # Optional: normalize columns (not strictly necessary)
+        W /= np.linalg.norm(W, axis=0, keepdims=True) + 1e-10
+
+        # Compute reconstruction loss
+        X_proj = W @ W.T @ X
+        loss = np.linalg.norm(X - X_proj, 'fro')**2
+
+        if verbose and it % 50 == 0:
+            print(f"[Iter {it}] Loss: {loss:.4f}")
+
+    return W, loss
