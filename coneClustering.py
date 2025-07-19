@@ -982,5 +982,10 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
     # Step 3: Evaluate
     reconstruction_error = np.linalg.norm(X - X_reconstructed) / np.linalg.norm(X)
 
+    print("Norm of X:", np.linalg.norm(X))
+    print("Norm of X_reconstructed:", np.linalg.norm(X_reconstructed))
+    print("Absolute error:", np.linalg.norm(X - X_reconstructed))
+    print("Relative error:", np.linalg.norm(X - X_reconstructed) / np.linalg.norm(X))
+
     return acc, ARI, NMI, reconstruction_error
 
