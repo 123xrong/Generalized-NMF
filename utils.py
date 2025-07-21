@@ -4,7 +4,6 @@ from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering
 from sklearn.metrics.pairwise import cosine_similarity, rbf_kernel
 from sklearn.decomposition import NMF as SklearnNMF
-from sklearn.utils.linear_assignment_ import linear_assignment
 from scipy.optimize import linear_sum_assignment
 from numpy.linalg import qr
 
