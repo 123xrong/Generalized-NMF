@@ -43,16 +43,16 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         # 0 truncate negative values
         X_full = np.maximum(X_full, 0)
     
-        if model == 'sscnmf':
-            project_name = 'sscnmf-MNIST'
-        elif model == 'ricc':
-            project_name = 'ricc-MNIST'
-        elif model == 'gnmf':
-            project_name = 'gnmf-MNIST'
-        elif model == 'gpcanmf':
-            project_name = 'gpcanmf-MNIST'
-        elif model == 'onmf_relu':
-            project_name = 'onmf_relu-MNIST'
+    if model == 'sscnmf':
+        project_name = 'sscnmf-MNIST'
+    elif model == 'ricc':
+        project_name = 'ricc-MNIST'
+    elif model == 'gnmf':
+        project_name = 'gnmf-MNIST'
+    elif model == 'gpcanmf':
+        project_name = 'gpcanmf-MNIST'
+    elif model == 'onmf_relu':
+        project_name = 'onmf_relu-MNIST'
 
     wandb.init(
         project="coneClustering",
