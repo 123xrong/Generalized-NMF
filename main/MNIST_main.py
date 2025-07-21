@@ -31,7 +31,7 @@ def arg_parser():
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
     y_full = mnist.target.to_numpy().astype(int) 
