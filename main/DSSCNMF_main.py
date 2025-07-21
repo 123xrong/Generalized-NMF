@@ -32,12 +32,31 @@ def main(n_components, alpha=0.01, max_iter=200, tol=1e-4, random_state=42, hidd
     X_full = faces.data.T  # shape (4096, 400)
     true_labels = faces.target
 
+    wandb.init(
+        project="coneClustering",
+        name="DSSCNMF-Olivetti-Faces",
+        config={
+            "n_components": n_components,
+            "alpha": alpha,
+            "max_iter": max_iter,
+            "tol": tol,
+            "hidden_dim": hidden_dim
+        }
+    )
     input_dim = X_full.shape[0]
     encoder = ShallowEncoder(input_dim=input_dim, hidden_dim=hidden_dim)
 
     acc, ari, nmi, C, W, H = encoder_ssc_then_nmf_pipeline(
         X_full, encoder, rank=n_components, n_clusters=40,
         true_labels=true_labels, alpha=alpha)
+    wandb.log({
+        "accuracy": acc,
+        "ARI": ari,
+        "NMI": nmi,
+        "C_shape": C.shape,
+        "W_shape": W.shape,
+        "H_shape": H.shape
+    })
 
     print(f"Accuracy: {acc:.4f}, ARI: {ari:.4f}, NMI: {nmi:.4f}")
 
