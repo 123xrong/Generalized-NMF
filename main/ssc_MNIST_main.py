@@ -12,6 +12,7 @@ from sklearn.metrics import adjusted_rand_score
 from coneClustering import *
 import wandb
 from sklearn.linear_model import Lasso
+from sklearn.preprocessing import normalize
 from sklearn.datasets import fetch_olivetti_faces, fetch_openml  # Similar, or use your ORL data
 
 def arg_parser():
@@ -46,7 +47,7 @@ def main(r, n, K, sigma=0.0, alpha = 1e-2, random_state=None, max_iter=50, tol=1
     true_labels = np.concatenate(labels) 
     X_subset = X_subset.T
     # normalize x_subset
-    X_subset = np.normalize(X_subset, axis=1)
+    X_subset = normalize(X_subset, axis=1)
 
     print(X_subset.shape)
     print(true_labels.shape)
