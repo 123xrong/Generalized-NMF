@@ -20,6 +20,7 @@ from sklearn.datasets import fetch_olivetti_faces, fetch_openml
 def arg_parser():
     parser = argparse.ArgumentParser(description="DSSCNMF")
     parser.add_argument('--n_components', type=int, default=10, help='Number of components for NMF')
+    parser.add_argument('--alpha', type=float, default=0.01, help='Regularization parameter for SSC')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations for NMF')
     parser.add_argument('--tol', type=float, default=1e-4, help='Tolerance for stopping criterion')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for NMF')
