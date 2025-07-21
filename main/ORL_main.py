@@ -43,6 +43,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         # 0 truncate negative values
         X_full = np.maximum(X_full, 0)
     
+    print(f"Received model: {model}")
     if model == 'sscnmf':
         project_name = 'sscnmf-MNIST'
     elif model == 'ricc':
