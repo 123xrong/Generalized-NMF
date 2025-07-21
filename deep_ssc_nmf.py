@@ -18,23 +18,23 @@ class ShallowEncoder(nn.Module):
 
 def compute_sparse_coeff(X, alpha=0.01):
     """
-    Perform sparse self-expressiveness: H ≈ HC
-    Input X: (m, n), original data matrix
-    Returns: sparse coefficient matrix C (n x n)
+    Input X: (n_samples, n_features)
+    Returns: sparse coefficient matrix C (n_samples x n_samples)
     """
-    n = X.shape[1]
+    n = X.shape[0]
     C = np.zeros((n, n))
 
     for i in range(n):
-        x_i = X[:, i]
-        X_ = np.delete(X, i, axis=1)
+        x_i = X[i, :]
+        X_ = np.delete(X, i, axis=0)
         clf = Lasso(alpha=alpha, fit_intercept=False, max_iter=1000)
-        clf.fit(X_.T, x_i)
+        clf.fit(X_, x_i)
         coef = clf.coef_
         C[i, :i] = coef[:i]
         C[i, i+1:] = coef[i:]
 
     return C.T
+
 
 def nmf_from_sparse(C, rank, max_iter=200):
     """
@@ -83,7 +83,7 @@ def encoder_ssc_then_nmf_pipeline(X, encoder, rank, n_clusters, true_labels, alp
     """
     with torch.no_grad():
         X_tensor = torch.tensor(X.T, dtype=torch.float32)  # shape: (n, d)
-        H_latent = encoder(X_tensor).numpy().T  # shape: (d', n)
+        H_latent = encoder(X_tensor).numpy()  # shape: (d', n)
 
     C = compute_sparse_coeff(H_latent, alpha=alpha)
     W, H = nmf_from_sparse(C, rank=rank)
