@@ -27,7 +27,7 @@ def arg_parser():
     parser.add_argument('--hidden_dim', type=int, default=64, help='Hidden dimension for encoder')
     return parser.parse_args()
 
-def main(n_components, max_iter=200, tol=1e-4, random_state=42, hidden_dim=64):
+def main(n_components, alpha=0.01, max_iter=200, tol=1e-4, random_state=42, hidden_dim=64):
     faces = fetch_olivetti_faces(shuffle=True, random_state=random_state)
     X_full = faces.data.T  # shape (4096, 400)
     true_labels = faces.target
@@ -37,7 +37,7 @@ def main(n_components, max_iter=200, tol=1e-4, random_state=42, hidden_dim=64):
 
     acc, ari, nmi, C, W, H = encoder_ssc_then_nmf_pipeline(
         X_full, encoder, rank=n_components, n_clusters=40,
-        true_labels=true_labels, alpha=0.01)
+        true_labels=true_labels, alpha=alpha)
 
     print(f"Accuracy: {acc:.4f}, ARI: {ari:.4f}, NMI: {nmi:.4f}")
 
