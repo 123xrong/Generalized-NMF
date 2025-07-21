@@ -208,27 +208,38 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
 
 def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alpha=0.01):
     np.random.seed(random_state)
+
+    # Step 1: SSC clustering
     pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=alpha)
+
+    # Step 2: Initialize containers
     sub_datasets = []
     subspace_bases = []
     X_new = np.zeros_like(X)
+
+    # Step 3: Per-cluster NMF
     for k_ in range(K):
         idx_k = np.where(pred_labels == k_)[0]
-        sub_datasets.append(X[:, idx_k])
+        X_k = X[:, idx_k]
+        sub_datasets.append(X_k)
 
-        if len(sub_datasets[k_]) == 0:
+        if X_k.shape[1] == 0:
             subspace_bases.append(None)
             continue
-        else:
-            U_k = NMF(n_components=r, random_state=random_state, max_iter=max_iter).fit_transform(sub_datasets[k_])
-            U_k = np.where(U_k > 0, U_k, 0)
-            subspace_bases.append(U_k[:, :r])
 
-        X_k = sub_datasets[k_]
+        # Fit NMF and store basis
+        U_k = NMF(n_components=r, random_state=random_state, max_iter=max_iter).fit_transform(X_k)
+        U_k = np.maximum(U_k, 0)  # optional ReLU
+        subspace_bases.append(U_k[:, :r])
+
+        # Project back into subspace
         X_new[:, idx_k] = U_k @ np.linalg.pinv(U_k.T @ U_k) @ (U_k.T @ X_k)
+
+    # Step 4: Evaluate reconstruction error
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
 
     return acc, ARI, NMI, reconstruction_error
+
 
 def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf_method='anls', nmf_solver='cd'):
     """
