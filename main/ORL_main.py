@@ -65,7 +65,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
             X_full, K, r, true_labels=true_labels, alpha=alpha)
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_full, K, r, true_labels=true_labels)
+            X_full, K, r, true_labels=true_labels, alpha=alpha)
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
             X_full, K, true_labels=true_labels)
