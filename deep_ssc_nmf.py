@@ -34,7 +34,7 @@ def compute_sparse_coeff(X, alpha=0.01):
         clf = Lasso(alpha=alpha, fit_intercept=False, max_iter=1000)
 
         print(f"shape of X_.T: {X_.T.shape}, shape of x_i: {x_i.shape}")
-        clf.fit(X_.T, x_i)
+        clf.fit(X_, x_i)
 
         coef = clf.coef_
         C[i, :i] = coef[:i]
