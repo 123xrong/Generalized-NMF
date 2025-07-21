@@ -113,8 +113,8 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
             break
         cluster_labels = new_labels.copy()
         iter += 1
-    
-    acc = accuracy_score(true_labels, cluster_labels)
+
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
     
@@ -151,7 +151,7 @@ def baseline_ssc(X, true_labels, alpha):
     print("length of cluster_labels: ", len(cluster_labels))
 
     # Return ARI
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -180,7 +180,7 @@ def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_stat
                 best_k = k_
         new_labels[i] = best_k
 
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -364,7 +364,7 @@ def coneClus_iterative(X, K, r, true_labels, max_iter=50, random_state=None, nmf
     negatives = np.sum(X_new < 0)
     proportion_negatives = negatives / X_new.size
     reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)  # Final loss of reconstruction
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -464,7 +464,7 @@ def iter_reg_coneclus(X, K, r, true_labels, max_iter=50, random_state=None,
 
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -556,7 +556,7 @@ def iter_reg_coneclus_optimized(X, K, r, true_labels, max_iter=50, random_state=
     # Metrics
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -576,7 +576,7 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight
     H_array = np.asarray(H)
     predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H_array.T)
 
-    acc = accuracy_score(true_labels, predicted_labels)
+    acc = remap_accuracy(true_labels, predicted_labels)
     ari = adjusted_rand_score(true_labels, predicted_labels)
     nmi = normalized_mutual_info_score(true_labels, predicted_labels)
     reconstruction_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
@@ -684,7 +684,7 @@ def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=50, random_state=
     # 8. Evaluation
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -777,7 +777,7 @@ def iter_ssc_nmf(X, K, r, true_labels, max_iter=50, random_state=None,
 
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -905,7 +905,7 @@ def iter_reg_coneclus_sparse_nmf(X, K, r, true_labels, max_iter=50, random_state
     # 8. Evaluation
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
     proportion_negatives = np.sum(X_reconstructed < 0) / X_reconstructed.size
-    acc = accuracy_score(true_labels, cluster_labels)
+    acc = remap_accuracy(true_labels, cluster_labels)
     ARI = adjusted_rand_score(true_labels, cluster_labels)
     NMI = normalized_mutual_info_score(true_labels, cluster_labels)
 
@@ -944,7 +944,7 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1):
         X_reconstructed[:, idx_k] = W @ H
 
     # Step 3: Evaluation
-    acc = accuracy_score(true_labels, pred_labels)
+    acc = remap_accuracy(true_labels, pred_labels)
     ARI = adjusted_rand_score(true_labels, pred_labels)
     NMI = normalized_mutual_info_score(true_labels, pred_labels)
     reconstruction_error = np.linalg.norm(X_reconstructed - X) / np.linalg.norm(X)
@@ -1064,7 +1064,7 @@ def onmf_with_relu(X, K, true_labels, r=None, max_iter=100, lambda_reg=0.1, tol=
 
     # Evaluate clustering
     labels_pred = H.argmax(axis=0)
-    acc = accuracy_score(true_labels, labels_pred)
+    acc = remap_accuracy(true_labels, labels_pred)
     ARI = adjusted_rand_score(true_labels, labels_pred)
     NMI = normalized_mutual_info_score(true_labels, labels_pred)
     recon_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)

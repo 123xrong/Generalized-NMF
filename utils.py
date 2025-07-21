@@ -4,6 +4,8 @@ from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering
 from sklearn.metrics.pairwise import cosine_similarity, rbf_kernel
 from sklearn.decomposition import NMF as SklearnNMF
+from sklearn.utils.linear_assignment_ import linear_assignment
+from scipy.optimize import linear_sum_assignment
 from numpy.linalg import qr
 
 def ssc_func(X, K, alpha=0.01):
@@ -107,3 +109,37 @@ def projective_nmf_orthogonal(X, r, max_iter=200, tol=1e-4, verbose=False):
             print(f"[Iter {it}] Loss: {loss:.4f}")
 
     return W, loss
+
+def remap_accuracy(y_true, y_pred):
+    """
+    Compute clustering accuracy with optimal label permutation using Hungarian algorithm.
+    
+    Parameters:
+        y_true (array-like): Ground truth labels, shape (n_samples,)
+        y_pred (array-like): Predicted cluster labels, shape (n_samples,)
+    
+    Returns:
+        acc (float): Clustering accuracy after optimal label alignment
+    """
+    y_true = np.asarray(y_true)
+    y_pred = np.asarray(y_pred)
+    
+    assert y_true.shape == y_pred.shape
+    D = max(y_pred.max(), y_true.max()) + 1
+    cost_matrix = np.zeros((D, D), dtype=np.int64)
+
+    for i in range(len(y_true)):
+        cost_matrix[y_pred[i], y_true[i]] += 1
+
+    # Solve the assignment problem
+    row_ind, col_ind = linear_sum_assignment(-cost_matrix)  # maximize total match
+
+    # Create label mapping
+    optimal_mapping = dict(zip(row_ind, col_ind))
+
+    # Map predicted labels
+    y_pred_aligned = np.array([optimal_mapping[yi] for yi in y_pred])
+
+    # Compute accuracy
+    acc = accuracy_score(y_true, y_pred_aligned)
+    return acc
