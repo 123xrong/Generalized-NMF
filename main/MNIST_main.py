@@ -86,7 +86,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
             X_subset, K, r, true_labels=true_labels)
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_subset, K, r, true_labels=true_labels)
+            X_subset, K, true_labels=true_labels)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X_subset, K, r, true_labels=true_labels, l1_reg=l1_reg)
