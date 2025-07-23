@@ -86,8 +86,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
             lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
-            X_full, K=K, r=r, true_labels=true_labels,
-            max_iter=max_iter)
+            X_full, K=K, r=r, true_labels=true_labels)
 
     wandb.log({
         "accuracy": acc,
