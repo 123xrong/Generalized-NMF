@@ -83,23 +83,23 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
 
     if model == 'sscnmf':
         acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
-            X_subset, K, r, true_labels=true_labels, alpha=alpha)
+            X_subset, K, r, true_labels=y_subset, alpha=alpha)
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_subset, K, r, true_labels=true_labels, alpha=alpha)
+            X_subset, K, r, true_labels=y_subset, alpha=alpha)
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_subset, K, true_labels=true_labels, lmd=l1_reg)
+            X_subset, K, true_labels=y_subset, lmd=l1_reg)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
-            X_subset, K, r, true_labels=true_labels, l1_reg=l1_reg)
+            X_subset, K, r, true_labels=y_subset, l1_reg=l1_reg)
     elif model == 'onmf_relu':
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X_subset, K=K, r=r, true_labels=true_labels,
+            X_subset, K=K, r=r, true_labels=y_subset,
             lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
-            X_subset, K=K, r=r, true_labels=true_labels)
+            X_subset, K=K, r=r, true_labels=y_subset)
 
     wandb.log({
         "accuracy": acc,
