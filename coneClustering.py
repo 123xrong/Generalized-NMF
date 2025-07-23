@@ -10,6 +10,7 @@ from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
+from scipy.sparse.linalg import svds
 from utils import *
 from scipy.optimize import nnls, minimize
 from sklearn.preprocessing import normalize
@@ -1071,3 +1072,29 @@ def onmf_with_relu(X, K, true_labels, r=None, max_iter=100, lambda_reg=0.1, tol=
     recon_error = rec_loss / norm_X  # final normalized error
 
     return acc, ARI, NMI, recon_error
+
+def low_rank_representation(X, lambda_reg=1.0):
+    X = normalize(X, axis=0)
+    U, S, Vt = svds(X, k=min(100, min(X.shape) - 1))
+    Z = Vt.T @ Vt
+    return Z
+
+def cluster_from_affinity(C, n_clusters):
+    C_sym = 0.5 * (np.abs(C) + np.abs(C.T))
+    clustering = SpectralClustering(n_clusters=n_clusters, affinity='precomputed', assign_labels='kmeans', random_state=42)
+    labels = clustering.fit_predict(C_sym)
+    return labels
+
+def lrr_nmf(X, n_clusters, rank, true_labels):
+    C = low_rank_representation(X)
+    model = NMF(n_components=rank, init='nndsvda', random_state=42, max_iter=500)
+    W = model.fit_transform(np.abs(C))
+    H = model.components_
+    pred_labels = cluster_from_affinity(C, n_clusters=n_clusters)
+
+    acc = np.mean(pred_labels == true_labels)
+    ari = adjusted_rand_score(true_labels, pred_labels)
+    nmi = normalized_mutual_info_score(true_labels, pred_labels)
+    recon_error = np.linalg.norm(C - W @ H) / np.linalg.norm(C)
+
+    return acc, ari, nmi, recon_error
