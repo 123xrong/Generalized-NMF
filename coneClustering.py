@@ -1085,9 +1085,9 @@ def cluster_from_affinity(C, n_clusters):
     labels = clustering.fit_predict(C_sym)
     return labels
 
-def lrr_nmf(X, K, rank, true_labels):
+def lrr_nmf(X, K, r, true_labels):
     C = low_rank_representation(X)
-    model = NMF(n_components=rank, init='nndsvda', random_state=42, max_iter=500)
+    model = NMF(n_components=r, init='nndsvda', random_state=42, max_iter=500)
     W = model.fit_transform(np.abs(C))
     H = model.components_
     pred_labels = cluster_from_affinity(C, n_clusters=K)
