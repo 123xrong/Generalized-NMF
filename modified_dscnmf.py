@@ -80,6 +80,9 @@ def dsc_nmf_baseline(X_full, K, r, true_labels, hidden_dims=[256, 64], epochs=10
     acc = accuracy_score(true_labels, pred_labels)
     ari = adjusted_rand_score(true_labels, pred_labels)
     nmi = normalized_mutual_info_score(true_labels, pred_labels)
-    recon_loss = ((X_tensor.numpy() - X_recon.detach().numpy())**2).mean()
+    numerator = np.linalg.norm(X_tensor.numpy() - X_recon.detach().numpy())
+    denominator = np.linalg.norm(X_tensor.numpy())
+    recon_error = numerator / (denominator + 1e-8)  # small epsilon to avoid divide-by-zero
 
-    return acc, ari, nmi, recon_loss
+
+    return acc, ari, nmi, recon_error
