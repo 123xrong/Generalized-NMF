@@ -12,22 +12,11 @@ import argparse
 import wandb
 from coneClustering import *
 from modified_dscnmf import *
-from sklearn.datasets import fetch_20newsgroups
-from nltk.corpus import stopwords
-from nltk import download
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
-
-def clean(text):
-    text = re.sub(r'\W+', ' ', text.lower())
-    text = re.sub(r'\b\d+\b', '', text)
-    text = ' '.join(word for word in text.split() if word not in stop_words)
-    return text
-
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
-    # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
+    parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
@@ -40,78 +29,48 @@ def arg_parser():
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
-    categories = ['comp.graphics', 'rec.sport.hockey', 'sci.med', 'talk.politics.misc']  # example
-    data = fetch_20newsgroups(subset='all', categories=categories, remove=('headers', 'footers', 'quotes'))
-    texts = data.data
-    true_labels = data.target
+def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+    X, true_labels = data_simulation(m, r, n, K, sigma=sigma, random_state=random_state)
 
-    download('stopwords')
-    stop_words = set(stopwords.words('english'))
-
-    def clean(text):
-        text = re.sub(r'\W+', ' ', text.lower())
-        text = re.sub(r'\b\d+\b', '', text)
-        text = ' '.join(word for word in text.split() if word not in stop_words)
-        return text
-
-    cleaned_texts = [clean(doc) for doc in texts]
-
-    vectorizer = TfidfVectorizer(max_df=0.5, min_df=5)
-    X = vectorizer.fit_transform(cleaned_texts)  # shape: (n_samples, n_features)
-    X = X.T  # transpose to shape (m, n) = (features, documents)
-
-    X_dense = X.toarray()
-    X_dense = np.maximum(X_dense, 0)  # ensure nonnegativity (may already be true)
-
-    X_norm = normalize(X_dense, axis=0)
-
+    X = normalize(X, axis=1)
     print(f"Received model: {model}")
     if model == 'sscnmf':
-        project_name = 'sscnmf-MNIST'
-    elif model == 'ricc':
-        project_name = 'ricc-MNIST'
-    elif model == 'gnmf':
-        project_name = 'gnmf-MNIST'
-    elif model == 'gpcanmf':
-        project_name = 'gpcanmf-MNIST'
-    elif model == 'onmf_relu':
-        project_name = 'onmf_relu-MNIST'
-    elif model == 'dscnmf':
-        project_name = 'dscnmf-MNIST'
-
-    wandb.init(
-        project="coneClustering",
-        name=project_name
-    )
-
-    if model == 'sscnmf':
+        project_name = 'sscnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
-            X_dense, K, r, true_labels=true_labels, alpha=alpha)
+            X, K=K, r=r, true_labels=true_labels, alpha=alpha)
     elif model == 'ricc':
-        acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_dense, K, r, true_labels=true_labels, alpha=alpha)
+        project_name = 'ricc-synthetic'
+        acc, ARI, NMI, reconstruction_error = iter_reg_coneclus_warmstart(
+            X, K=K, r=r, true_labels=true_labels,
+            alpha=alpha, max_iter=max_iter, tol=tol)
     elif model == 'gnmf':
+        project_name = 'gnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_dense, K, true_labels=true_labels, lmd=l1_reg)
+            X, K=K, r=r, true_labels=true_labels,
+            lmd=l1_reg, tol=1e-4, verbose=False)
     elif model == 'gpcanmf':
+        project_name = 'gpcanmf-synthetic'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
-            X_dense, K, r, true_labels=true_labels, l1_reg=l1_reg)
+            X, K=K, r=r, true_labels=true_labels,
+            l1_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'onmf_relu':
+        project_name = 'onmf_relu-synthetic'
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X_dense, K=K, r=r, true_labels=true_labels,
+            X, K=K, r=r, true_labels=true_labels,
             lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
+        project_name = 'dscnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
-            X_dense, K=K, r=r, true_labels=true_labels)
-
+            X, K=K, r=r, true_labels=true_labels)
+    else:
+        raise ValueError(f"Unknown model: {model}")
     wandb.log({
         "accuracy": acc,
         "ARI": ARI,
         "NMI": NMI,
         "reconstruction_error": reconstruction_error
     })
-
+    
     print("\n--- Results ---")
     print(f"Clustering Accuracy: {acc:.4f}")
     print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
@@ -119,17 +78,24 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     print(f"Final Reconstruction Loss: {reconstruction_error:.4f}")
     wandb.finish()
 
+    return acc, ARI, NMI, reconstruction_error
+
 if __name__ == "__main__":
     args = arg_parser()
-    model = args.model
+    m = args.m
     r = args.r
     n = args.n
     K = args.K
+    model = args.model
     sigma = args.sigma
+    random_state = args.random_state
+    max_iter = args.max_iter
     alpha = args.alpha
     l1_reg = args.l1_reg
-    max_iter = args.max_iter
-    tol = args.tol
-    random_state = args.random_state
 
-    main(model, r, n, K, sigma, alpha, l1_reg, random_state, max_iter, tol)
+    wandb.init(
+        project="coneClustering",
+        name=f"{model}-synthetic"
+    )
+    
+    main(model, m, r, n, K, sigma=sigma, alpha=alpha, l1_reg=l1_reg, random_state=random_state, max_iter=max_iter)
