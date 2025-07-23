@@ -22,7 +22,7 @@ def arg_parser():
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--alpha', type=float, default=1e-2, help='Regularization parameter for ssc')
-    parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
+    parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu'], help='Model to use for clustering')
@@ -62,6 +62,12 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
             X, K=K, r=r, true_labels=true_labels)
     else:
         raise ValueError(f"Unknown model: {model}")
+    
+    wandb.init(
+        project="coneClustering",
+        name=project_name
+    )
+
     wandb.log({
         "accuracy": acc,
         "ARI": ARI,
