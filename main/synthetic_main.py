@@ -45,7 +45,7 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
     elif model == 'gnmf':
         project_name = 'gnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, r=r, true_labels=true_labels,
+            X, K=K, true_labels=true_labels,
             lmd=l1_reg)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-synthetic'
