@@ -39,6 +39,20 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
     X_full = faces.data.T
     true_labels = faces.target
 
+    n_subjects = 10
+    n_images_per_subject = 10
+
+    # Select only the first `n_subjects` (each subject has 10 images in order)
+    selected_indices = []
+    for subject_id in range(n_subjects):
+        start_idx = subject_id * 10
+        end_idx = start_idx + n_images_per_subject
+        selected_indices.extend(range(start_idx, end_idx))
+
+    # Subset data and labels
+    X_subset = X_full[selected_indices].T  # shape (feature_dim, num_samples)
+    y_subset = true_labels[selected_indices]
+
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X_full.shape)
@@ -69,23 +83,23 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
 
     if model == 'sscnmf':
         acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
-            X_full, K, r, true_labels=true_labels, alpha=alpha)
+            X_subset, K, r, true_labels=true_labels, alpha=alpha)
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_full, K, r, true_labels=true_labels, alpha=alpha)
+            X_subset, K, r, true_labels=true_labels, alpha=alpha)
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_full, K, true_labels=true_labels, lmd=l1_reg)
+            X_subset, K, true_labels=true_labels, lmd=l1_reg)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
-            X_full, K, r, true_labels=true_labels, l1_reg=l1_reg)
+            X_subset, K, r, true_labels=true_labels, l1_reg=l1_reg)
     elif model == 'onmf_relu':
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X_full, K=K, r=r, true_labels=true_labels,
+            X_subset, K=K, r=r, true_labels=true_labels,
             lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
-            X_full, K=K, r=r, true_labels=true_labels)
+            X_subset, K=K, r=r, true_labels=true_labels)
 
     wandb.log({
         "accuracy": acc,
