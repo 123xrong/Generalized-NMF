@@ -1092,7 +1092,7 @@ def lrr_nmf(X, K, r, true_labels):
     H = model.components_
     pred_labels = cluster_from_affinity(C, n_clusters=K)
 
-    acc = np.mean(pred_labels == true_labels)
+    acc = remap_accuracy(true_labels, pred_labels)
     ari = adjusted_rand_score(true_labels, pred_labels)
     nmi = normalized_mutual_info_score(true_labels, pred_labels)
     recon_error = np.linalg.norm(C - W @ H) / np.linalg.norm(C)
