@@ -31,8 +31,6 @@ def arg_parser():
 
 def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
     X, true_labels = data_simulation(m, r, n, K, sigma=sigma, random_state=random_state)
-
-    X = normalize(X, axis=1)
     print(f"Received model: {model}")
     if model == 'sscnmf':
         project_name = 'sscnmf-synthetic'
