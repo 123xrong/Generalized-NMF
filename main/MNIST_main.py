@@ -19,7 +19,7 @@ from sklearn.datasets import fetch_olivetti_faces, fetch_openml
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
-    parser.add_argument('--r', type=int, default=20, help='Dimension (rank) of each subspace (default: 5)')
+    parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=10, help='Number of subspaces (default: 5)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
