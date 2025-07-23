@@ -27,9 +27,10 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu'], help='Model to use for clustering')
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
+    parser.add_argument('--NMF_method', type=str, default='anls', choices=['mu', 'cd', 'anls'], help='NMF solver method (default: anls)')
     return parser.parse_args()
 
-def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6, NMF_method='anls'):
     X, true_labels = data_simulation(m, r, n, K, sigma=sigma, random_state=random_state)
     print(f"Received model: {model}")
     if model == 'sscnmf':
@@ -40,7 +41,7 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
         project_name = 'ricc-synthetic'
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
             X, K=K, r=r, true_labels=true_labels,
-            alpha=alpha, max_iter=max_iter)
+            alpha=alpha, max_iter=max_iter, NMF_method=NMF_method)
     elif model == 'gnmf':
         project_name = 'gnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
@@ -96,6 +97,7 @@ if __name__ == "__main__":
     max_iter = args.max_iter
     alpha = args.alpha
     l1_reg = args.l1_reg
+    NMF_method = args.NMF_method
 
     wandb.init(
         project="coneClustering",
