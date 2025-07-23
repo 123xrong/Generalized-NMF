@@ -40,7 +40,7 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
             X, K=K, r=r, true_labels=true_labels, alpha=alpha)
     elif model == 'ricc':
         project_name = 'ricc-synthetic'
-        acc, ARI, NMI, reconstruction_error = iter_reg_coneclus_warmstart(
+        acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
             X, K=K, r=r, true_labels=true_labels,
             alpha=alpha, max_iter=max_iter)
     elif model == 'gnmf':
