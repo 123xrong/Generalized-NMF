@@ -42,17 +42,17 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
         project_name = 'ricc-synthetic'
         acc, ARI, NMI, reconstruction_error = iter_reg_coneclus_warmstart(
             X, K=K, r=r, true_labels=true_labels,
-            alpha=alpha, max_iter=max_iter, tol=tol)
+            alpha=alpha, max_iter=max_iter)
     elif model == 'gnmf':
         project_name = 'gnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
             X, K=K, r=r, true_labels=true_labels,
-            lmd=l1_reg, tol=1e-4, verbose=False)
+            lmd=l1_reg)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-synthetic'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X, K=K, r=r, true_labels=true_labels,
-            l1_reg=l1_reg, tol=1e-4, verbose=False)
+            l1_reg=l1_reg)
     elif model == 'onmf_relu':
         project_name = 'onmf_relu-synthetic'
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
@@ -70,7 +70,7 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, 
         "NMI": NMI,
         "reconstruction_error": reconstruction_error
     })
-    
+
     print("\n--- Results ---")
     print(f"Clustering Accuracy: {acc:.4f}")
     print(f"Adjusted Rand Index (ARI): {ARI:.4f}")
