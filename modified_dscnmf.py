@@ -1,11 +1,14 @@
-def dsc_nmf_baseline(X_full, K, r, true_labels, hidden_dims=[256, 64], epochs=100, lr=1e-3):
-    from sklearn.decomposition import NMF
-    from sklearn.cluster import KMeans
-    from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
+from sklearn.decomposition import NMF
+from sklearn.cluster import KMeans
+from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 
-    import torch
-    import torch.nn as nn
-    import torch.optim as optim
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+
+
+def dsc_nmf_baseline(X_full, K, r, true_labels, hidden_dims=[256, 64], epochs=100, lr=1e-3):
 
     class LinearAE(nn.Module):
         def __init__(self, input_dim, hidden_dims):
