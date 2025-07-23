@@ -11,6 +11,7 @@ import argparse
 import wandb
 from sklearn.metrics import adjusted_rand_score
 from coneClustering import *
+from modified_dscnmf import *
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import normalize
 from nmf import *
@@ -57,6 +58,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         project_name = 'gpcanmf-MNIST'
     elif model == 'onmf_relu':
         project_name = 'onmf_relu-MNIST'
+    elif model == 'dscnmf':
+        project_name = 'dscnmf-MNIST'
 
     wandb.init(
         project="coneClustering",
@@ -79,6 +82,10 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
             X_full, K=K, r=r, true_labels=true_labels,
             lambda_reg=l1_reg, tol=1e-4, verbose=False)
+    elif model == 'dscnmf':
+        acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
+            X_full, K=K, r=r, true_labels=true_labels,
+            alpha=alpha, max_iter=max_iter, tol=tol)
 
     wandb.log({
         "accuracy": acc,
