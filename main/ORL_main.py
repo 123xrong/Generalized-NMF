@@ -49,17 +49,19 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
     
     print(f"Received model: {model}")
     if model == 'sscnmf':
-        project_name = 'sscnmf-MNIST'
+        project_name = 'sscnmf-ORL'
     elif model == 'ricc':
-        project_name = 'ricc-MNIST'
+        project_name = 'ricc-ORL'
     elif model == 'gnmf':
-        project_name = 'gnmf-MNIST'
+        project_name = 'gnmf-ORL'
     elif model == 'gpcanmf':
-        project_name = 'gpcanmf-MNIST'
+        project_name = 'gpcanmf-ORL'
     elif model == 'onmf_relu':
-        project_name = 'onmf_relu-MNIST'
+        project_name = 'onmf_relu-ORL'
     elif model == 'dscnmf':
-        project_name = 'dscnmf-MNIST'
+        project_name = 'dscnmf-ORL'
+    
+    print(f"Project name: {project_name}")
 
     wandb.init(
         project="coneClustering",
