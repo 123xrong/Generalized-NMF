@@ -195,7 +195,7 @@ def spherical_k_means(X, K, max_iter=100):
         # Break ties randomly
         asgn = np.argmax(np.isclose(dots, max_dots) * np.random.random((n, K)), axis=1)
 
-        if old_asgn:
+        if len(old_asgn) > 0:
             for i in range(n):
                 if np.isclose(dots[i, old_asgn[i]], max_dots[i]):
                     asgn[i] = old_asgn[i]
