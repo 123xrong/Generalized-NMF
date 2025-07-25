@@ -12,7 +12,7 @@ from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutu
 # implement orthogonal NMF
 
 
-def onmf(X, K, true_labels=None, max_iter=100, tol=1e-4, verbose=False):
+def onmf(X, K, true_labels=None, max_iter=100, tol=1e-4, verbose=False, random_state=42):
     """
     Orthogonal NMF (ONMF) with clustering via argmax(H).
     """
