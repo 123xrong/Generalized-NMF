@@ -68,8 +68,8 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=42,
             X, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
         project_name = 'onmf-synthetic'
-        acc, ARI, NMI, reconstruction_error = onmf(
-            X, K=K, true_labels=true_labels, max_iter=max_iter, random_state=random_state)
+        acc, ARI, NMI, reconstruction_error = onmf_em(
+            X, K=K, true_labels=true_labels)
     else:
         raise ValueError(f"Unknown model: {model}")
     

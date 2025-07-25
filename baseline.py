@@ -9,7 +9,7 @@ from sklearn.preprocessing import normalize
 from scipy.optimize import nnls
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
-def onmf_em_results(X, K, true_labels, max_iter=100):
+def onmf_em(X, K, true_labels, max_iter=100):
     """
     EM-based ONMF from Pompili et al. (2014), adapted to return standard results.
     
