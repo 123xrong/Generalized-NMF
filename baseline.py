@@ -6,34 +6,64 @@ from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.decomposition import NMF
 from sklearn.preprocessing import normalize
+from scipy.optimize import nnls
 from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 
-def onmf(X, K, true_labels=None, max_iter=200, random_state=0):
+# implement orthogonal NMF
+
+
+def onmf(X, K, true_labels=None, max_iter=100, tol=1e-4, verbose=False):
     """
-    Orthogonal NMF (ONMF) using SVD-based orthogonal updates and NNLS for H.
+    Orthogonal NMF (ONMF) with clustering via argmax(H).
     """
     m, n = X.shape
     norm_X = np.linalg.norm(X, 'fro')**2
 
-    # Step 1: SVD initialization for orthogonal W
+    # Step 1: Initialize W with nonnegative orthonormal basis
     U, _, _ = np.linalg.svd(X @ X.T)
     W = np.maximum(U[:, :K], 1e-8)
     W = normalize(W, axis=0)
 
-    # Step 2: Solve H via NNLS (or pseudo-inverse)
-    H = np.linalg.pinv(W.T @ W) @ (W.T @ X)
-    H = np.maximum(H, 1e-8)
+    # Step 2: Initialize H using NNLS
+    H = np.zeros((K, n))
+    for i in range(n):
+        H[:, i], _ = nnls(W, X[:, i])
 
-    # Step 3: Cluster using argmax
+    prev_loss = None
+
+    for it in range(max_iter):
+        # --- Update H ---
+        for i in range(n):
+            H[:, i], _ = nnls(W, X[:, i])
+
+        # --- Update W via Procrustes (orthogonal update + nonnegativity) ---
+        A = X @ H.T
+        U, _, Vt = np.linalg.svd(A, full_matrices=False)
+        W = np.maximum(U @ Vt, 1e-8)
+        W = normalize(W, axis=0)
+
+        # --- Compute normalized loss ---
+        rec = W @ H
+        rec_loss = np.linalg.norm(X - rec, 'fro')**2
+        total_loss = rec_loss / norm_X
+
+        if verbose and it % 10 == 0:
+            print(f"[Iter {it}] Normalized Loss: {total_loss:.4f}")
+
+        if prev_loss is not None and abs(prev_loss - total_loss) < tol:
+            break
+        prev_loss = total_loss
+
+    # --- Clustering via argmax(H) ---
     pred_labels = H.argmax(axis=0)
 
-    # Step 4: Metrics
-    acc = accuracy_score(true_labels, pred_labels) if true_labels is not None else None
+    acc = remap_accuracy(true_labels, pred_labels) if true_labels is not None else None
     ari = adjusted_rand_score(true_labels, pred_labels) if true_labels is not None else None
     nmi = normalized_mutual_info_score(true_labels, pred_labels) if true_labels is not None else None
     recon_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
 
     return acc, ari, nmi, recon_error
+
 
 def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
     """
