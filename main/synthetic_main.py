@@ -12,6 +12,7 @@ import argparse
 import wandb
 from coneClustering import *
 from modified_dscnmf import *
+from baseline import *
 from sklearn.preprocessing import normalize
 
 def arg_parser():
@@ -25,7 +26,7 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=1000, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'lrrnmf'], help='Model to use for clustering')
+    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'lrrnmf', 'onmf'], help='Model to use for clustering')
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     parser.add_argument('--NMF_method', type=str, default='anls', choices=['mu', 'cd', 'anls'], help='NMF solver method (default: anls)')
     return parser.parse_args()
@@ -65,6 +66,10 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=42,
         project_name = 'lrrnmf-synthetic'
         acc, ARI, NMI, reconstruction_error = lrr_nmf(
             X, K=K, r=r, true_labels=true_labels)
+    elif model == 'onmf':
+        project_name = 'onmf-synthetic'
+        acc, ARI, NMI, reconstruction_error = onmf(
+            X, K=K, true_labels=true_labels, max_iter=max_iter, random_state=random_state)
     else:
         raise ValueError(f"Unknown model: {model}")
     
