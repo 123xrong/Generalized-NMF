@@ -39,7 +39,7 @@ def onmf_em(X, K, true_labels, max_iter=100):
     X_hat = W_orth @ H
     pred_labels = np.argmax(H, axis=0)
 
-    acc = accuracy_score(true_labels, pred_labels)
+    acc = remap_accuracy(true_labels, pred_labels)
     ari = adjusted_rand_score(true_labels, pred_labels)
     nmi = normalized_mutual_info_score(true_labels, pred_labels)
     reconstruction_error = np.linalg.norm(X - X_hat) / np.linalg.norm(X)
