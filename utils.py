@@ -142,3 +142,74 @@ def remap_accuracy(y_true, y_pred):
     # Compute accuracy
     acc = accuracy_score(y_true, y_pred_aligned)
     return acc
+
+def divide (N, P):
+    out = np.copy(N)
+    np.divide(out, P, where = np.logical_not(np.isclose(P, 0)), out = out)
+    return out
+
+def normalize(M, axis):
+    M_sq = M * M
+    M_norm = np.sqrt(np.sum(M_sq, axis = axis, keepdims = True))
+    ret = np.copy(M)
+    np.divide(ret, M_norm, where = np.logical_not(np.isclose(M_norm, 0)), out = ret)
+    return ret
+
+# Clustering utility functions for ONMF-EM algorithm
+def spherical_k_means(X, K, max_iter=100):
+    """
+    Spherical k-means used for initializing ONMF centroids.
+    Returns:
+        - asgn_list: list of sample indices per cluster
+        - centers: (d, K) orthonormal basis vectors
+    """
+    d, n = X.shape
+    asgn_list = [[] for _ in range(K)]
+    for i in range(n):
+        asgn_list[np.random.randint(K)].append(i)
+
+    asgn = []
+    converged = False
+    iter_count = 0
+
+    while not converged and iter_count < max_iter:
+        iter_count += 1
+        centers = np.random.rand(d, K)
+        centers = normalize(centers, axis=0)
+
+        for k in range(K):
+            if asgn_list[k]:
+                subX = X[:, asgn_list[k]]
+                u, _, _ = np.linalg.svd(subX, full_matrices=False)
+                centers[:, k] = np.abs(u[:, 0])
+            else:
+                r = np.random.randint(n)
+                centers[:, k] = divide(X[:, r], np.linalg.norm(X[:, r]))
+
+        old_asgn = asgn
+        asgn = []
+        asgn_list = [[] for _ in range(K)]
+
+        dots = X.T @ centers
+        max_dots = np.max(dots, axis=1, keepdims=True)
+        # Break ties randomly
+        asgn = np.argmax(np.isclose(dots, max_dots) * np.random.random((n, K)), axis=1)
+
+        if old_asgn:
+            for i in range(n):
+                if np.isclose(dots[i, old_asgn[i]], max_dots[i]):
+                    asgn[i] = old_asgn[i]
+
+        for i in range(n):
+            asgn_list[asgn[i]].append(i)
+
+        if same_assignment(asgn, old_asgn):
+            converged = True
+
+    return asgn_list, centers
+
+
+def same_assignment(a, b):
+    if len(a) != len(b):
+        return False
+    return all(a[i] == b[i] for i in range(len(a)))

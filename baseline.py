@@ -7,62 +7,44 @@ from sklearn.cluster import KMeans
 from sklearn.decomposition import NMF
 from sklearn.preprocessing import normalize
 from scipy.optimize import nnls
-from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
+from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
-# implement orthogonal NMF
-
-
-def onmf(X, K, true_labels=None, max_iter=100, tol=1e-4, verbose=False, random_state=42):
+def onmf_em_results(X, K, true_labels, max_iter=100):
     """
-    Orthogonal NMF (ONMF) with clustering via argmax(H).
+    EM-based ONMF from Pompili et al. (2014), adapted to return standard results.
+    
+    Parameters:
+        X: (d, n) nonnegative data matrix
+        K: number of clusters
+        true_labels: (n,) ground-truth labels
+    
+    Returns:
+        acc: clustering accuracy
+        ari: adjusted Rand index
+        nmi: normalized mutual information
+        reconstruction_error: ||X - WH|| / ||X||
     """
-    m, n = X.shape
-    norm_X = np.linalg.norm(X, 'fro')**2
+    d, n = X.shape
+    X = np.maximum(X, 0)
 
-    # Step 1: Initialize W with nonnegative orthonormal basis
-    U, _, _ = np.linalg.svd(X @ X.T)
-    W = np.maximum(U[:, :K], 1e-8)
-    W = normalize(W, axis=0)
-
-    # Step 2: Initialize H using NNLS
+    # Step 1: EM clustering on the sphere
+    asgn_list, W_orth = spherical_k_means(X, K)  # W_orth: (d, K)
+    
+    # Step 2: Compute H by projecting X onto W
     H = np.zeros((K, n))
-    for i in range(n):
-        H[:, i], _ = nnls(W, X[:, i])
+    for k in range(K):
+        for j in asgn_list[k]:
+            H[k, j] = W_orth[:, k].T @ X[:, j]
 
-    prev_loss = None
+    X_hat = W_orth @ H
+    pred_labels = np.argmax(H, axis=0)
 
-    for it in range(max_iter):
-        # --- Update H ---
-        for i in range(n):
-            H[:, i], _ = nnls(W, X[:, i])
+    acc = accuracy_score(true_labels, pred_labels)
+    ari = adjusted_rand_score(true_labels, pred_labels)
+    nmi = normalized_mutual_info_score(true_labels, pred_labels)
+    reconstruction_error = np.linalg.norm(X - X_hat) / np.linalg.norm(X)
 
-        # --- Update W via Procrustes (orthogonal update + nonnegativity) ---
-        A = X @ H.T
-        U, _, Vt = np.linalg.svd(A, full_matrices=False)
-        W = np.maximum(U @ Vt, 1e-8)
-        W = normalize(W, axis=0)
-
-        # --- Compute normalized loss ---
-        rec = W @ H
-        rec_loss = np.linalg.norm(X - rec, 'fro')**2
-        total_loss = rec_loss / norm_X
-
-        if verbose and it % 10 == 0:
-            print(f"[Iter {it}] Normalized Loss: {total_loss:.4f}")
-
-        if prev_loss is not None and abs(prev_loss - total_loss) < tol:
-            break
-        prev_loss = total_loss
-
-    # --- Clustering via argmax(H) ---
-    pred_labels = H.argmax(axis=0)
-
-    acc = remap_accuracy(true_labels, pred_labels) if true_labels is not None else None
-    ari = adjusted_rand_score(true_labels, pred_labels) if true_labels is not None else None
-    nmi = normalized_mutual_info_score(true_labels, pred_labels) if true_labels is not None else None
-    recon_error = np.linalg.norm(X - W @ H) / np.linalg.norm(X)
-
-    return acc, ari, nmi, recon_error
+    return acc, ari, nmi, reconstruction_error
 
 
 def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0, weight_type='heat-kernel', param=0.3):
