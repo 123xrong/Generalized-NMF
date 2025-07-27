@@ -34,7 +34,7 @@ def arg_parser():
     return parser.parse_args()
 
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
-    coil20_data = loadmat('../data/COIL20.mat')
+    coil20_data = loadmat('data/COIL20.mat')
     X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
     true_labels = coil20_data['gnd'].flatten() - 1  # Convert
 
