@@ -15,6 +15,7 @@ from coneClustering import *
 from modified_dscnmf import *
 from baseline import *
 from sklearn.preprocessing import normalize
+from torch_geometric.datasets import WebKB
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
@@ -34,9 +35,10 @@ def arg_parser():
     return parser.parse_args()
 
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
-    coil20_data = loadmat('data/PAGE.mat')
-    X = coil20_data['X'].T  # shape (feature_dim, num_samples)
-    true_labels = coil20_data['Y'].flatten() - 1  # Convert
+    dataset = WebKB(root='~/data/WebKB', name='Cornell')
+    data = dataset[0]
+    X = data.x.numpy().T  # feature matrix: (features, samples)
+    true_labels = data.y.numpy()    # labels (0-4 for five classes)
 
     # X = normalize(X_full, axis=0)
     if sigma > 0:
