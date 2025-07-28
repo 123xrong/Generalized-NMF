@@ -68,7 +68,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
         project_name = 'onmf_relu-COIL20'
         acc, ARI, NMI, reconstruction_error = onmf_with_relu(
             X, K=K, r=r, true_labels=true_labels,
-            l1_reg=l1_reg)
+            lambda_reg=l1_reg)
     elif model == 'dscnmf':
         project_name = 'dscnmf-COIL20'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
