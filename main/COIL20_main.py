@@ -84,7 +84,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
         name=project_name
     )
     wandb.log({
-        "acc": acc,
+        "accuracy": acc,
         "ARI": ARI,
         "NMI": NMI,
         "reconstruction_error": reconstruction_error
