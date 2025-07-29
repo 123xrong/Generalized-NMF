@@ -65,7 +65,7 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
             with torch.no_grad():
                 X_hat, H_k = nmf_layer(X_k)
                 H_layer[:, idx_k] = H_k
-                X_hat_all[:, idx_k] = X_k  # Replace this with X_hat if you want per-layer reconstruction
+                X_hat[:, idx_k] = X_k  # Replace this with X_hat if you want per-layer reconstruction
 
         H_input = torch.clamp(H_layer.clone().detach(), min=1e-8)
 
