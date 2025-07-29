@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-
 from utils import *
 from sklearn.preprocessing import normalize
 from sklearn.cluster import KMeans
@@ -17,33 +16,37 @@ class DeepNMF(nn.Module):
             for i in range(self.L)
         ])
 
-    def forward(self, X):
+    def encode(self, X):
         H = X
         for i in range(self.L):
             W = torch.clamp(self.W[i], min=1e-8)
             H = torch.clamp(W @ H, min=1e-8)
-        
-        # Decode: reconstruct back to original dim
+        return H
+
+    def decode(self, H):
         for i in reversed(range(self.L)):
             W = torch.clamp(self.W[i], min=1e-8)
             H = torch.clamp(W.T @ H, min=1e-8)
+        return H
 
-        return H  # this is now the reconstructed X_hat
-
+    def forward(self, X):
+        H = self.encode(X)
+        X_hat = self.decode(H)
+        return X_hat, H
 
 def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='cpu'):
     # Normalize and convert to torch tensor
     X_np = normalize(X_np, axis=0)
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
+    norm_X = torch.norm(X, p='fro') ** 2
 
     model = DeepNMF(X.shape[0], [r1, r2, r3]).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-2)
 
     for _ in range(n_iter):
         optimizer.zero_grad()
-        H = model(X)
-        X_hat = H
-        loss = F.mse_loss(X_hat, X)
+        X_hat, _ = model(X)
+        loss = F.mse_loss(X_hat, X, reduction='sum') / norm_X
         loss.backward()
         optimizer.step()
         # Enforce nonnegativity
@@ -51,7 +54,8 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
             param.data.clamp_(min=1e-8)
 
     # Final representation for clustering
-    H_final = model(X).detach().cpu().numpy().T
+    _, H_final = model(X)
+    H_final = H_final.detach().cpu().numpy().T
 
     if true_labels is not None:
         K = len(np.unique(true_labels))
@@ -62,8 +66,14 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     else:
         acc = ari = nmi = None
 
-    # Reconstruction error
-    X_hat = model(X).detach().cpu().numpy()
-    recon_error = np.linalg.norm(X_np - X_hat) / np.linalg.norm(X_np)
+    # Normalized reconstruction error
+    X_hat = model.decode(model.encode(X)).detach().cpu().numpy()
+    recon_error = np.linalg.norm(X_np - X_hat, ord='fro') / np.linalg.norm(X_np, ord='fro')
 
-    return acc, ari, nmi, recon_error
+    return {
+        'accuracy': acc,
+        'ARI': ari,
+        'NMI': nmi,
+        'reconstruction_error': recon_error,
+        'H': H_final
+    }
