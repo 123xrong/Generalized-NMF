@@ -35,10 +35,7 @@ class DeepNMF(nn.Module):
         return X_hat, H
 
 def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='cpu'):
-    # Normalize and convert to torch tensor
-    # Remove normalization for accurate reconstruction error
-    X_np = X_np.astype(np.float32)
-
+    # Convert to torch tensor without normalization
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
     norm_X = torch.norm(X, p='fro')
 
@@ -62,15 +59,13 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     if true_labels is not None:
         K = len(np.unique(true_labels))
         pred_labels = KMeans(n_clusters=K, n_init=10).fit_predict(H_final)
-        acc = remap_accuracy(true_labels, pred_labels)
+        acc = accuracy_score(true_labels, pred_labels)
         ari = adjusted_rand_score(true_labels, pred_labels)
         nmi = normalized_mutual_info_score(true_labels, pred_labels)
     else:
         acc = ari = nmi = None
 
     # Normalized reconstruction error
-    X_hat = model.decode(model.encode(X)).detach().cpu()
-    recon_error = torch.norm(X - X_hat, p='fro') / norm_X
+    X_hat_final, _ = model(X)
+    recon_error = torch.norm(X - X_hat_final, p='fro') / norm_X
     recon_error = recon_error.item()
-
-    return acc, ari, nmi, recon_error
