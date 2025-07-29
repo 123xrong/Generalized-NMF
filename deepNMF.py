@@ -71,5 +71,4 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
         'ARI': ari,
         'NMI': nmi,
         'reconstruction_error': recon_error,
-        'H': H_final
     }
