@@ -14,6 +14,8 @@ from scipy.io import loadmat
 from coneClustering import *
 from modified_dscnmf import *
 from baseline import *
+from deepNMF import *
+from deepSSCNMF import *
 from sklearn.preprocessing import normalize
 
 def arg_parser():
@@ -27,7 +29,7 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf'],
+    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf'],
                         help='Model to use for clustering')
     parser.add_argument('--l1_reg', type=float, default=0.01,
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
@@ -77,6 +79,15 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
         project_name = 'onmf-COIL20'
         acc, ARI, NMI, reconstruction_error = onmf_em(
             X, K=K, true_labels=true_labels)
+    elif model == 'deepnmf':
+        project_name = 'deepnmf-COIL20'
+        acc, ARI, NMI, reconstruction_error = deep_nmf(
+            X, true_labels=true_labels)
+    elif model == 'deepsscnmf':
+        project_name = 'deepsscnmf-COIL20'
+        acc, ARI, NMI, reconstruction_error = deep_ssc_nmf(
+            X, ranks=[256, 128, 64], alpha=alpha, n_iter=max_iter,
+            true_labels=true_labels)
     else:
         raise ValueError(f"Unknown model: {model}")
     wandb.init(
