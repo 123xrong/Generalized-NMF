@@ -17,12 +17,19 @@ class DeepNMF(nn.Module):
             for i in range(self.L)
         ])
 
-    def forward(self, X, n_iter=200):
-        H = X.clone()
+    def forward(self, X):
+        H = X
         for i in range(self.L):
             W = torch.clamp(self.W[i], min=1e-8)
-            H = torch.clamp(torch.matmul(W, H), min=1e-8)
-        return H
+            H = torch.clamp(W @ H, min=1e-8)
+        
+        # Decode: reconstruct back to original dim
+        for i in reversed(range(self.L)):
+            W = torch.clamp(self.W[i], min=1e-8)
+            H = torch.clamp(W.T @ H, min=1e-8)
+
+        return H  # this is now the reconstructed X_hat
+
 
 def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='cpu'):
     # Normalize and convert to torch tensor
