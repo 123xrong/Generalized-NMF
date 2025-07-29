@@ -69,3 +69,5 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     X_hat_final, _ = model(X)
     recon_error = torch.norm(X - X_hat_final, p='fro') / norm_X
     recon_error = recon_error.item()
+
+    return acc, ari, nmi, recon_error
