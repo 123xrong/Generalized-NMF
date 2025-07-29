@@ -54,7 +54,7 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
                 continue
             X_k = H_input[:, idx_k]
             nmf_layer = BasicNMF(H_input.shape[0], r).to(device)
-            optimizer = torch.optim.Adam(nmf_layer.parameters(), lr=1e-2)
+            optimizer = torch.optim.Adam(nmf_layer.parameters(), lr=1e-3)
             for _ in range(n_iter):
                 optimizer.zero_grad()
                 X_hat, H_k = nmf_layer(X_k)
