@@ -13,6 +13,7 @@ from sklearn.metrics import adjusted_rand_score
 from coneClustering import *
 from modified_dscnmf import *
 from baseline import *
+from deepNMF import *
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import normalize
 from nmf import *
@@ -29,7 +30,7 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf'],
+    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf'],
     help='Model to use for clustering')
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
@@ -79,6 +80,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         project_name = 'dscnmf-MNIST'
     elif model == 'onmf':
         project_name = 'onmf-MNIST'
+    elif model == 'deepnmf':
+        project_name = 'deepnmf-MNIST'
 
     wandb.init(
         project="coneClustering",
@@ -107,6 +110,9 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
     elif model == 'onmf':
         acc, ARI, NMI, reconstruction_error = onmf_em(
             X_subset, K=K, true_labels=true_labels)
+    elif model == 'deepnmf':    
+        acc, ARI, NMI, reconstruction_error = deep_nmf(
+            X_subset, true_labels=true_labels)
 
     wandb.log({
         "accuracy": acc,
