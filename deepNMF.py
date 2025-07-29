@@ -41,7 +41,7 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     norm_X = torch.norm(X, p='fro')
 
     model = DeepNMF(X.shape[0], [r1, r2, r3]).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
+    optimizer = torch.optim.Adam(model.parameters(), lr=0.1)
 
     for _ in range(n_iter):
         optimizer.zero_grad()
