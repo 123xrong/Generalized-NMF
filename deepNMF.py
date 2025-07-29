@@ -38,7 +38,7 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     # Normalize and convert to torch tensor
     X_np = normalize(X_np, axis=0)
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
-    norm_X = torch.norm(X, p='fro') ** 2
+    norm_X = torch.norm(X, p='fro')
 
     model = DeepNMF(X.shape[0], [r1, r2, r3]).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-2)
@@ -46,7 +46,7 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     for _ in range(n_iter):
         optimizer.zero_grad()
         X_hat, _ = model(X)
-        loss = F.mse_loss(X_hat, X, reduction='sum') / norm_X
+        loss = torch.norm(X - X_hat, p='fro') / norm_X
         loss.backward()
         optimizer.step()
         # Enforce nonnegativity
@@ -67,7 +67,8 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
         acc = ari = nmi = None
 
     # Normalized reconstruction error
-    X_hat = model.decode(model.encode(X)).detach().cpu().numpy()
-    recon_error = np.linalg.norm(X_np - X_hat, ord='fro') / np.linalg.norm(X_np, ord='fro')
+    X_hat = model.decode(model.encode(X)).detach().cpu()
+    recon_error = torch.norm(X - X_hat, p='fro') / norm_X
+    recon_error = recon_error.item()
 
     return acc, ari, nmi, recon_error
