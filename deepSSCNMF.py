@@ -45,6 +45,7 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
         pred_labels = SpectralClustering(n_clusters=K, affinity='precomputed', assign_labels='kmeans', random_state=0).fit_predict(C)
 
         H_layer = torch.zeros(r, X.shape[1], device=device)
+        X_hat_all = torch.zeros_like(X)
         for k in range(K):
             idx_k = np.where(pred_labels == k)[0]
             if len(idx_k) == 0:
@@ -56,20 +57,22 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
                 optimizer.zero_grad()
                 X_hat, H_k = nmf_layer(X_k)
                 loss = torch.norm(X_k - X_hat, p='fro')
-                loss.backward()  # Graph freed each time
+                loss.backward()
                 optimizer.step()
                 nmf_layer.W.data.clamp_(min=1e-8)
             with torch.no_grad():
-                _, H_k = nmf_layer(X_k)
+                X_hat, H_k = nmf_layer(X_k)
                 H_layer[:, idx_k] = H_k
+                X_hat_all[:, idx_k] = X_hat
 
         H_input = torch.clamp(H_layer.clone().detach(), min=1e-8)
 
     H_final = H_input.detach().cpu().numpy().T
+    H_final = normalize(H_final, axis=0)
     pred_labels = KMeans(n_clusters=K, n_init=10).fit_predict(H_final)
-    acc = accuracy_score(true_labels, pred_labels) if true_labels is not None else None
+    acc = remap_accuracy(true_labels, pred_labels) if true_labels is not None else None
     ari = adjusted_rand_score(true_labels, pred_labels) if true_labels is not None else None
     nmi = normalized_mutual_info_score(true_labels, pred_labels) if true_labels is not None else None
-    recon_error = torch.norm(X - X_hat, p='fro') / norm_X
+    recon_error = torch.norm(X - X_hat_all, p='fro') / norm_X
 
     return acc, ari, nmi, recon_error.item()

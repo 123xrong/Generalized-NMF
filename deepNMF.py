@@ -60,7 +60,7 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
     if true_labels is not None:
         K = len(np.unique(true_labels))
         pred_labels = KMeans(n_clusters=K, n_init=10).fit_predict(H_final)
-        acc = accuracy_score(true_labels, pred_labels)
+        acc = remap_accuracy(true_labels, pred_labels)
         ari = adjusted_rand_score(true_labels, pred_labels)
         nmi = normalized_mutual_info_score(true_labels, pred_labels)
     else:
