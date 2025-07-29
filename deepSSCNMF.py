@@ -21,7 +21,7 @@ class BasicNMF(nn.Module):
 
 def sparse_subspace_clustering(X_np, alpha=0.01):
     n_samples = X_np.shape[1]
-    X_centered = X_np - X_np.mean(axis=1, keepdims=True)
+    X_centered = X_np - X_np.mean(axis=0, keepdims=True)
     C = np.zeros((n_samples, n_samples))
     for i in range(n_samples):
         x_i = X_centered[:, i]
