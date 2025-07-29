@@ -36,7 +36,7 @@ def sparse_subspace_clustering(X_np, alpha=0.01):
 def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels=None, device='cpu'):
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
     norm_X = torch.norm(X, p='fro')
-    H_input = X
+    H_input = X.clone().detach()
 
     for r in ranks:
         X_np_cpu = H_input.detach().cpu().numpy()
@@ -56,13 +56,14 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
                 optimizer.zero_grad()
                 X_hat, H_k = nmf_layer(X_k)
                 loss = torch.norm(X_k - X_hat, p='fro')
-                loss.backward(retain_graph=True)  # Prevent free of computation graph
+                loss.backward()  # Graph freed each time
                 optimizer.step()
                 nmf_layer.W.data.clamp_(min=1e-8)
-            _, H_k = nmf_layer(X_k)
-            H_layer[:, idx_k] = H_k
+            with torch.no_grad():
+                _, H_k = nmf_layer(X_k)
+                H_layer[:, idx_k] = H_k
 
-        H_input = torch.clamp(H_layer, min=1e-8)
+        H_input = torch.clamp(H_layer.clone().detach(), min=1e-8)
 
     H_final = H_input.detach().cpu().numpy().T
     pred_labels = KMeans(n_clusters=K, n_init=10).fit_predict(H_final)
