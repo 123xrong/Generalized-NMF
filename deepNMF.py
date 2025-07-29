@@ -36,6 +36,7 @@ class DeepNMF(nn.Module):
 
 def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='cpu'):
     # Convert to torch tensor without normalization
+    X_np = normalize(X_np, axis=0)
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
     norm_X = torch.norm(X, p='fro')
 
@@ -67,6 +68,7 @@ def deep_nmf(X_np, r1=256, r2=128, r3=64, n_iter=200, true_labels=None, device='
 
     # Normalized reconstruction error
     X_hat_final, _ = model(X)
+    X_hat_final = normalize(X_hat_final.detach().cpu().numpy(), axis=0)
     recon_error = torch.norm(X - X_hat_final, p='fro') / norm_X
     recon_error = recon_error.item()
 
