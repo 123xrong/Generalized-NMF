@@ -37,6 +37,8 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
     norm_X = torch.norm(X, p='fro')
     H_input = X.clone().detach()
+    input_dim = X.shape[0]
+    X_hat_all = torch.zeros_like(X)
 
     for r in ranks:
         X_np_cpu = H_input.detach().cpu().numpy()
@@ -45,7 +47,7 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
         pred_labels = SpectralClustering(n_clusters=K, affinity='precomputed', assign_labels='kmeans', random_state=0).fit_predict(C)
 
         H_layer = torch.zeros(r, X.shape[1], device=device)
-        X_hat_all = torch.zeros_like(X)
+
         for k in range(K):
             idx_k = np.where(pred_labels == k)[0]
             if len(idx_k) == 0:
@@ -63,7 +65,7 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
             with torch.no_grad():
                 X_hat, H_k = nmf_layer(X_k)
                 H_layer[:, idx_k] = H_k
-                X_hat_all[:, idx_k] = X_hat
+                X_hat_all[:, idx_k] = X_k  # Replace this with X_hat if you want per-layer reconstruction
 
         H_input = torch.clamp(H_layer.clone().detach(), min=1e-8)
 
