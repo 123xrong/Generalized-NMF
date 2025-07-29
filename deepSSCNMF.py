@@ -27,7 +27,7 @@ def sparse_subspace_clustering(X_np, alpha=0.01):
         x_i = X_centered[:, i]
         X_rest = np.delete(X_centered, i, axis=1)
         lasso = Lasso(alpha=alpha, fit_intercept=False, max_iter=1000)
-        lasso.fit(X_rest.T, x_i)
+        lasso.fit(X_rest, x_i)
         c = lasso.coef_
         C[np.arange(n_samples) != i, i] = c
     C = np.maximum(0.5 * (C + C.T), 0)
