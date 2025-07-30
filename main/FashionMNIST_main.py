@@ -38,9 +38,9 @@ def arg_parser():
     return parser.parse_args()
 
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+    print(f"Running model: {model} with parameters: r={r}, n={n}, K={K}, sigma={sigma}, alpha={alpha}, l1_reg={l1_reg}, random_state={random_state}, max_iter={max_iter}, tol={tol}")
     transform = transforms.Compose([transforms.ToTensor()])
     train_data = datasets.FashionMNIST(root='./data', train=True, download=True, transform=transform)
-    test_data = datasets.FashionMNIST(root='./data', train=False, download=True, transform=transform)
 
     X = train_data.data.numpy().reshape(len(train_data), -1) / 255.0
     true_labels = train_data.targets.numpy()
@@ -50,7 +50,6 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
         noise = np.random.normal(0, sigma, X.shape)
         X += noise
         X = normalize(X, axis=1)
-    X = X.T  # shape (features, samples)
 
     if model == 'sscnmf':
         project_name = 'sscnmf-FashionMNIST'
