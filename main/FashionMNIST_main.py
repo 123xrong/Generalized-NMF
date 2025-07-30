@@ -108,3 +108,10 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     print(f"ARI: {ARI}")
     print(f"NMI: {NMI}")
     print(f"Reconstruction Error: {reconstruction_error}")  
+
+    wandb.finish()
+if __name__ == "__main__":
+    args = arg_parser()
+    main(model=args.model, r=args.r, n=args.n, K=args.K, sigma=args.sigma,
+         alpha=args.alpha, l1_reg=args.l1_reg, random_state=args.random_state,
+         max_iter=args.max_iter, tol=args.tol)
