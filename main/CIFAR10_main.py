@@ -48,6 +48,12 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     subset_idx = np.random.choice(len(X_cifar), size=500, replace=False)
     X = X_cifar[subset_idx]
     true_labels = y_cifar[subset_idx]
+    if sigma > 0:
+        # Add non-negative Gaussian noise to the data
+        noise = np.random.normal(0, sigma, X.shape)
+        X += noise
+        X = normalize(X, axis=1)
+    X = X.T  # shape (features, samples)
 
     if model == 'sscnmf':
         project_name = 'sscnmf-CIFAR10'
