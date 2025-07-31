@@ -39,9 +39,8 @@ def arg_parser():
     return parser.parse_args()
 
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
-    dataset = fetch_ucirepo(id=401)
-    X = dataset.data.features  # shape: (801, 20531)
-    y = dataset.data.targets   # cancer-type labels
+    X = pd.read_csv('/Users/xrong8/Desktop/ConeClustering/data/TCGA-PANCAN-HiSeq-801x20531/data.csv')  # shape: (801, 20531)
+    y = pd.read_csv('/Users/xrong8/Desktop/ConeClustering/data/TCGA-PANCAN-HiSeq-801x20531/labels.csv')  # shape: (801, 1)
 
     # Convert to NumPy
     X = X.to_numpy()
