@@ -68,15 +68,11 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     elif model == 'gnmf':
         project_name = 'gnmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, true_labels=true_labels, max_iter=max_iter, tol=tol)
+            X, K=K, true_labels=true_labels, max_iter=max_iter)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
-            X, K=K, true_labels=true_labels, r=r, max_iter=max_iter, tol=tol)
-    elif model == 'onmf_relu':
-        project_name = 'onmf_relu-FashionMNIST'
-        acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X, K=K, true_labels=true_labels, r=r, max_iter=max_iter, lambda_reg=l1_reg, tol=tol)
+            X, K=K, true_labels=true_labels)
     elif model == 'dscnmf':
         project_name = 'dscnmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
@@ -87,8 +83,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
             X, K=K, true_labels=true_labels, r=r, max_iter=max_iter, tol=tol)
     elif model == 'deepnmf':
         project_name = 'deepnmf-FashionMNIST'
-        acc, ARI, NMI, reconstruction_error = deep_nmf(
-            X, true_labels=true_labels, r=r, max_iter=max_iter, tol=tol)
+        acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
+            X, K=K, r=r, true_labels=true_labels)
     elif model == 'deepsscnmf':
         project_name = 'deepsscnmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = deep_ssc_nmf(
