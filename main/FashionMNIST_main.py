@@ -68,7 +68,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     elif model == 'gnmf':
         project_name = 'gnmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, true_labels=true_labels, r=r, max_iter=max_iter, tol=tol)
+            X, K=K, true_labels=true_labels, max_iter=max_iter, tol=tol)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-FashionMNIST'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
