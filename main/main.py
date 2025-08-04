@@ -82,9 +82,9 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=42,
         # 2. Subset digits 0-5
         X_list = []
         labels = []
+        np.random.seed(random_state)
         for digit in range(K):
             idx = np.where(y_full == digit)[0]
-            np.random.seed(random_state)
             selected_idx = np.random.choice(idx, n, replace=False)
             X_list.append(X_full[selected_idx])
             labels.append(np.full(len(selected_idx), digit))
