@@ -84,7 +84,8 @@ def main(model, m, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=42,
         labels = []
         for digit in range(K):
             idx = np.where(y_full == digit)[0]
-            selected_idx = np.random.choice(idx, n, replace=False, random_state=random_state)
+            np.random.seed(random_state)
+            selected_idx = np.random.choice(idx, n, replace=False)
             X_list.append(X_full[selected_idx])
             labels.append(np.full(len(selected_idx), digit))
         X = np.vstack(X_list)
