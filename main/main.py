@@ -100,7 +100,8 @@ def subset_digits(X, y, K, n, seed):
         chosen = rng.choice(idx, n, replace=False)
         X_list.append(X[chosen])
         y_list.append(np.full(n, digit))
-    return normalize(np.vstack(X_list).T, axis=1), np.concatenate(y_list)
+    X_concat = np.vstack(X_list).astype(float)
+    return normalize(X_concat.T, axis=1), np.concatenate(y_list)
 
 def main():
     args = parse_args()
