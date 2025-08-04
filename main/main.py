@@ -24,7 +24,7 @@ from scipy.io import loadmat
 
 # Project models
 from nmf import *
-from coneClustering import *
+from GenNMF import *
 from modified_dscnmf import *
 from baseline import *
 from deepNMF import *
