@@ -11,7 +11,7 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
 # Imports from your repo
-from coneClustering import *
+from GenNMF import *
 from modified_dscnmf import *
 from baseline import *
 from sklearn.preprocessing import normalize
