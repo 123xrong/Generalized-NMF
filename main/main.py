@@ -38,7 +38,8 @@ def parse_args():
     parser.add_argument('--sigma', type=float, default=0.0, help='Std. dev. of Gaussian noise')
     parser.add_argument('--alpha', type=float, default=1e-2, help='Regularization strength')
     parser.add_argument('--max_iter', type=int, default=1000, help='Max iterations for clustering')
-    parser.add_argument('--random_state', type=int, default=42, help='Random seed')
+    parser.add_argument('--random_state_data', type=int, default=42, help='Random seed for subsetting data')
+    parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering')
     parser.add_argument('--dataset', type=str, required=True,
                         choices=['20newsgroups', 'olivetti_faces', 'webkb', 'mnist', 'cifar10', 'fashion_mnist', 'coil20'])
     parser.add_argument('--model', type=str, required=True,
@@ -48,7 +49,7 @@ def parse_args():
                         help='NMF optimization method (default: anls)')
     return parser.parse_args()
 
-def load_dataset(name, K, n, random_state):
+def load_dataset(name, K, n, random_state_data):
     if name == '20newsgroups':
         download('stopwords')
         newsgroups = fetch_20newsgroups(subset='all', remove=('headers', 'footers', 'quotes'))
@@ -57,7 +58,7 @@ def load_dataset(name, K, n, random_state):
         return X.T, newsgroups.target
 
     elif name == 'olivetti_faces':
-        faces = fetch_olivetti_faces(shuffle=True, random_state=random_state)
+        faces = fetch_olivetti_faces(shuffle=True, random_state=random_state_data)
         X, y = faces.data.T, faces.target
         selected_idx = [i for subj in range(10) for i in range(subj*10, subj*10+10)]
         return X[:, selected_idx], y[selected_idx]
@@ -71,21 +72,22 @@ def load_dataset(name, K, n, random_state):
         mnist = fetch_openml('mnist_784', version=1)
         X_full = mnist.data.to_numpy()
         y_full = mnist.target.astype(int)
-        return subset_digits(X_full, y_full, K, n, random_state)
+        return subset_digits(X_full, y_full, K, n, random_state_data)
 
     elif name == 'cifar10':
         cifar = datasets.CIFAR10(root='./data', train=True, download=True, transform=transforms.ToTensor())
         X = cifar.data.reshape(len(cifar), -1) / 255.0
         y = np.array(cifar.targets)
-        idx = np.random.RandomState(random_state).choice(len(X), size=500, replace=False)
+        idx = np.random.RandomState(random_state_data).choice(len(X), size=500, replace=False)
         return X[idx].T, y[idx]
 
     elif name == 'fashion_mnist':
         data = datasets.FashionMNIST(root='./data', train=True, download=True, transform=transforms.ToTensor())
         X = data.data.numpy().reshape(len(data), -1) / 255.0
         y = data.targets.numpy()
-        idx = np.random.RandomState(random_state).choice(len(X), size=1000, replace=False)
+        idx = np.random.RandomState(random_state_data).choice(len(X), size=1000, replace=False)
         return X[idx].T, y[idx]
+    
     elif name == 'coil20':
         coil20_data = loadmat('data/COIL20.mat')
         X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
@@ -105,7 +107,7 @@ def subset_digits(X, y, K, n, seed):
 
 def main():
     args = parse_args()
-    X, true_labels = load_dataset(args.dataset, args.K, args.n, args.random_state)
+    X, true_labels = load_dataset(args.dataset, args.K, args.n, args.random_state_data)
 
     if args.sigma > 0:
         noise = np.random.normal(0, args.sigma, X.shape)
