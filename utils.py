@@ -1,4 +1,6 @@
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score
 from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering
@@ -208,8 +210,69 @@ def spherical_k_means(X, K, max_iter=100):
 
     return asgn_list, centers
 
-
 def same_assignment(a, b):
     if len(a) != len(b):
         return False
     return all(a[i] == b[i] for i in range(len(a)))
+
+def plot_affinity_heatmap(H, true_labels=None, title="Affinity Matrix"):
+    """
+    Plot affinity (cosine similarity) matrix from coefficient matrix H.
+
+    H: (r, n) coefficient matrix
+    true_labels: optional, reorder samples by labels for block structure
+    title: plot title
+    """
+    # Cosine similarity between samples
+    A = cosine_similarity(H.T)
+    
+    # Reorder by labels if provided
+    if true_labels is not None:
+        order = np.argsort(true_labels)
+        A = A[order][:, order]
+    
+    plt.figure(figsize=(5, 4))
+    sns.heatmap(A, cmap="viridis", cbar=True)
+    plt.title(title)
+    plt.xlabel("Samples")
+    plt.ylabel("Samples")
+    plt.tight_layout()
+    plt.show()
+
+def plot_reconstructions(X, W, H, n_samples=10, img_shape=None, title_prefix=""):
+    """
+    Plot original vs reconstruction for a subset of samples.
+
+    X: (m, n) original data matrix
+    W, H: NMF factors (X ≈ W @ H)
+    n_samples: number of samples to show
+    img_shape: (h, w) if data are images
+    title_prefix: label for the method (e.g., "Global NMF")
+    """
+    # Randomly select samples
+    idx = np.random.choice(X.shape[1], n_samples, replace=False)
+    X_hat = W @ H
+
+    fig, axes = plt.subplots(2, n_samples, figsize=(1.5*n_samples, 3))
+    
+    for i, j in enumerate(idx):
+        orig = X[:, j]
+        rec = X_hat[:, j]
+        
+        if img_shape is not None:
+            orig = orig.reshape(img_shape)
+            rec = rec.reshape(img_shape)
+        
+        # Original
+        axes[0, i].imshow(orig, cmap="gray")
+        axes[0, i].axis("off")
+        if i == 0: axes[0, i].set_ylabel("Original")
+        
+        # Reconstruction
+        axes[1, i].imshow(rec, cmap="gray")
+        axes[1, i].axis("off")
+        if i == 0: axes[1, i].set_ylabel(title_prefix)
+    
+    plt.suptitle(f"Reconstructions with {title_prefix}")
+    plt.tight_layout()
+    plt.show()

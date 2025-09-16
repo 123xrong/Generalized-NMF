@@ -93,6 +93,7 @@ def load_dataset(name, K, n, random_state_data):
         X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
         y = coil20_data['gnd'].flatten() - 1  # Convert
         X = normalize(X_full, axis=0)
+        return X, y
 
 def subset_digits(X, y, K, n, seed):
     rng = np.random.RandomState(seed)
