@@ -9,7 +9,7 @@ from sklearn.preprocessing import normalize
 from scipy.optimize import nnls
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
-def onmf_em(X, K, true_labels, max_iter=100):
+def onmf_em(X, K, true_labels, random_state=None):
     """
     EM-based ONMF from Pompili et al. (2014), adapted to return standard results.
     
@@ -28,8 +28,8 @@ def onmf_em(X, K, true_labels, max_iter=100):
     X = np.maximum(X, 0)
 
     # Step 1: EM clustering on the sphere
-    asgn_list, W_orth = spherical_k_means(X, K)  # W_orth: (d, K)
-    
+    asgn_list, W_orth = spherical_k_means(X, K, random_state=random_state)  # W_orth: (d, K)
+
     # Step 2: Compute H by projecting X onto W
     H = np.zeros((K, n))
     for k in range(K):

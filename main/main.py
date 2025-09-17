@@ -117,12 +117,12 @@ def main():
 
     # Run selected model
     model_map = {
-        'sscnmf': lambda: ssc_nmf_baseline(X, K=args.K, r=args.r, true_labels=true_labels, alpha=args.alpha),
+        'sscnmf': lambda: ssc_nmf_baseline(X, K=args.K, r=args.r, true_labels=true_labels, alpha=args.alpha, random_state=args.random_state),
         'ricc': lambda: iter_reg_coneclus_warmstart(X, K=args.K, r=args.r, true_labels=true_labels,
                                                     alpha=args.alpha, max_iter=args.max_iter,
                                                     NMF_method=args.NMF_method, ord=2, random_state=args.random_state)[0:4],
-        'gnmf': lambda: GNMF_clus(X, K=args.K, true_labels=true_labels, max_iter=args.max_iter),
-        'gpcanmf': lambda: gpca_nmf(X, K=args.K, r=args.r, true_labels=true_labels),
+        'gnmf': lambda: GNMF_clus(X, K=args.K, true_labels=true_labels, max_iter=args.max_iter, random_state=args.random_state),
+        'gpcanmf': lambda: gpca_nmf(X, K=args.K, r=args.r, true_labels=true_labels, random_state=args.random_state),
         'onmf': lambda: onmf_em(X, K=args.K, true_labels=true_labels),
         'dscnmf': lambda: dsc_nmf_baseline(X, K=args.K, r=args.r, true_labels=true_labels),
         'deepnmf': lambda: dsc_nmf_baseline(X, K=args.K, r=args.r, true_labels=true_labels),

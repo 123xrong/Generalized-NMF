@@ -158,7 +158,7 @@ def normalize(M, axis):
     return ret
 
 # Clustering utility functions for ONMF-EM algorithm
-def spherical_k_means(X, K, max_iter=100):
+def spherical_k_means(X, K, max_iter=100, random_state=None):
     """
     Spherical k-means used for initializing ONMF centroids.
     Returns:
@@ -167,6 +167,8 @@ def spherical_k_means(X, K, max_iter=100):
     """
     d, n = X.shape
     asgn_list = [[] for _ in range(K)]
+    if random_state is not None:
+        np.random.seed(random_state)
     for i in range(n):
         asgn_list[np.random.randint(K)].append(i)
 

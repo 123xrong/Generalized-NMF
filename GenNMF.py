@@ -912,7 +912,7 @@ def iter_reg_coneclus_sparse_nmf(X, K, r, true_labels, max_iter=50, random_state
 
     return acc, ARI, NMI, reconstruction_error, proportion_negatives
 
-def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1):
+def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1, random_state=None):
     """
     GPCA + NMF pipeline using sklearn-friendly tools.
     """
@@ -938,7 +938,7 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1):
                 H *= (W.T @ X_k) / (W.T @ WH + l1_reg + 1e-10)
                 W *= (X_k @ H.T) / (W @ (H @ H.T) + 1e-10)
         else:
-            model = SklearnNMF(n_components=r, init='random', max_iter=1000, random_state=0)
+            model = SklearnNMF(n_components=r, init='random', max_iter=1000, random_state=random_state)
             W = model.fit_transform(X_k)
             H = model.components_
 
@@ -994,84 +994,6 @@ def ssc_projnmf(X, K, r, true_labels, alpha=0.01, max_iter=500):
     print("Relative error:", np.linalg.norm(X - X_reconstructed) / np.linalg.norm(X))
 
     return acc, ARI, NMI, reconstruction_error
-
-# def onmf_with_relu(X, K, true_labels, r=None, max_iter=100, lambda_reg=0.1, tol=1e-4, verbose=False):
-#     """
-#     Orthogonal NMF with ReLU regularization and clustering evaluation.
-
-#     Parameters:
-#         X: (d, n) data matrix
-#         K: number of clusters
-#         true_labels: (n,) ground-truth labels
-#         r: rank (defaults to K)
-#         lambda_reg: L1 ReLU penalty weight
-#         max_iter: max number of iterations
-#         tol: convergence tolerance
-#         verbose: print progress
-
-#     Returns:
-#         acc, ARI, NMI, reconstruction_error
-#     """
-#     m, n = X.shape
-#     if r is None:
-#         r = K
-
-#     # Ensure nonnegative data
-#     X = np.maximum(X, 0)
-#     if X.max() > 1.0:
-#         X = X / X.max()  # scale to [0, 1]
-
-#     norm_X = np.linalg.norm(X, 'fro')
-
-#     # Initialize W using SVD
-#     U, _, _ = np.linalg.svd(X @ X.T)
-#     W = np.abs(U[:, :r])
-#     W = normalize(W, axis=0)
-
-#     # Initialize H with NNLS
-#     H = np.zeros((r, n))
-#     for i in range(n):
-#         H[:, i], _ = nnls(W, X[:, i])
-
-#     prev_loss = None
-#     for it in range(max_iter):
-#         # Update H with L1-regularized least squares (ReLU)
-#         for i in range(n):
-#             def obj(h):
-#                 return np.linalg.norm(X[:, i] - W @ h)**2 + lambda_reg * np.sum(h)
-
-#             bounds = [(0, None)] * r
-#             res = minimize(obj, H[:, i], bounds=bounds, method='L-BFGS-B')
-#             H[:, i] = res.x
-
-#         # Update W using orthogonal Procrustes
-#         A = X @ H.T
-#         U, _, Vt = np.linalg.svd(A, full_matrices=False)
-#         W = U @ Vt
-#         W = np.abs(W)
-#         W = normalize(W, axis=0)
-
-#         # Total normalized loss
-#         reconstruction = W @ H
-#         rec_loss = np.linalg.norm(X - reconstruction, 'fro')
-#         l1_penalty = lambda_reg * np.sum(H)
-#         total_loss = (rec_loss**2 + l1_penalty) / (norm_X**2)
-
-#         if verbose and it % 10 == 0:
-#             print(f"[Iter {it}] Normalized Loss: {total_loss:.6f} | Recon Loss: {rec_loss:.4f}")
-
-#         if prev_loss is not None and abs(prev_loss - total_loss) < tol:
-#             break
-#         prev_loss = total_loss
-
-#     # Clustering: assign by max in H
-#     pred_labels = H.argmax(axis=0)
-#     acc = remap_accuracy(true_labels, pred_labels)
-#     ARI = adjusted_rand_score(true_labels, pred_labels)
-#     NMI = normalized_mutual_info_score(true_labels, pred_labels)
-#     recon_error = rec_loss / norm_X  # final normalized error
-
-#     return acc, ARI, NMI, recon_error
 
 def onmf_with_relu(X, K, true_labels, r=None, max_iter=100, lambda_reg=0.1, tol=1e-4, verbose=False):
     """
