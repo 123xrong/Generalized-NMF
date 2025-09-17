@@ -916,6 +916,7 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1, random_state=No
     """
     GPCA + NMF pipeline using sklearn-friendly tools.
     """
+    np.random.seed(random_state)
     n = X.shape[1]
     X_reconstructed = np.zeros_like(X)
 
