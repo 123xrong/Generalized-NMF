@@ -23,7 +23,7 @@ def arg_parser():
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
-    parser.add_argument('--K', type=int, default=40, help='Number of subspaces (default: 40)')
+    parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 4)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--alpha', type=float, default=1e-2, help='Regularization parameter for ssc')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
@@ -59,7 +59,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     elif model == 'gnmf':
         project_name = 'gnmf-COIL20'
         acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
-            X, K=K, true_labels=true_labels)
+            X, K=K, r=r, true_labels=true_labels)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-COIL20'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
