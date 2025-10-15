@@ -32,11 +32,12 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
     parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf'],
                         help='Model to use for clustering')
+    parser.add_argument('--graph_weighting', type=str, default='dot-product', choices=['heat-kernel', 'binary', 'dot-product'],)
     parser.add_argument('--l1_reg', type=float, default=0.01,
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6, graph_weighting='dot-product'):
     dataset = WebKB(root='~/data/WebKB', name='Cornell')
     data = dataset[0]
     X = data.x.numpy().T  # feature matrix: (features, samples)
@@ -60,19 +61,13 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
             alpha=alpha, max_iter=max_iter, NMF_method='anls', ord=2, random_state=random_state)
     elif model == 'gnmf':
         project_name = 'gnmf-WEBKB'
-        acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, true_labels=true_labels,
-            lmd=l1_reg)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
+            X, K=K, r=r, true_labels=true_labels, weight_type=graph_weighting, max_iter=max_iter)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-WEBKB'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X, K=K, r=r, true_labels=true_labels,
             l1_reg=l1_reg)
-    elif model == 'onmf_relu':
-        project_name = 'onmf_relu-WEBKB'
-        acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X, K=K, r=r, true_labels=true_labels,
-            lambda_reg=l1_reg)
     elif model == 'dscnmf':
         project_name = 'dscnmf-WEBKB'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
@@ -121,5 +116,6 @@ if __name__ == "__main__":
     max_iter = args.max_iter
     tol = args.tol
     random_state = args.random_state
+    graph_weighting = args.graph_weighting
 
-    main(model, r, n, K, sigma, alpha, l1_reg, random_state, max_iter, tol)
+    main(model, r, n, K, sigma, alpha, l1_reg, random_state, max_iter, tol, graph_weighting)
