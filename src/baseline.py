@@ -60,6 +60,7 @@ def GNMF_clus(X, K, r, true_labels, max_iter=1000, random_state=None, lmd=10, we
 
     H_array = np.asarray(H)
     predicted_labels = KMeans(n_clusters=K, random_state=random_state).fit_predict(H_array.T)
+    print(predicted_labels.shape)
 
     acc = remap_accuracy(true_labels, predicted_labels)
     ari = adjusted_rand_score(true_labels, predicted_labels)
