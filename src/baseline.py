@@ -1,8 +1,8 @@
 import numpy as np
 
 from src.utils import *
-from libnmf.gnmf import GNMF
-from libnmf.nmfbase import NMFBase
+from .gnmf import GNMF
+from .nmfbase import NMFBase
 from sklearn.cluster import KMeans
 from sklearn.decomposition import NMF
 from sklearn.preprocessing import normalize
@@ -24,7 +24,7 @@ def onmf_em(X, K, true_labels, random_state=None):
         nmi: normalized mutual information
         reconstruction_error: ||X - WH|| / ||X||
     """
-    d, n = X.shape
+    _, n = X.shape
     X = np.maximum(X, 0)
 
     # Step 1: EM clustering on the sphere
