@@ -37,7 +37,7 @@ def arg_parser():
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
     transform = transforms.ToTensor()
     cifar = datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
     X_cifar = cifar.data.reshape(len(cifar), -1) / 255.0  # (50000, 3072)
@@ -48,7 +48,6 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     n_classes = len(np.unique(y_cifar))
     n_per_class = n_total // n_classes   # equal samples per class
 
-    np.random.seed(42)
     subset_idx = []
 
     for c in range(n_classes):
