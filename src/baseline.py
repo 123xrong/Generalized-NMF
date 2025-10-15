@@ -47,12 +47,12 @@ def onmf_em(X, K, true_labels, random_state=None):
     return acc, ari, nmi, reconstruction_error
 
 
-def GNMF_clus(X, K, r, true_labels, max_iter=1000, random_state=None, lmd=10, weight_type='heat-kernel', param=0.3):
+def GNMF_clus(X, K, r, true_labels, max_iter=1000, random_state=None, lmd=10, weight_type='heat-kernel', param=0.2):
     """
     Graph-based Non-negative Matrix Factorization (GNMF) for subspace clustering.
     """
     # base = NMFBase(X, K)
-    model = GNMF(X, K*r)
+    model = GNMF(X, rank=r*K)
     model.compute_factors(max_iter=max_iter, lmd=lmd, weight_type=weight_type, param=param)
 
     W = model.W
