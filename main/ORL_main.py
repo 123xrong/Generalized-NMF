@@ -37,7 +37,7 @@ def arg_parser():
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
     faces = fetch_olivetti_faces(shuffle=True, random_state=random_state)
     X_full = faces.data.T
     true_labels = faces.target
@@ -97,8 +97,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
             X_subset, K, r, true_labels=y_subset, alpha=alpha)
     elif model == 'gnmf':
-        acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_subset, K, true_labels=y_subset, lmd=l1_reg)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
+            X_subset, K=K, r=r, true_labels=true_labels, max_iter=max_iter)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X_subset, K, r, true_labels=y_subset, l1_reg=l1_reg)
