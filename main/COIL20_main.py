@@ -58,9 +58,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
             alpha=alpha, max_iter=max_iter, NMF_method='anls', ord=2, random_state=random_state)
     elif model == 'gnmf':
         project_name = 'gnmf-COIL20'
-        acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, true_labels=true_labels,
-            lmd=l1_reg)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
+            X, K=K, true_labels=true_labels)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-COIL20'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
