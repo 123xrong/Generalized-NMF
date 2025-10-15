@@ -37,14 +37,13 @@ def arg_parser():
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
     transform = transforms.ToTensor()
     full_data = datasets.FashionMNIST(root='./data', train=True, download=True, transform=transform)
     X_full = full_data.data.numpy().reshape(len(full_data), -1) / 255.0
     y_full = full_data.targets.numpy()
 
     # Subsample 1000 examples
-    np.random.seed(42)
     subset_idx = np.random.choice(len(X_full), size=1000, replace=False)
     X = X_full[subset_idx]
     true_labels = y_full[subset_idx]
