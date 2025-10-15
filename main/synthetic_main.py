@@ -11,9 +11,9 @@ parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir)
 
 # Imports from your repo
-from GenNMF import *
-from modified_dscnmf import *
-from baseline import *
+from src.GenNMF import *
+from src.modified_dscnmf import *
+from src.baseline import *
 from sklearn.preprocessing import normalize
 
 def parse_args():

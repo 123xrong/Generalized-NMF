@@ -10,11 +10,11 @@ import re
 import numpy as np
 import argparse
 import wandb
-from coneClustering import *
-from modified_dscnmf import *
-from baseline import *
-from deepNMF import *
-from deepSSCNMF import *
+from src.GenNMF import *
+from src.modified_dscnmf import *
+from src.baseline import *
+from src.deepNMF import *
+from src.deepSSCNMF import *
 from sklearn.datasets import fetch_20newsgroups
 from nltk.corpus import stopwords
 from nltk import download

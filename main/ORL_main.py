@@ -10,14 +10,14 @@ import numpy as np
 import argparse
 import wandb
 from sklearn.metrics import adjusted_rand_score
-from coneClustering import *
-from modified_dscnmf import *
-from baseline import *
-from deepNMF import *
-from deepSSCNMF import *
+from src.GenNMF import *
+from src.modified_dscnmf import *
+from src.baseline import *
+from src.deepNMF import *
+from src.deepSSCNMF import *
 from sklearn.linear_model import Lasso
 from sklearn.preprocessing import normalize
-from nmf import *
+from src.nmf import *
 from sklearn.datasets import fetch_olivetti_faces, fetch_openml 
 
 def arg_parser():

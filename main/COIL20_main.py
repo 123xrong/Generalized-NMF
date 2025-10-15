@@ -11,11 +11,11 @@ import numpy as np
 import argparse
 import wandb
 from scipy.io import loadmat
-from coneClustering import *
-from modified_dscnmf import *
-from baseline import *
-from deepNMF import *
-from deepSSCNMF import *
+from src.GenNMF import *
+from src.modified_dscnmf import *
+from src.baseline import *
+from src.deepNMF import *
+from src.deepSSCNMF import *
 from sklearn.preprocessing import normalize
 
 def arg_parser():

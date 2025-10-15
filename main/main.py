@@ -23,12 +23,12 @@ from nltk import download
 from scipy.io import loadmat
 
 # Project models
-from nmf import *
-from GenNMF import *
-from modified_dscnmf import *
-from baseline import *
-from deepNMF import *
-from deepSSCNMF import *
+from src.nmf import *
+from src.GenNMF import *
+from src.modified_dscnmf import *
+from src.baseline import *
+from src.deepNMF import *
+from src.deepSSCNMF import *
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Subspace clustering with NMF variants")
@@ -58,7 +58,7 @@ def load_dataset(name, K, n, random_state_data):
         return X.T, newsgroups.target
 
     elif name == 'olivetti_faces':
-        faces = fetch_olivetti_faces(shuffle=True, random_state=random_state_data)
+        faces = fetch_olivetti_faces(shuffle=False, random_state=random_state_data)
         X, y = faces.data.T, faces.target
         selected_idx = [i for subj in range(10) for i in range(subj*10, subj*10+10)]
         return X[:, selected_idx], y[selected_idx]
