@@ -25,7 +25,7 @@ def arg_parser():
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
-    parser.add_argument('--K', type=int, default=10, help='Number of subspaces (default: 5)')
+    parser.add_argument('--K', type=int, default=10, help='Number of subspaces (default: 10)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--alpha', type=float, default=1e-2, help='Regularization parameter for ssc')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
@@ -36,7 +36,7 @@ def arg_parser():
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=500, tol=1e-6):
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
     y_full = mnist.target.to_numpy().astype(int) 
@@ -57,9 +57,6 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
     # normalize x_subset
     X_subset = normalize(X_subset, axis=1)
 
-    print(X_subset.shape)
-    print(true_labels.shape)
-
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X_subset.shape)
@@ -75,8 +72,6 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         project_name = 'gnmf-MNIST'
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-MNIST'
-    elif model == 'onmf_relu':
-        project_name = 'onmf_relu-MNIST'
     elif model == 'dscnmf':
         project_name = 'dscnmf-MNIST'
     elif model == 'onmf':
@@ -98,15 +93,11 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=42, m
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
             X_subset, K, r, true_labels=true_labels)
     elif model == 'gnmf':
-        acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_subset, K, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
+            X_subset, K=K, r=r, true_labels=true_labels)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X_subset, K, r, true_labels=true_labels, l1_reg=l1_reg)
-    elif model == 'onmf_relu':
-        acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X_subset, K=K, r=r, true_labels=true_labels,
-            lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
             X_subset, K=K, r=r, true_labels=true_labels)
