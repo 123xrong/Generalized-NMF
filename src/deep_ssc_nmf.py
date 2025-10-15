@@ -1,5 +1,5 @@
 import numpy as np
-from utils import *
+from src.utils import *
 from sklearn.preprocessing import normalize
 from sklearn.cluster import SpectralClustering
 from sklearn.linear_model import Lasso

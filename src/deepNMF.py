@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from utils import *
+from src.utils import *
 from sklearn.preprocessing import normalize
 from sklearn.cluster import KMeans
 from sklearn.metrics import accuracy_score, adjusted_rand_score, normalized_mutual_info_score

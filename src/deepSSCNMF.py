@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import numpy as np
-from utils import *
+from src.utils import *
 from sklearn.linear_model import Lasso
 from sklearn.cluster import SpectralClustering, KMeans
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
@@ -37,7 +37,6 @@ def deep_ssc_nmf(X_np, ranks=[256, 128, 64], alpha=0.01, n_iter=100, true_labels
     X = torch.tensor(X_np, dtype=torch.float32).to(device)
     norm_X = torch.norm(X, p='fro')
     H_input = X.clone().detach()
-    input_dim = X.shape[0]
     X_hat_all = torch.zeros_like(X)
 
     for r in ranks:

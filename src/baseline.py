@@ -1,6 +1,6 @@
 import numpy as np
 
-from utils import *
+from src.utils import *
 from libnmf.gnmf import GNMF
 from libnmf.nmfbase import NMFBase
 from sklearn.cluster import KMeans
