@@ -11,7 +11,7 @@ from sklearn.cluster import KMeans
 from sklearn.neighbors import kneighbors_graph
 from scipy.sparse import csgraph
 from scipy.sparse.linalg import svds
-from utils import *
+from src.utils import *
 from scipy.optimize import nnls, minimize
 from sklearn.preprocessing import normalize
 
