@@ -25,7 +25,7 @@ def arg_parser():
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
     parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
-    parser.add_argument('--K', type=int, default=40, help='Number of subspaces (default: 40)')
+    parser.add_argument('--K', type=int, default=10, help='Number of subspaces (default: 10)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
     parser.add_argument('--alpha', type=float, default=1e-2, help='Regularization parameter for ssc')
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
@@ -40,12 +40,26 @@ def arg_parser():
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
     transform = transforms.ToTensor()
     cifar = datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
-    X_cifar = cifar.data.reshape(len(cifar), -1) / 255.0  # Shape: (50000, 3072)
+    X_cifar = cifar.data.reshape(len(cifar), -1) / 255.0  # (50000, 3072)
     y_cifar = np.array(cifar.targets)
 
-    # Subsample 500 images
+    # ----- Stratified subsampling -----
+    n_total = 500                   # total number of images you want
+    n_classes = len(np.unique(y_cifar))
+    n_per_class = n_total // n_classes   # equal samples per class
+
     np.random.seed(42)
-    subset_idx = np.random.choice(len(X_cifar), size=500, replace=False)
+    subset_idx = []
+
+    for c in range(n_classes):
+        class_indices = np.where(y_cifar == c)[0]
+        chosen = np.random.choice(class_indices, size=n_per_class, replace=False)
+        subset_idx.extend(chosen)
+
+    subset_idx = np.array(subset_idx)
+    np.random.shuffle(subset_idx)   # optional: mix them up
+
+    # Subsampled data
     X = X_cifar[subset_idx]
     true_labels = y_cifar[subset_idx]
     if sigma > 0:
@@ -66,8 +80,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
             alpha=alpha, max_iter=max_iter, NMF_method='anls', ord=2, random_state=random_state)
     elif model == 'gnmf':
         project_name = 'gnmf-CIFAR10'
-        acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X, K=K, true_labels=true_labels, max_iter=max_iter)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
+            X, K=K, r=r, true_labels=true_labels, max_iter=max_iter)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-CIFAR10'
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
