@@ -46,6 +46,12 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
     X_pca = pca.fit_transform(X_full)         # (1440, 300)
     X = X_pca.T                               # (300, 1440)
     X = normalize(X, axis=0)
+    # After PCA and normalization
+    X_min = X.min()
+    if X_min < 0:
+        X = X - X_min + 1e-8  # shift so the smallest entry is slightly above zero
+
+
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X.shape)
