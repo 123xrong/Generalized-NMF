@@ -77,14 +77,9 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
             X, K=K, r=r, true_labels=true_labels)
     elif model == 'gpcanmf':
         project_name = 'gpcanmf-COIL20'
-        acc, ARI, NMI, reconstruction_error = gpca_nmf(
+        acc, ARI, NMI, reconstruction_error, _, _, _ = gpca_nmf(
             X, K=K, r=r, true_labels=true_labels,
-            l1_reg=l1_reg)
-    elif model == 'onmf_relu':
-        project_name = 'onmf_relu-COIL20'
-        acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X, K=K, r=r, true_labels=true_labels,
-            lambda_reg=l1_reg)
+            l1_reg=l1_reg, random_state=random_state)
     elif model == 'dscnmf':
         project_name = 'dscnmf-COIL20'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
