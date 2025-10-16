@@ -262,7 +262,47 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
     np.random.seed(random_state)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8)
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha)
+
+    # # Step 2: Initialize containers
+    # sub_datasets = []
+    subspace_bases = []
+    subspace_coef = []
+    
+    X_new = np.zeros_like(X)
+
+    # Step 3: Per-cluster NMF
+    for k_ in range(K):
+        idx_k = np.where(pred_labels == k_)[0]
+        X_k = X[:, idx_k]
+        # sub_datasets.append(X_k)
+
+        if X_k.shape[1] == 0:
+            subspace_bases.append(None)
+            continue
+
+        # Fit NMF and store basis
+        model = NMF(n_components=r, random_state=random_state, max_iter=max_iter)
+        U_k = model.fit_transform(X_k)
+        # U_k = np.maximum(U_k, 0)  # optional ReLU
+        subspace_bases.append(U_k)
+        H_k = model.components_
+        subspace_coef.append(H_k)
+
+        # Project back into subspace
+        X_new[:, idx_k] = U_k @ H_k
+
+
+    # Step 4: Evaluate reconstruction error
+    reconstruction_error = np.linalg.norm(X_new - X) / np.linalg.norm(X)
+
+    return acc, ARI, NMI, reconstruction_error, pred_labels, subspace_bases, subspace_coef
+
+def ssc_omp_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, n_nonzero_coefs=8):
+    np.random.seed(random_state)
+
+    # Step 1: SSC clustering
+    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=n_nonzero_coefs)
 
     # # Step 2: Initialize containers
     # sub_datasets = []
