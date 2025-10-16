@@ -9,40 +9,54 @@ from sklearn.preprocessing import normalize
 from scipy.optimize import nnls
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
-def onmf_em(X, K, true_labels, random_state=None):
+def onmf_em(X, K, true_labels=None, n_iter=100, random_state=None):
     """
-    EM-based ONMF from Pompili et al. (2014), adapted to return standard results.
+    Orthogonal NMF (ONMF) using EM-style updates (Pompili et al., 2014).
     
-    Parameters:
+    Args:
         X: (d, n) nonnegative data matrix
         K: number of clusters
-        true_labels: (n,) ground-truth labels
-    
-    Returns:
-        acc: clustering accuracy
-        ari: adjusted Rand index
-        nmi: normalized mutual information
-        reconstruction_error: ||X - WH|| / ||X||
+        true_labels: (n,) optional ground-truth labels
+        n_iter: number of EM iterations
+        random_state: for reproducibility
     """
-    _, n = X.shape
+    if random_state is not None:
+        np.random.seed(random_state)
+
+    d, n = X.shape
     X = np.maximum(X, 0)
 
-    # Step 1: EM clustering on the sphere
-    asgn_list, W_orth = spherical_k_means(X, K, random_state=random_state)  # W_orth: (d, K)
+    # --- Initialization ---
+    W = np.abs(np.random.randn(d, K))
+    H = np.abs(np.random.randn(K, n))
+    W = normalize(W, axis=0)
+    H = normalize(H, axis=1)
 
-    # Step 2: Compute H by projecting X onto W
-    H = np.zeros((K, n))
-    for k in range(K):
-        for j in asgn_list[k]:
-            H[k, j] = W_orth[:, k].T @ X[:, j]
+    for it in range(n_iter):
+        # --- E-step: update H ---
+        H = np.maximum(0, W.T @ X)
+        # enforce orthogonality (row-wise normalization)
+        for k in range(K):
+            norm = np.linalg.norm(H[k, :])
+            if norm > 0:
+                H[k, :] /= norm
 
-    X_hat = W_orth @ H
+        # --- M-step: update W ---
+        W = np.maximum(0, X @ H.T)
+        W = normalize(W, axis=0)
+
+    # --- Reconstruction and clustering ---
+    X_hat = W @ H
     pred_labels = np.argmax(H, axis=0)
 
-    acc = remap_accuracy(true_labels, pred_labels)
-    ari = adjusted_rand_score(true_labels, pred_labels)
-    nmi = normalized_mutual_info_score(true_labels, pred_labels)
     reconstruction_error = np.linalg.norm(X - X_hat) / np.linalg.norm(X)
+
+    if true_labels is not None:
+        acc = remap_accuracy(true_labels, pred_labels)
+        ari = adjusted_rand_score(true_labels, pred_labels)
+        nmi = normalized_mutual_info_score(true_labels, pred_labels)
+    else:
+        acc = ari = nmi = None
 
     return acc, ari, nmi, reconstruction_error
 
