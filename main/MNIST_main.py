@@ -102,8 +102,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
             X_subset, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
-        acc, ARI, NMI, reconstruction_error = onmf_em(
-            X_subset, K=K, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error = onmf_ding(
+            X_subset, K=K, true_labels=true_labels, random_state=random_state)
     elif model == 'deepnmf':    
         acc, ARI, NMI, reconstruction_error = deep_nmf(
             X_subset, true_labels=true_labels)

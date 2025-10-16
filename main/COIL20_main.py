@@ -76,8 +76,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
             X, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
         project_name = 'onmf-COIL20'
-        acc, ARI, NMI, reconstruction_error = onmf_em(
-            X, K=K, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error = onmf_ding(
+            X, K=K, true_labels=true_labels, random_state=random_state)
     elif model == 'deepnmf':
         project_name = 'deepnmf-COIL20'
         acc, ARI, NMI, reconstruction_error = deep_nmf(

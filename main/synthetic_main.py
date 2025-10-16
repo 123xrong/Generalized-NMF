@@ -52,7 +52,7 @@ def main(args):
         'onmf_relu': lambda: onmf_with_relu(X, K=args.K, r=args.r, true_labels=true_labels,
                                             lambda_reg=args.l1_reg, tol=1e-4, verbose=False),
         'dscnmf': lambda: dsc_nmf_baseline(X, K=args.K, r=args.r, true_labels=true_labels),
-        'onmf': lambda: onmf_em(X, K=args.K, true_labels=true_labels)
+        'onmf': lambda: onmf_ding(X, K=args.K, true_labels=true_labels, random_state=args.random_state)
     }
 
     # Run model
