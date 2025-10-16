@@ -56,7 +56,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
     true_labels = np.concatenate(labels) 
     X_subset = X_subset.T
     # normalize x_subset
-    X_subset = normalize(X_subset, axis=1)
+    X_subset = normalize(X_subset, axis=0)
 
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
