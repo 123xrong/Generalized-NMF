@@ -43,6 +43,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
     X = data.x.numpy().T  # feature matrix: (features, samples)
     true_labels = data.y.numpy()    # labels (0-4 for five classes)
 
+    np.random.seed(random_state)
+
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X.shape)
