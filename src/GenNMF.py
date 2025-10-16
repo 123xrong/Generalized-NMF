@@ -159,7 +159,7 @@ def baseline_ssc(X, true_labels, alpha):
 
     return cluster_labels, acc, ARI, NMI
 
-def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
+def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8, random_state=None):
     """
     Sparse Subspace Clustering using OMP instead of Lasso.
     
@@ -194,7 +194,7 @@ def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
         n_clusters=n_clusters,
         affinity='precomputed',
         assign_labels='discretize',
-        random_state=42
+        random_state=random_state
     )
     cluster_labels = spectral.fit_predict(W)
     print(cluster_labels.shape)
@@ -302,7 +302,7 @@ def ssc_omp_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None,
     np.random.seed(random_state)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=n_nonzero_coefs)
+    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=n_nonzero_coefs, random_state=random_state)
 
     # # Step 2: Initialize containers
     # sub_datasets = []

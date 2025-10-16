@@ -95,7 +95,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
             X_subset, K, r, true_labels=true_labels, alpha=alpha)
     elif model == 'ssc-omp-nmf':
         acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_omp_nmf_baseline(
-            X_subset, K, r, true_labels=true_labels, n_nonzero_coefs=n_nonzero_coefs)
+            X_subset, K, r, true_labels=true_labels, n_nonzero_coefs=n_nonzero_coefs, random_state=random_state)
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
             X_subset, K, r, true_labels=true_labels)
