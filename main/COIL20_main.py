@@ -17,6 +17,7 @@ from src.baseline import *
 from src.deepNMF import *
 from src.deepSSCNMF import *
 from sklearn.preprocessing import normalize
+from sklearn.decomposition import PCA
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
@@ -38,10 +39,13 @@ def arg_parser():
 
 def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
     coil20_data = loadmat('data/COIL20.mat')
-    X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
-    true_labels = coil20_data['gnd'].flatten() - 1  # Convert
+    X_full = coil20_data['fea']  # (1440, 1024)
+    true_labels = coil20_data['gnd'].flatten() - 1
 
-    X = normalize(X_full, axis=0)
+    pca = PCA(n_components=300, whiten=True, random_state=42)
+    X_pca = pca.fit_transform(X_full)         # (1440, 300)
+    X = X_pca.T                               # (300, 1440)
+    X = normalize(X, axis=0)
     if sigma > 0:
         # Add non-negative Gaussian noise to the data
         noise = np.random.normal(0, sigma, X.shape)
