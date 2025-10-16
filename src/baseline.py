@@ -38,7 +38,7 @@ def initialize_onmf(X, k, random_state=42):
     return F, S, G
 
 
-def onmf_ding(X, K, true_labels=None, max_iter=500, tol=1e-5, verbose=False, random_state=42):
+def onmf_ding(X, K, true_labels=None, max_iter=500, tol=1e-5, verbose=False, random_state=None):
     """
     Orthogonal Nonnegative Matrix Tri-Factorization (ONMF-Ding 2006)
     with clustering and evaluation.
