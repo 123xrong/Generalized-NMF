@@ -262,7 +262,7 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
     np.random.seed(random_state)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=12)
+    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8)
 
     # # Step 2: Initialize containers
     # sub_datasets = []
