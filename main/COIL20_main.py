@@ -36,7 +36,7 @@ def arg_parser():
     parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
     coil20_data = loadmat('data/COIL20.mat')
     X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
     true_labels = coil20_data['gnd'].flatten() - 1  # Convert
