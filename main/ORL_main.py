@@ -31,13 +31,14 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf'],
+    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf', 'ssc-omp-nmf'],
     help='Model to use for clustering')
 
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
+    parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
     faces = fetch_olivetti_faces(shuffle=True, random_state=random_state)
     X_full = faces.data.T
     true_labels = faces.target
@@ -66,6 +67,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
     print(f"Received model: {model}")
     if model == 'sscnmf':
         project_name = 'sscnmf-ORL'
+    elif model == 'ssc-omp-nmf':
+        project_name = 'ssc-omp-nmf-ORL'
     elif model == 'ricc':
         project_name = 'ricc-ORL'
     elif model == 'gnmf':
@@ -91,8 +94,11 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
     )
 
     if model == 'sscnmf':
-        acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
+        acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_nmf_baseline(
             X_subset, K, r, true_labels=y_subset, alpha=alpha)
+    elif model == 'ssc-omp-nmf':
+        acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_omp_nmf_baseline(
+            X_subset, K, r, true_labels=y_subset, n_nonzero_coefs=n_nonzero_coefs, random_state=random_state)
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
             X_subset, K=K, r=r, true_labels=y_subset,
@@ -104,10 +110,6 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X_subset, K, r, true_labels=y_subset, l1_reg=l1_reg)
-    elif model == 'onmf_relu':
-        acc, ARI, NMI, reconstruction_error = onmf_with_relu(
-            X_subset, K=K, r=r, true_labels=y_subset,
-            lambda_reg=l1_reg, tol=1e-4, verbose=False)
     elif model == 'dscnmf':
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
             X_subset, K=K, r=r, true_labels=y_subset)
