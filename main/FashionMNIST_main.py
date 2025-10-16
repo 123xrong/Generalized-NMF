@@ -61,7 +61,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
             X, K=K, r=r, true_labels=true_labels, alpha=alpha)
     elif model == 'ricc':
         project_name = 'ricc-FashionMNIST'
-        acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
+        acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
             X, K=K, r=r, true_labels=true_labels,
             alpha=alpha, max_iter=max_iter, NMF_method='anls', ord=2, random_state=random_state)
     elif model == 'gnmf':

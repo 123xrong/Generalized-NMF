@@ -94,8 +94,9 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
         acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
             X_subset, K, r, true_labels=y_subset, alpha=alpha)
     elif model == 'ricc':
-        acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_subset, K, r, true_labels=y_subset, alpha=alpha)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
+            X_subset, K=K, r=r, true_labels=y_subset,
+            alpha=alpha, max_iter=max_iter, NMF_method='anls', ord=2, random_state=random_state)
     # Graph Regularized NMF
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
