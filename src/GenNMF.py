@@ -14,6 +14,7 @@ from scipy.sparse.linalg import svds
 from src.utils import *
 from scipy.optimize import nnls, minimize
 from sklearn.preprocessing import normalize
+from sklearn.linear_model import OrthogonalMatchingPursuit
 
 def data_simulation(m, r, n_k, K, sigma=0.0, random_state=None):
     """
@@ -158,6 +159,53 @@ def baseline_ssc(X, true_labels, alpha):
 
     return cluster_labels, acc, ARI, NMI
 
+def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
+    """
+    Sparse Subspace Clustering using OMP instead of Lasso.
+    
+    Args:
+        X: (n_samples, n_features)
+        true_labels: (n_samples,)
+        n_nonzero_coefs: sparsity level per sample (number of neighbors)
+    """
+    # Normalize data
+    X = X - X.mean(axis=0, keepdims=True)
+    X = normalize(X)  # row-wise ℓ2 normalization
+    X = X.T           # columns = samples
+    n_samples = X.shape[1]
+
+    C = np.zeros((n_samples, n_samples))
+
+    for i in range(n_samples):
+        x_i = X[:, i]
+        X_rest = np.delete(X, i, axis=1)
+
+        omp = OrthogonalMatchingPursuit(n_nonzero_coefs=n_nonzero_coefs, fit_intercept=False)
+        omp.fit(X_rest, x_i)
+        c = omp.coef_
+
+        C[np.arange(n_samples) != i, i] = c
+
+    # Build symmetric affinity
+    W = np.abs(C) + np.abs(C.T)
+
+    # Spectral clustering
+    n_clusters = len(np.unique(true_labels))
+    spectral = SpectralClustering(
+        n_clusters=n_clusters,
+        affinity='precomputed',
+        assign_labels='discretize',
+        random_state=42
+    )
+    cluster_labels = spectral.fit_predict(W)
+
+    # Evaluate
+    acc = remap_accuracy(true_labels, cluster_labels)
+    ari = adjusted_rand_score(true_labels, cluster_labels)
+    nmi = normalized_mutual_info_score(true_labels, cluster_labels)
+
+    return cluster_labels, acc, ari, nmi
+
 def ksub_nmf_baseline(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_state=None):
     np.random.seed(random_state)
     n = X.shape[1]
@@ -213,7 +261,7 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
     np.random.seed(random_state)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha=alpha)
+    pred_labels, acc, ARI, NMI = baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8)
 
     # # Step 2: Initialize containers
     # sub_datasets = []
