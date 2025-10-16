@@ -164,14 +164,13 @@ def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
     Sparse Subspace Clustering using OMP instead of Lasso.
     
     Args:
-        X: (n_samples, n_features)
+        X: (n_features, n_samples)
         true_labels: (n_samples,)
         n_nonzero_coefs: sparsity level per sample (number of neighbors)
     """
     # Normalize data
-    X = X - X.mean(axis=0, keepdims=True)
+    X = X - X.mean(axis=1, keepdims=True)
     X = normalize(X)  # row-wise ℓ2 normalization
-    X = X.T           # columns = samples
     n_samples = X.shape[1]
 
     C = np.zeros((n_samples, n_samples))
