@@ -73,7 +73,7 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
             X, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
         project_name = 'onmf-WEBKB'
-        acc, ARI, NMI, reconstruction_error = onmf_em(
+        acc, ARI, NMI, reconstruction_error = onmf_ding(
             X, K=K, true_labels=true_labels)
     elif model == 'deepnmf':
         project_name = 'deepnmf-WEBKB'
