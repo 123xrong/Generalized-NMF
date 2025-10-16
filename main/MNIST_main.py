@@ -33,11 +33,11 @@ def arg_parser():
     parser.add_argument('--random_state', type=int, default=None, help='Random seed for clustering (default: None)')
     parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf', 'ssc-omp-nmf'],
     help='Model to use for clustering')
-    parser.add_argument('--n_nonzero_coefs', type=int, default=10, help='Number of non-zero coefficients for OMP')
+    parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     parser.add_argument('--l1_reg', type=float, default=0.01, help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=500, tol=1e-6, n_nonzero_coefs=10):
+def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None, max_iter=500, tol=1e-6, n_nonzero_coefs=8):
     np.random.seed(random_state)
     mnist = fetch_openml('mnist_784', version=1)
     X_full = mnist.data.to_numpy() 
