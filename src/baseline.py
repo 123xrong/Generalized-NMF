@@ -38,7 +38,7 @@ def initialize_onmf(X, k, random_state=42):
     return F, S, G
 
 
-def onmf_ding(X, k, true_labels=None, max_iter=500, tol=1e-5, verbose=False, random_state=42):
+def onmf_ding(X, K, true_labels=None, max_iter=500, tol=1e-5, verbose=False, random_state=42):
     """
     Orthogonal Nonnegative Matrix Tri-Factorization (ONMF-Ding 2006)
     with clustering and evaluation.
@@ -47,7 +47,7 @@ def onmf_ding(X, k, true_labels=None, max_iter=500, tol=1e-5, verbose=False, ran
     ----
     X : array (m, n)
         Nonnegative data matrix (features × samples)
-    k : int
+    K : int
         Number of clusters / latent factors
     true_labels : array (n,), optional
         Ground-truth labels for evaluation
@@ -64,7 +64,7 @@ def onmf_ding(X, k, true_labels=None, max_iter=500, tol=1e-5, verbose=False, ran
     m, n = X.shape
 
     # --- Initialization (K-means + Eq 17) ---
-    F, S, G = initialize_onmf(X, k, random_state)
+    F, S, G = initialize_onmf(X, K, random_state)
 
     F_diff = G_diff = np.inf
     recon_error = np.inf
