@@ -29,13 +29,14 @@ def arg_parser():
     parser.add_argument('--max_iter', type=int, default=200, help='Maximum number of iterations (default: 50)')
     parser.add_argument('--tol', type=float, default=1e-6, help='Tolerance for stopping criterion (default: 1e-6)')
     parser.add_argument('--random_state', type=int, default=42, help='Random seed for clustering (default: None)')
-    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf'],
+    parser.add_argument('--model', type=str, choices=['sscnmf', 'ricc', 'gnmf', 'gpcanmf', 'onmf_relu', 'dscnmf', 'onmf', 'deepnmf', 'deepsscnmf', 'ssc-omp-nmf'],
                         help='Model to use for clustering')
     parser.add_argument('--l1_reg', type=float, default=0.01,
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
+    parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
     coil20_data = loadmat('data/COIL20.mat')
     X_full = coil20_data['fea'].T  # shape (feature_dim, num_samples)
     true_labels = coil20_data['gnd'].flatten() - 1  # Convert
@@ -49,8 +50,12 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=42, max
     
     if model == 'sscnmf':
         project_name = 'sscnmf-COIL20'
-        acc, ARI, NMI, reconstruction_error = ssc_nmf_baseline(
+        acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_nmf_baseline(
             X, K=K, r=r, true_labels=true_labels, alpha=alpha)
+    elif model == 'ssc-omp-nmf':
+        project_name = 'ssc-omp-nmf-COIL20'
+        acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_omp_nmf_baseline(
+            X, K=K, r=r, true_labels=true_labels, n_nonzero_coefs=n_nonzero_coefs, random_state=random_state)
     elif model == 'ricc':
         project_name = 'ricc-COIL20'
         acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
@@ -118,5 +123,6 @@ if __name__ == "__main__":
     max_iter = args.max_iter
     tol = args.tol
     random_state = args.random_state
+    n_nonzero_coefs = args.n_nonzero_coefs
 
-    main(model, r, n, K, sigma, alpha, l1_reg, random_state, max_iter, tol)
+    main(model, r, n, K, sigma, alpha, l1_reg, random_state, max_iter, tol, n_nonzero_coefs)
