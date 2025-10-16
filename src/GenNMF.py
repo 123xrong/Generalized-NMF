@@ -169,7 +169,7 @@ def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
         n_nonzero_coefs: sparsity level per sample (number of neighbors)
     """
     # Normalize data
-    X = X - X.mean(axis=1, keepdims=True)
+    X = X - X.mean(axis=0, keepdims=True)
     X = normalize(X)  # row-wise ℓ2 normalization
     n_samples = X.shape[1]
 
