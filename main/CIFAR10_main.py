@@ -37,7 +37,7 @@ def arg_parser():
                         help='L1 regularization parameter for ONMF-ReLU/GPCANMF')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6):
+def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=500, tol=1e-6):
     transform = transforms.ToTensor()
     cifar = datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
     X_cifar = cifar.data.reshape(len(cifar), -1) / 255.0  # (50000, 3072)
@@ -91,8 +91,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
             X, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
         project_name = 'onmf-CIFAR10'
-        acc, ARI, NMI, reconstruction_error = onmf_em(
-            X, K=K, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error = onmf_ding(
+            X, K=K, true_labels=true_labels, random_state=random_state)
     elif model == 'deepnmf':
         project_name = 'deepnmf-CIFAR10'
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(

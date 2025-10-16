@@ -96,6 +96,7 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
     elif model == 'ricc':
         acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
             X_subset, K, r, true_labels=y_subset, alpha=alpha)
+    # Graph Regularized NMF
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error, _, _, _ = GNMF_clus(
             X_subset, K=K, r=r, true_labels=y_subset, max_iter=max_iter)
@@ -110,8 +111,8 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
         acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
             X_subset, K=K, r=r, true_labels=y_subset)
     elif model == 'onmf':
-        acc, ARI, NMI, reconstruction_error = onmf_em(
-            X_subset, K=K, true_labels=y_subset)
+        acc, ARI, NMI, reconstruction_error = onmf_ding(
+            X_subset, K=K, true_labels=y_subset, random_state=random_state)
     elif model == 'deepnmf':
         acc, ARI, NMI, reconstruction_error = deep_nmf(
             X_subset, true_labels=y_subset)
