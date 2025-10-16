@@ -122,7 +122,7 @@ def baseline_ksubspace(X, r, K, true_labels, max_iter=1000, tol=1e-6, random_sta
     
     return cluster_labels, acc, ARI, NMI
 
-def baseline_ssc(X, true_labels, alpha):
+def baseline_ssc(X, true_labels, alpha, random_state=None):
     # X: [number of samples, dimension]
     n_samples = X.shape[1]
     X = X - X.mean(axis=1, keepdims=True)
@@ -148,7 +148,7 @@ def baseline_ssc(X, true_labels, alpha):
 
     # Run spectral clustering on C
     n_clusters = len(np.unique(true_labels))
-    spectral = cluster.SpectralClustering(n_clusters=n_clusters, affinity='precomputed', assign_labels='kmeans', random_state=42)
+    spectral = cluster.SpectralClustering(n_clusters=n_clusters, affinity='precomputed', assign_labels='kmeans', random_state=random_state)
     cluster_labels = spectral.fit_predict(C)
     print("length of cluster_labels: ", len(cluster_labels))
 
@@ -262,7 +262,7 @@ def ssc_nmf_baseline(X, r, K, true_labels, max_iter=1000, random_state=None, alp
     np.random.seed(random_state)
 
     # Step 1: SSC clustering
-    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha)
+    pred_labels, acc, ARI, NMI = baseline_ssc(X, true_labels, alpha, random_state=random_state)
 
     # # Step 2: Initialize containers
     # sub_datasets = []
