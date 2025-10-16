@@ -198,6 +198,8 @@ def baseline_ssc_omp(X, true_labels, n_nonzero_coefs=8):
         random_state=42
     )
     cluster_labels = spectral.fit_predict(W)
+    print(cluster_labels.shape)
+    print(true_labels.shape)
 
     # Evaluate
     acc = remap_accuracy(true_labels, cluster_labels)
