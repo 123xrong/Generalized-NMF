@@ -42,7 +42,9 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
     X_full = coil20_data['fea']  # (1440, 1024)
     true_labels = coil20_data['gnd'].flatten() - 1
 
-    pca = PCA(n_components=300, whiten=True, random_state=42)
+    np.random.seed(random_state)
+
+    pca = PCA(n_components=300, whiten=True)
     X_pca = pca.fit_transform(X_full)         # (1440, 300)
     X = X_pca.T                               # (300, 1440)
     X = normalize(X, axis=0)
