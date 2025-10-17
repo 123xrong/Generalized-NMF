@@ -33,7 +33,7 @@ def sparse_nmf(X_block, r, l1_reg=0.1, W_init=None, H_init=None, n_iter=200):
         W *= (X_block @ H.T) / (W @ (H @ H.T) + 1e-10)
     return W, H
 
-def approximate_gpca(X, K, affinity='cosine', gamma=20):
+def approximate_gpca(X, K, affinity='cosine', gamma=20, random_state=None):
     """
     Approximate GPCA using affinity + spectral clustering.
     """
@@ -45,7 +45,7 @@ def approximate_gpca(X, K, affinity='cosine', gamma=20):
         raise ValueError("Unsupported affinity type")
 
     np.fill_diagonal(S, 0)
-    clustering = SpectralClustering(n_clusters=K, affinity='precomputed', random_state=0)
+    clustering = SpectralClustering(n_clusters=K, affinity='precomputed', random_state=random_state)
     return clustering.fit_predict(S)
 
 def projective_nmf(X, r, max_iter=200, tol=1e-4):

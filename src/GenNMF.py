@@ -699,7 +699,7 @@ def gpca_nmf(X, K, r, true_labels, use_sparse=False, l1_reg=0.1, random_state=No
     X_reconstructed = np.zeros_like(X)
 
     # Step 1: GPCA clustering
-    pred_labels = approximate_gpca(X, K)
+    pred_labels = approximate_gpca(X, K, random_state=random_state)
 
     # Step 2: Cluster-wise NMF
     for k in range(K):
