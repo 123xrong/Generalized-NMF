@@ -136,7 +136,7 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
         for l in range(1, L):
             X_hat = X_hat @ W_list[l]
         X_hat = X_hat @ H.T
-        recon_error = np.linalg.norm(X - X_hat, 'fro') / np.linalg.norm(X, 'fro')
+        recon_error = np.linalg.norm(X - X_hat.T, 'fro') / np.linalg.norm(X, 'fro')
 
         if it % 50 == 0 or it == max_iter - 1:
             if verbose:
