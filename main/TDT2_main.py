@@ -20,6 +20,7 @@ from nltk.corpus import stopwords
 from nltk import download
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import normalize
+from sklearn.decomposition import PCA
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
@@ -37,14 +38,14 @@ def arg_parser():
     parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     return parser.parse_args()
 
-def load_TDT2_10(path='data/TDT2_10_preprocessed.npz', normalize_cols=True):
+def load_TDT2_10(path='data/TDT2_4_preprocessed.npz', normalize_cols=True):
     """
-    Loads the preprocessed 10-class TDT2 subset.
+    Loads the preprocessed 4-class TDT2 subset.
 
     Parameters
     ----------
     path : str
-        Path to your saved .npz file (default: 'data/TDT2_10_preprocessed.npz')
+        Path to your saved .npz file (default: 'data/TDT2_4_preprocessed.npz')
     normalize_cols : bool
         Whether to re-normalize columns (recommended for NMF stability).
 
@@ -53,7 +54,7 @@ def load_TDT2_10(path='data/TDT2_10_preprocessed.npz', normalize_cols=True):
     X : np.ndarray, shape (n_features, n_samples)
         Column-normalized data matrix (ready for NMF/Deep NMF).
     y : np.ndarray, shape (n_samples,)
-        Integer labels (0–9).
+        Integer labels (0–3).
     """
 
     data = np.load(path)
@@ -63,12 +64,19 @@ def load_TDT2_10(path='data/TDT2_10_preprocessed.npz', normalize_cols=True):
     if normalize_cols:
         X = normalize(X, axis=0)
 
-    print(f"Loaded TDT2-10: X.shape={X.shape}, unique classes={len(np.unique(y))}")
+    print(f"Loaded TDT2-4: X.shape={X.shape}, unique classes={len(np.unique(y))}")
     return X, y
 
 def main(model, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
-    X, y = load_TDT2_10('data/TDT2_10_preprocessed.npz')
-    
+    X, y = load_TDT2_10('data/TDT2_4_preprocessed.npz')
+
+    # reduce data dimensionality if needed
+    if X.shape[0] > 1000:
+        pca = PCA(n_components=1000, whiten=True, random_state=random_state)
+        X_reduced = pca.fit_transform(X.T).T  # shape (1000, n_samples)
+        X = X_reduced
+        print(f"Reduced data dimensionality to {X.shape[0]} via PCA.")
+
     print(f"Received model: {model}")
     if model == 'sscnmf':
         project_name = 'sscnmf-TDT2'
