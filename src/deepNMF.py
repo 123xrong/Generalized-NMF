@@ -127,6 +127,7 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
         W = np.maximum(nmf.components_.T, 1e-8)
         W_list.append(W)
     H = normalize(H, axis=0)
+    H = H.T
 
     # ----- 2. Joint fine-tuning (multiplicative updates) -----
     prev_err, recon_error = np.inf, np.inf
