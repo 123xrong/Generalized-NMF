@@ -149,7 +149,7 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
             W_eff = W_eff @ W_list[l]
 
         # Backward multiplicative updates
-        H = H * (W_eff.T @ X) / (W_eff.T @ (W_eff @ H) + 1e-8)
+        H = H * (W_eff.T @ X.T) / (W_eff.T @ (W_eff @ H) + 1e-8)
         H = np.maximum(H, 1e-8)
         for l in reversed(range(L)):
             W = W_list[l]
