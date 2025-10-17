@@ -106,14 +106,14 @@ def main(model, r, n, K, sigma=0.0, alpha = 0.1, l1_reg=0.01, random_state=None,
         acc, ARI, NMI, reconstruction_error, _, _, _ = gpca_nmf(
             X_subset, K, r, true_labels=true_labels, l1_reg=l1_reg, random_state=random_state)
     elif model == 'dscnmf':
-        acc, ARI, NMI, reconstruction_error = dsc_nmf_baseline(
+        acc, ARI, NMI, reconstruction_error, _, _ = dsc_nmf_baseline(
             X_subset, K=K, r=r, true_labels=true_labels)
     elif model == 'onmf':
         acc, ARI, NMI, reconstruction_error = onmf_ding(
             X_subset, K=K, true_labels=true_labels, random_state=random_state)
     elif model == 'deepnmf':    
-        acc, ARI, NMI, reconstruction_error = deep_nmf(
-            X_subset, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error, _, _ = deep_nmf(
+            X_subset, random_state=random_state, true_labels=true_labels)
     elif model == 'deepsscnmf':
         acc, ARI, NMI, reconstruction_error = deep_ssc_nmf(
             X_subset, ranks=[256, 128, 64], alpha=alpha, n_iter=max_iter,
