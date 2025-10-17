@@ -84,8 +84,8 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
             X, K=K, true_labels=true_labels)
     elif model == 'deepnmf':
         project_name = 'deepnmf-WEBKB'
-        acc, ARI, NMI, reconstruction_error = deep_nmf(
-            X, true_labels=true_labels)
+        acc, ARI, NMI, reconstruction_error, _, _ = deep_nmf(
+            X, random_state=random_state, true_labels=true_labels)
     elif model == 'deepsscnmf':
         project_name = 'deepsscnmf-WEBKB'
         acc, ARI, NMI, reconstruction_error = deep_ssc_nmf(
