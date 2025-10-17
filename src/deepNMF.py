@@ -115,43 +115,55 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
     """
 
     np.random.seed(random_state)
-    X = np.maximum(X, 1e-8)
-    m, n = X.shape
+    X = np.maximum(X, 1e-8)           # ensure nonnegativity
+    d, n = X.shape                    # d = features, n = samples
     L = len(hidden_dims)
 
-    # ----- 1. Layer-wise pretraining -----
-    W_list, H = [], X.copy()
+    # -------------------------------------------------------
+    # 1. Layer-wise pretraining
+    # -------------------------------------------------------
+    W_list = []
+    H_current = X.copy()
+
     for r in hidden_dims:
-        nmf = NMF(n_components=r, init='nndsvda', max_iter=1000, random_state=random_state)
-        H = np.maximum(nmf.fit_transform(H), 1e-8)
-        W = np.maximum(nmf.components_.T, 1e-8)
-        W_list.append(W)
-    H = normalize(H, axis=0)
-    H = H.T
+        nmf = NMF(n_components=r, init='nndsvda',
+                  max_iter=500, random_state=random_state)
+        # sklearn expects (samples, features)
+        H_new = np.maximum(nmf.fit_transform(H_current.T), 1e-8)  # (samples, r)
+        W_new = np.maximum(nmf.components_.T, 1e-8)               # (features, r)
+        H_current = H_new.T                                       # (r, samples)
+        W_list.append(W_new)
 
-    # ----- 2. Joint fine-tuning (multiplicative updates) -----
+    H = normalize(H_current, axis=0)  # (r_L, samples)
+
+    # -------------------------------------------------------
+    # 2. Joint fine-tuning (multiplicative updates)
+    # -------------------------------------------------------
     prev_err, recon_error = np.inf, np.inf
-    for it in range(max_iter):
-        # Forward reconstruction
-        X_hat = W_list[0]
-        for l in range(1, L):
-            X_hat = X_hat @ W_list[l]
-        X_hat = X_hat @ H.T
-        recon_error = np.linalg.norm(X - X_hat.T, 'fro') / np.linalg.norm(X, 'fro')
 
-        if it % 50 == 0 or it == max_iter - 1:
-            if verbose:
-                print(f"[Iter {it:03d}] Recon error = {recon_error:.4f}")
-        if abs(prev_err - recon_error) < tol:
-            break
-        prev_err = recon_error
+    for it in range(max_iter):
+        # Forward reconstruction: X_hat = W1 @ W2 @ ... @ WL @ H
         W_eff = W_list[0]
         for l in range(1, L):
             W_eff = W_eff @ W_list[l]
+        X_hat = W_eff @ H
 
-        # Backward multiplicative updates
-        H = H * (W_eff.T @ X.T) / (W_eff.T @ (W_eff @ H) + 1e-8)
+        # Compute reconstruction error
+        recon_error = np.linalg.norm(X - X_hat, 'fro') / np.linalg.norm(X, 'fro')
+
+        if it % 50 == 0 or it == max_iter - 1:
+            if verbose:
+                print(f"[Iter {it:03d}] Reconstruction error = {recon_error:.5f}")
+
+        if abs(prev_err - recon_error) < tol:
+            break
+        prev_err = recon_error
+
+        # ---- Update H ----
+        H = H * (W_eff.T @ X) / (W_eff.T @ (W_eff @ H) + 1e-8)
         H = np.maximum(H, 1e-8)
+
+        # ---- Optionally update W's (coarse fine-tuning) ----
         for l in reversed(range(L)):
             W = W_list[l]
             numer = X @ H.T
@@ -159,12 +171,13 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
             W_list[l] = np.maximum(W * numer / denom, 1e-8)
             W_list[l] = normalize(W_list[l], axis=0)
 
-    # ----- 3. Clustering step -----
+    # -------------------------------------------------------
+    # 3. Clustering and evaluation
+    # -------------------------------------------------------
     K = len(np.unique(true_labels)) if true_labels is not None else hidden_dims[-1]
-    H_final = H.T  # (samples × latent_dim)
+    H_final = H.T  # (samples, latent_dim)
     pred_labels = KMeans(n_clusters=K, n_init=20, random_state=random_state).fit_predict(H_final)
 
-    # ----- 4. Evaluation -----
     if true_labels is not None:
         acc = remap_accuracy(true_labels, pred_labels)
         ari = adjusted_rand_score(true_labels, pred_labels)
