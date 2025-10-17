@@ -359,7 +359,7 @@ def GNMF_clus(X, K, true_labels, max_iter=1000, random_state=None, lmd=0.1, weig
 
     return acc, ari, nmi, reconstruction_error
 
-def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=100, random_state=42,
+def iter_reg_coneclus_warmstart(X, K, r, true_labels, max_iter=1000, random_state=None,
                                 NMF_method='anls', alpha=0.01, ord=2):
     np.random.seed(random_state)
     n = X.shape[1]

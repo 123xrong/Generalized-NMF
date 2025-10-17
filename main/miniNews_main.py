@@ -31,7 +31,7 @@ def clean(text):
 def arg_parser():
     parser = argparse.ArgumentParser(description="Iterative subspace clustering with NMF")
     # parser.add_argument('--m', type=int, default=50, help='Dimension of the ambient space (default: 50)')
-    parser.add_argument('--r', type=int, default=5, help='Dimension (rank) of each subspace (default: 5)')
+    parser.add_argument('--r', type=int, default=10, help='Dimension (rank) of each subspace (default: 5)')
     parser.add_argument('--n', type=int, default=50, help='Number of points per subspace (default: 100)')
     parser.add_argument('--K', type=int, default=4, help='Number of subspaces (default: 3)')
     parser.add_argument('--sigma', type=float, default=0.0, help='Standard deviation of Gaussian noise (default: 0.0)')
@@ -44,8 +44,8 @@ def arg_parser():
     parser.add_argument('--n_nonzero_coefs', type=int, default=8, help='Number of non-zero coefficients for OMP')
     return parser.parse_args()
 
-def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
-    categories = ['comp.graphics', 'rec.sport.hockey', 'sci.med', 'talk.politics.misc']  # example
+def main(model, r, n, K, sigma=0.0, alpha=0.01, l1_reg=0.01, random_state=None, max_iter=50, tol=1e-6, n_nonzero_coefs=8):
+    categories = ['comp.graphics', 'rec.sport.hockey', 'sci.med', 'talk.politics.misc']
     data = fetch_20newsgroups(subset='all', categories=categories, remove=('headers', 'footers', 'quotes'))
     texts = data.data
     true_labels = data.target
@@ -72,23 +72,25 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
 
     print(f"Received model: {model}")
     if model == 'sscnmf':
-        project_name = 'sscnmf-MNIST'
+        project_name = 'sscnmf-miniNews'
+    elif model == 'ssc-omp-nmf':
+        project_name = 'ssc-omp-nmf-miniNews'
     elif model == 'ricc':
-        project_name = 'ricc-MNIST'
+        project_name = 'ricc-miniNews'
     elif model == 'gnmf':
-        project_name = 'gnmf-MNIST'
+        project_name = 'gnmf-miniNews'
     elif model == 'gpcanmf':
-        project_name = 'gpcanmf-MNIST'
+        project_name = 'gpcanmf-miniNews'
     elif model == 'onmf_relu':
-        project_name = 'onmf_relu-MNIST'
+        project_name = 'onmf_relu-miniNews'
     elif model == 'dscnmf':
-        project_name = 'dscnmf-MNIST'
+        project_name = 'dscnmf-miniNews'
     elif model == 'onmf':
-        project_name = 'onmf-MNIST'
+        project_name = 'onmf-miniNews'
     elif model == 'deepnmf':
-        project_name = 'deepnmf-MNIST'
+        project_name = 'deepnmf-miniNews'
     elif model == 'deepsscnmf':
-        project_name = 'deepsscnmf-MNIST'
+        project_name = 'deepsscnmf-miniNews'
 
     wandb.init(
         project="coneClustering",
@@ -98,12 +100,15 @@ def main(model, r, n, K, sigma=0.0, alpha=0.1, l1_reg=0.01, random_state=None, m
     if model == 'sscnmf':
         acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_nmf_baseline(
             X_dense, K, r, true_labels=true_labels, random_state=random_state, alpha=alpha)
+    elif model == 'ssc-omp-nmf':
+        acc, ARI, NMI, reconstruction_error, _, _, _ = ssc_omp_nmf_baseline(
+            X_dense, K, r, true_labels=true_labels, n_nonzero_coefs=n_nonzero_coefs, random_state=random_state)
     elif model == 'ricc':
-        acc, ARI, NMI, reconstruction_error, _ = iter_reg_coneclus_warmstart(
-            X_dense, K, r, true_labels=true_labels, alpha=alpha)
+        acc, ARI, NMI, reconstruction_error, _, _, _ = iter_reg_coneclus_warmstart(
+            X_dense, K, r, true_labels=true_labels, random_state=random_state, alpha=alpha)
     elif model == 'gnmf':
         acc, ARI, NMI, reconstruction_error = GNMF_clus(
-            X_dense, K, true_labels=true_labels, lmd=l1_reg)
+            X_dense, K, true_labels=true_labels, random_state=random_state, lmd=l1_reg)
     elif model == 'gpcanmf':
         acc, ARI, NMI, reconstruction_error = gpca_nmf(
             X_dense, K, r, true_labels=true_labels, l1_reg=l1_reg)
