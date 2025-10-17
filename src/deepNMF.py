@@ -126,7 +126,10 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
     H_current = X.copy()
 
     for r in hidden_dims:
-        nmf = NMF(n_components=r, init='nndsvda',
+        nmf_init = 'nndsvda'
+        if r > min(H_current.T.shape):   # if invalid for NNDSVDA
+            nmf_init = 'random'
+        nmf = NMF(n_components=r, init=nmf_init,
                   max_iter=500, random_state=random_state)
         # sklearn expects (samples, features)
         H_new = np.maximum(nmf.fit_transform(H_current.T), 1e-8)  # (samples, r)
