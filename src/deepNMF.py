@@ -164,12 +164,17 @@ def deep_nmf(X, hidden_dims=[256, 128, 64], max_iter=200, tol=1e-4,
         H = np.maximum(H, 1e-8)
 
         # ---- Optionally update W's (coarse fine-tuning) ----
-        for l in reversed(range(L)):
-            W = W_list[l]
-            numer = X @ H.T
-            denom = W @ (H @ H.T) + 1e-8
-            W_list[l] = np.maximum(W * numer / denom, 1e-8)
-            W_list[l] = normalize(W_list[l], axis=0)
+        W_eff = W_list[0]
+        for l in range(1, L):
+            W_eff = W_eff @ W_list[l]
+
+        H = H * (W_eff.T @ X) / (W_eff.T @ (W_eff @ H) + 1e-8)
+        H = np.maximum(H, 1e-8)
+
+        # ---- Optionally update the effective W ----
+        W_eff = W_eff * (X @ H.T) / (W_eff @ (H @ H.T) + 1e-8)
+        W_eff = np.maximum(W_eff, 1e-8)
+        W_eff = normalize(W_eff, axis=0)
 
     # -------------------------------------------------------
     # 3. Clustering and evaluation
